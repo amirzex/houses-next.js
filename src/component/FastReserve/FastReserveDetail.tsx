@@ -4,12 +4,14 @@ import villa from '../../assets/landing/villa.png'
 import loc from '../../assets/reserve/icons8-location-50.png'
 import Link from 'next/link'
 import PropertyTabs from './PropertyTabs'
+import ReserveForm from './ReserveForm'
+import Card from '../common/Card'
 
 interface IProps {
     id: string
 }
 
-const FastReserveDetail: FC<IProps> = ({ id }) => {
+const FastReserveDetail: FC<IProps> = async ({ id }) => {
     console.log(id)
     return (
         <div className='w-full flex flex-col gap-5 justify-center items-center pr-25 pl-25 '>
@@ -52,9 +54,9 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
 
             {/* middle part */}
 
-            <div className='border-2 w-full flex flex-row-reverse justify-center items-center gap-10'>
+            <div className=' w-full flex flex-row-reverse justify-center items-start gap-10'>
                 {/* right side */}
-                <div className="w-[70%] flex flex-col justify-center items-end gap-3 border-2">
+                <div className="w-[70%] flex flex-col justify-center items-end gap-3 ">
 
                     <h2 className='text-3xl text-right w-full'>هتل همایون فر کیش ایران </h2>
                     <div className='flex flex-row w-full text-right justify-end items-center text-sm'>
@@ -65,16 +67,28 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
                             alt='location' />
                     </div>
                     {/* info layout  */}
-                    <div className='w-full flex flex-col gap-5 border-2'>
+                    <div className='w-full flex flex-col gap-5 '>
                         <PropertyTabs />
                     </div>
                 </div>
                 {/* left side */}
-                <div className="w-[30%]">
-                    
+                <div className="border-2 w-[30%] flex flex-col gap-5 justify-center items-center rounded-4xl p-5">
+
+                    <ReserveForm />
+
                 </div>
             </div>
 
+            {/* buttom part  */}
+            {/* <div className='border-2 w-full'>
+                {Array.isArray(response) && response?.length > 0 ? (
+                    response?.map((item) => (
+                        <Card key={item.id} value={item} />
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500">هیچ خانه‌ای یافت نشد</p>
+                )}
+            </div> */}
         </div>
     )
 }

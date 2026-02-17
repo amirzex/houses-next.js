@@ -87,7 +87,7 @@ const PropertyTabs = () => {
     };
 
     return (
-        <div className='w-full flex flex-col gap-5 border-2 p-4 rounded-lg'>
+        <div className='w-full flex flex-col gap-5 p-4 rounded-lg'>
             {/* دکمه‌ها */}
             <div className='w-full flex flex-row-reverse items-center justify-start gap-5 flex-wrap'>
                 <button
