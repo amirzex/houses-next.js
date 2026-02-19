@@ -7,6 +7,7 @@ export interface FastReserveProps {
     maxPrice?: string;
     sort?: string;
     location?: string;
+    city?: string;
     search?: string;
     q?: string;
     name?: string;

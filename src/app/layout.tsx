@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/component/header/page";
 import Footer from "@/component/footer/page";
+import { ReserveProvider } from "@/core/context/ReserveContext";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -40,7 +41,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={shabnam.className}>
         <header><Header /></header>
-        {children}
+        <ReserveProvider>
+          {children}
+        </ReserveProvider>
+
         <footer><Footer /></footer>
       </body>
     </html>

@@ -1,53 +1,43 @@
+// src/component/Form/Form.tsx
 "use client";
 
-import SortFilter from '@/component/Sort/SortFilter'
-import SortFilter2 from '@/component/Sort/SortFilter2'
-import PriceRange from '@/component/Sort/PriceRange'
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import SortFilter from '@/component/Sort/SortFilter';
+import PriceRange from '@/component/Sort/PriceRange';
+import { useReserve } from '@/core/context/ReserveContext';
+import { useState, useEffect } from 'react';
 
-interface ISort {
-    searchParams: { [key: string]: string | undefined };
-};
+const Form = () => {
+    const { filters, setFilters, clearFilters: clearContextFilters } = useReserve();
 
-const Form = ({ searchParams }: ISort) => {
+    const [search, setSearch] = useState(filters.search || "");
+    const [currentSort, setCurrentSort] = useState(filters.sort || "last_updated");
+    const [minPrice, setMinPrice] = useState(filters.minPrice?.toString() || "");
+    const [maxPrice, setMaxPrice] = useState(filters.maxPrice?.toString() || "");
+    const [location, setLocation] = useState(filters.location || "");
 
-    const router = useRouter();
-
-    const [search, setSearch] = useState(searchParams.search || "");
-    const [currentSort, setCurrentSort] = useState(searchParams.sort || "");
-    const [minPrice, setMinPrice] = useState(searchParams.minPrice || "");
-    const [maxPrice, setMaxPrice] = useState(searchParams.maxPrice || "");
-    const [location, setLocation] = useState(searchParams.location || "");
-
-
+    // دیباونس برای اعمال فیلترها
     useEffect(() => {
         const timer = setTimeout(() => {
-            const query = new URLSearchParams();
-
-            query.set("page", "1");
-            query.set("limit", "9");
-
-            if (search.trim()) query.set("search", search.trim());
-            if (currentSort) query.set("sort", currentSort);
-            if (minPrice) query.set("minPrice", minPrice);
-            if (maxPrice) query.set("maxPrice", maxPrice);
-            if (location) query.set("location", location);
-
-            const queryString = query.toString();
-            router.replace(queryString ? `?${queryString}` : "?");
+            setFilters({
+                search: search || undefined,
+                sort: currentSort,
+                minPrice: minPrice ? Number(minPrice) : undefined,
+                maxPrice: maxPrice ? Number(maxPrice) : undefined,
+                location: location || undefined,
+                page: 1, // همیشه صفحه اول
+            });
         }, 500);
 
         return () => clearTimeout(timer);
-    }, [search, currentSort, minPrice, maxPrice, location, router]);
+    }, [search, currentSort, minPrice, maxPrice, location, setFilters]);
 
     const clearFilters = () => {
-        router.replace("?");
         setSearch("");
-        setCurrentSort("");
+        setCurrentSort("last_updated");
         setMinPrice("");
         setMaxPrice("");
         setLocation("");
+        clearContextFilters();
     };
 
     return (
@@ -56,22 +46,21 @@ const Form = ({ searchParams }: ISort) => {
             onSubmit={(e) => e.preventDefault()}
         >
             {/* top */}
-            <div className='w-full flex flex-row-reverse justify-center items-center gap-5 '>
-
+            <div className='w-full flex flex-row-reverse justify-center items-center gap-5'>
                 {/* search */}
                 <div className='w-[50%] flex flex-col gap-4'>
                     <p className='w-full text-right pr-3'>جستجو</p>
                     <input
                         type="text"
                         placeholder='نام هتل یا اقامتگاه'
-                        className='w-full text-right p-3 bg-gray-100 rounded-4xl outline-0 focus:ring-2 focus:ring-blue-300 transition-all'
+                        className='w-full text-right p-3 bg-gray-100 rounded-4xl outline-0 focus:ring-2 focus:ring-blue-900 transition-all'
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
 
                 {/* sort */}
-                <div className='w-[50%] flex flex-col gap-5 '>
+                <div className='w-[50%] flex flex-col gap-5'>
                     <p className='w-full text-right pr-3'>مرتب سازی بر اساس</p>
                     <SortFilter
                         currentSort={currentSort}
@@ -81,14 +70,16 @@ const Form = ({ searchParams }: ISort) => {
             </div>
 
             {/* bottom */}
-            <div className='w-full flex flex-row-reverse justify-center items-center gap-5 '>
-
+            <div className='w-full flex flex-row-reverse justify-center items-center gap-5'>
                 {/* امکانات */}
                 <div className='w-[50%] flex flex-col gap-4'>
                     <p className='w-full text-right pr-3'>امکانات هتل</p>
-                    <SortFilter2
-                        currentSort={currentSort}
-                        onChange={(value) => setCurrentSort(value)}
+                    <input
+                        type="text"
+                        placeholder='استان,شهر'
+                        className='text-right bg-gray-100 p-3 rounded-4xl outline-0 focus:ring-2 focus:ring-blue-900 transition-all'
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
                     />
                 </div>
 
@@ -96,6 +87,8 @@ const Form = ({ searchParams }: ISort) => {
                 <div className='w-[50%] flex flex-col gap-4'>
                     <p className='w-full text-right pr-3'>رنج قیمت</p>
                     <PriceRange
+                        minPrice={minPrice}
+                        maxPrice={maxPrice}
                         onChange={(min, max) => {
                             setMinPrice(min);
                             setMaxPrice(max);
@@ -106,11 +99,12 @@ const Form = ({ searchParams }: ISort) => {
 
             {/* delete button */}
             <div className='flex justify-end items-center gap-4 mt-2'>
-
                 {/* active filter */}
                 <div className='flex flex-row gap-2 text-sm text-gray-600'>
                     {search && <span className='bg-gray-100 px-3 py-1 rounded-full'>جستجو: {search}</span>}
-                    {currentSort && <span className='bg-gray-100 px-3 py-1 rounded-full'>مرتب‌سازی: {currentSort}</span>}
+                    {currentSort && currentSort !== "last_updated" &&
+                        <span className='bg-gray-100 px-3 py-1 rounded-full'>مرتب‌سازی: {currentSort}</span>
+                    }
                     {(minPrice || maxPrice) && (
                         <span className='bg-gray-100 px-3 py-1 rounded-full'>
                             قیمت: {minPrice || 0} - {maxPrice || "∞"}
@@ -125,9 +119,7 @@ const Form = ({ searchParams }: ISort) => {
                 >
                     حذف فیلترها
                 </button>
-
             </div>
-
         </form>
     );
 };

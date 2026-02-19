@@ -1,13 +1,18 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
+import bath from '../../assets/landing/bath.svg'
+import car from '../../assets/landing/car.svg'
+import bed from '../../assets/landing/bed.svg'
+import yard from '../../assets/landing/count.svg'
 
-const IconHolder = () => {
+const IconHolder = ({ items }) => {
+
     const data = [
-        { id: 1, title: 'دستشویی', icon: '../../../src/assets/landing/bath.svg' },
-        { id: 2, title: 'پارکینگ', icon: '../../../src/assets/landing/car.svg' },
-        { id: 3, title: 'اتاق', icon: '../../../src/assets/landing/bed.svg' },
-        { id: 4, title: 'حیاط', icon: '../../../src/assets/landing/count.svg' },
+        {
+            id: 1, title: 'دستشویی', count: items.bathrooms, icon: bath },
+        { id: 2, title: 'پارکینگ', count: items.parking, icon: car },
+        { id: 3, title: 'اتاق', count: items.rooms, icon: bed },
+        { id: 4, title: 'حیاط', count: items.num_comments, icon: yard },
     ]
 
     return (
@@ -26,7 +31,7 @@ const IconHolder = () => {
                     </div>
                     <div className='w-[80%] flex flex-col gap-1 text-right '>
                         <p className='text-xl w-full pr-1'>{item.title}</p>
-                        <p className='w-full pr-1'>نوساز</p>
+                        <p className='w-full pr-1'>  {item.count} </p>
                     </div>
                 </div>
             ))}

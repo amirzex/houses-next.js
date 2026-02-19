@@ -3,14 +3,15 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import IconHolder from './IconHolder';
 
-const PropertyTabs = () => {
+const PropertyTabs = ({ property }) => {
+
     const [activeTab, setActiveTab] = useState('about');
 
     // تعریف محتوای هر تب به صورت آبجکت
     const tabContents = {
         about: {
-            title: "چرا هتل همایون رو انتخاب کنیم ؟",
-            content: "هتل همایون با معماری سنتی ایرانی و خدمات مدرن، تجربه‌ای بی‌نظیر از اقامت در اصفهان رو برای شما فراهم می‌کنه. این هتل در نزدیکی میدان نقش جهان واقع شده و دسترسی آسان به جاذبه‌های گردشگری داره.",
+            title: ` چرا   ${property.title}  رو انتخاب کنیم؟  `,
+            content: property.caption,
             buttonText: "مشاهده بیشتر"
         },
         amenities: {
@@ -61,7 +62,7 @@ const PropertyTabs = () => {
             return (
                 <div className='w-full flex flex-col gap-3'>
                     {/* big div  */}
-                    <IconHolder />
+                    <IconHolder items={property} />
                 </div>
             );
         }

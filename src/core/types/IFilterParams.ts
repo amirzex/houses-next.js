@@ -9,4 +9,5 @@ export interface IFilterParams {
   city?: string;
   price?: string;
   id: string;
+  name: string;
 }

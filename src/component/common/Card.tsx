@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import picture from '../../assets/landing/card.jpg'
 import loc from '../../assets/landing/location.svg'
@@ -7,14 +8,24 @@ import count from '../../assets/landing/count.svg'
 import car from '../../assets/landing/car.svg'
 import { IData } from '@/core/types/IData'
 import { FC } from 'react'
+import Link from 'next/link'
+// import { useRouter } from 'next/router'
 
 interface CardProps {
     value: IData
 }
 
 const Card: FC<CardProps> = ({ value }) => {
+
+    // console.log(value.id)
+    // const router = useRouter()
+
+    // const handleClick = () => {
+    //     router.push(`FastReserve/${value.id}`)
+    // }
+
     return (
-        <div className='flex flex-col w-full h-full rounded-4xl overflow-hidden border border-gray-300'>
+        <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full rounded-4xl overflow-hidden border border-gray-300'>
             {/* image holder */}
             <div className='h-[50%] overflow-hidden'>
                 <Image
@@ -113,7 +124,7 @@ const Card: FC<CardProps> = ({ value }) => {
 
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

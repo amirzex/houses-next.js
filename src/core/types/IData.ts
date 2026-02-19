@@ -1,18 +1,15 @@
 export interface IData {
   id: string;
-  title: string;
+  title: string | undefined;
   address: string;
   photos: string[];
   rate: string;
   discounted_price: string | null;
-  price: string;
+  price: number;
   tags: string[];
   last_updated: string;
   capacity: number;
-  location: {
-    lat: number;
-    lng: number;
-  };
+  location: string
   categories: {
     name: string;
   };
@@ -33,6 +30,7 @@ export interface IData {
   item: string;
   size: string;
   total: number;
+  city:string
 }
 
 export type IDataArray = IData[];
