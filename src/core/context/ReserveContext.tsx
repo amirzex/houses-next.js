@@ -103,7 +103,7 @@ export const ReserveProvider = ({ children }: { children: React.ReactNode }) => 
         } finally {
             setLoadingDetail(false);
         }
-    }, [ ]);
+    }, []);
 
     const setFilters = useCallback((newFilters: FilterParams) => {
 

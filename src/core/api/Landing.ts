@@ -69,7 +69,7 @@ export const getPropertyById = async (id: string): Promise<Property> => {
 
 export const getSuggestion = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses?`);
-  return response.data.houses.slice(3, 6);
+  return response.data.houses.slice(3, 9);
 };
 export const getBestChoice = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses?`);
@@ -83,5 +83,5 @@ export const getLocationData = async (): Promise<IData[]> => {
 
 export const getCommentData = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/comments`);
-  return response.data.data.slice(0, 3);
+  return response.data.data.slice(0, 5);
 };

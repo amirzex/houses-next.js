@@ -13,7 +13,7 @@ interface CommentCardProps {
 
 const CommentCard: FC<CommentCardProps> = ({ value }) => {
     return (
-        <div className='border-2 border-gray-300 rounded-4xl w-[33%] flex flex-col gap-8 justify-end items-end p-5 '>
+        <div className='border-2 border-gray-300 rounded-4xl w-full flex flex-col gap-8 justify-end items-end p-5 '>
             {/* img card */}
             <div className='w-full flex flex-row-reverse justify-center items-center'>
                 <Image

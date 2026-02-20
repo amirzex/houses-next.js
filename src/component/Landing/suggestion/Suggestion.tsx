@@ -1,11 +1,15 @@
 import { getSuggestion } from '@/core/api/Landing'
 import Link from 'next/link'
 import Card from '@/component/common/Card'
+import MySwiper from '@/component/common/Swiper'
 
 const Suggestion = async () => {
 
   const response = await getSuggestion()
-
+  const slides = Array.isArray(response) ? response.map(item => ({
+    id: item.id,
+    content: <Card value={item} />
+  })) : []
   return (
     <div className="w-full flex flex-col gap-10 p-20">
       {/* Header */}
@@ -26,11 +30,9 @@ const Suggestion = async () => {
       </div>
 
       {/* Array map */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.isArray(response) && response?.length > 0 ? (
-          response?.map((item) => (
-            <Card key={item.id} value={item} />
-          ))
+      <div className="">
+        {slides.length > 0 ? (
+          <MySwiper slides={slides} />
         ) : (
           <p className="text-center text-gray-500">هیچ خانه‌ای یافت نشد</p>
         )}

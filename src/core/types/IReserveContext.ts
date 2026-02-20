@@ -32,7 +32,7 @@ export interface ReserveContextType {
   filteredProperties: Property[];
   selectedProperty: Property | null;
   filters: FilterParams;
-  loading: string;
+  loading: string |boolean;
   error: string | null;
   totalCount: number;
 
