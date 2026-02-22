@@ -24,6 +24,7 @@ export interface Property {
   sort?: string;
   search?: string;
   address?: string;
+  photos?: string;
 }
 
 export interface ReserveContextType {
@@ -32,7 +33,7 @@ export interface ReserveContextType {
   filteredProperties: Property[];
   selectedProperty: Property | null;
   filters: FilterParams;
-  loading: string |boolean;
+  loading: string | boolean;
   error: string | null;
   totalCount: number;
 

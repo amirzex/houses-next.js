@@ -10,6 +10,7 @@ import loc from '../../assets/reserve/icons8-location-50.png';
 import Link from 'next/link';
 import PropertyTabs from './PropertyTabs';
 import ReserveForm from './ReserveForm';
+import Suggestion from '../Landing/suggestion/Suggestion';
 
 interface IProps {
     id: string;
@@ -41,11 +42,12 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
                 <div className='w-full flex flex-row-reverse gap-10'>
                     <div className="w-[70%] h-140 overflow-hidden rounded-4xl">
                         <Image
-                            src={selectedProperty.images?.[0] || villa}
-                            alt='img'
-                            className=' rounded-4xl scale-115 '
-                            // width={800}
-                            // height={600}
+                            src={selectedProperty.photos?.[0] || villa}
+                            width={100}
+                            height={100}
+                            alt="landing background"
+                            className="object-cover h-200 w-full "
+                            unoptimized
                         />
                     </div>
                     {/* top left side */}
@@ -55,8 +57,8 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
                                 src={selectedProperty.images?.[1] || villa}
                                 alt='img'
                                 className='rounded-4xl'
-                                // width={400}
-                                // height={300}
+                            // width={400}
+                            // height={300}
                             />
                         </div>
                         <div className="h-70 overflow-hidden rounded-4xl relative border-2">
@@ -64,8 +66,8 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
                                 src={selectedProperty.images?.[2] || villa}
                                 alt='img'
                                 className='rounded-4xl brightness-50'
-                                // width={400}
-                                // height={300}
+                            // width={400}
+                            // height={300}
                             />
                             <Link href={''}
                                 className='left-37 top-25 absolute p-3 w-50 flex flex-row justify-center items-center gap-2 text-white cursor-pointer border-2 border-white rounded-4xl'>

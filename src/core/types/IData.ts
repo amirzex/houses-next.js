@@ -2,14 +2,14 @@ export interface IData {
   id: string;
   title: string | undefined;
   address: string;
-  photos: string[];
+  photos: string;
   rate: string;
   discounted_price: string | null;
   price: number;
   tags: string[];
   last_updated: string;
   capacity: number;
-  location: string
+  location: string;
   categories: {
     name: string;
   };
@@ -26,11 +26,11 @@ export interface IData {
   bookings: number;
   favoriteId: string | null;
   isFavorite: boolean;
-  data: string;
+  data?: string;
   item: string;
   size: string;
   total: number;
-  city:string
+  city: string;
 }
 
 export type IDataArray = IData[];

@@ -1,11 +1,39 @@
 "use client"
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IconHolder from './IconHolder';
+import { getComment } from '@/core/api/FastComments';
+
 
 const PropertyTabs = ({ property }) => {
+    const house_id = property.id;
 
     const [activeTab, setActiveTab] = useState('about');
+    const [reviews, setReviews] = useState([]);
+    const [reviewsLoading, setReviewsLoading] = useState(false);
+    const [reviewsError, setReviewsError] = useState(null);
+
+
+    useEffect(() => {
+        async function fetchReviews() {
+            if (activeTab !== 'reviews') return;
+
+            setReviewsLoading(true);
+            setReviewsError(null);
+
+            try {
+                const response = await getComment(house_id);
+                setReviews(response.data || []);
+            } catch (error) {
+                console.error('خطا در دریافت نظرات:', error);
+                setReviewsError('دریافت نظرات با مشکل مواجه شد');
+            } finally {
+                setReviewsLoading(false);
+            }
+        }
+
+        fetchReviews();
+    }, [activeTab, house_id]); // هر وقت تب عوض شد یا id تغییر کرد، دوباره اجرا کن
 
     // تعریف محتوای هر تب به صورت آبجکت
     const tabContents = {
@@ -16,44 +44,21 @@ const PropertyTabs = ({ property }) => {
         },
         amenities: {
             title: "امکانات اقامتگاه",
-            content: [
-                "استخر سرپوشیده",
-                "اینترنت پرسرعت",
-                "پارکینگ رایگان",
-                "رستوران سنتی",
-                "سالن ورزشی",
-                "سرویس فرودگاه",
-                "استخر سرپوشیده",
-                "اینترنت پرسرعت",
-                "پارکینگ رایگان",
-                "رستوران سنتی",
-                "سالن ورزشی",
-                "سرویس فرودگاه",
-                "سرویس فرودگاه",
-                "سرویس فرودگاه",
-            ],
             buttonText: "مشاهده همه "
         },
         reviews: {
             title: "نظرات کاربران",
-            content: [
-                { name: "علی محمدی", rating: 5, comment: "اقامت بسیار خوبی داشتیم. پرسنل محترم و خوش‌برخورد بودند." },
-                { name: "سارا احمدی", rating: 4, comment: "موقعیت مکانی عالی، فقط صبحانه می‌تونست متنوع‌تر باشه." },
-                { name: "رضا کریمی", rating: 5, comment: "تمیز و با کیفیت. حتماً دوباره میام." }
-            ],
             buttonText: "مشاهده همه نظرات"
         }
     };
 
     // رندر محتوا براساس تب فعال
     const renderContent = () => {
-        const currentTab = tabContents[activeTab];
-
         if (activeTab === 'about') {
             return (
                 <div className='w-full flex flex-col gap-3'>
-                    <h3 className='text-right text-2xl w-full'>{currentTab.title}</h3>
-                    <p className='text-right'>{currentTab.content}</p>
+                    <h3 className='text-right text-2xl w-full'>{tabContents.about.title}</h3>
+                    <p className='text-right'>{tabContents.about.content}</p>
                 </div>
             );
         }
@@ -61,7 +66,6 @@ const PropertyTabs = ({ property }) => {
         if (activeTab === 'amenities') {
             return (
                 <div className='w-full flex flex-col gap-3'>
-                    {/* big div  */}
                     <IconHolder items={property} />
                 </div>
             );
@@ -70,18 +74,48 @@ const PropertyTabs = ({ property }) => {
         if (activeTab === 'reviews') {
             return (
                 <div className='w-full flex flex-col gap-3'>
-                    <h3 className='text-right text-2xl w-full'>{currentTab.title}</h3>
-                    <div className='text-right space-y-4'>
-                        {currentTab.content.map((review, index) => (
-                            <div key={index} className='border-b pb-3'>
-                                <div className='flex justify-between'>
-                                    <span className='font-bold'>{review.name}</span>
-                                    <span>{'⭐'.repeat(review.rating)}</span>
-                                </div>
-                                <p>{review.comment}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <h3 className='text-right text-2xl w-full'>{tabContents.reviews.title}</h3>
+
+                    {/* نمایش حالت بارگذاری */}
+                    {reviewsLoading && (
+                        <div className='text-center py-4'>
+                            <p>در حال بارگذاری نظرات...</p>
+                        </div>
+                    )}
+
+                    {/* نمایش خطا */}
+                    {reviewsError && (
+                        <div className='text-center py-4 text-red-500'>
+                            <p>{reviewsError}</p>
+                        </div>
+                    )}
+
+                    {/* نمایش نظرات */}
+                    {!reviewsLoading && !reviewsError && (
+                        <div className='text-right space-y-4'>
+                            {reviews.length > 0 ? (
+                                reviews.map((review, index) => (
+                                    <div key={review.id || index} className='border-b pb-3'>
+                                        <div className='flex justify-between'>
+                                            <span className='font-bold'>{review.user_id || review.name || 'کاربر'}</span>
+                                            <span>{'⭐'.repeat(review.rating || '')}</span>
+                                        </div>
+                                        <p className='mt-2'>{review.caption || review.text || review.content}</p>
+                                        <p className='mt-2'>{review.title || review.text || review.content}</p>
+                                        {review.date && (
+                                            <span className='text-sm text-gray-500 mt-1 block'>
+                                                {new Date(review.date).toLocaleDateString('fa-IR')}
+                                            </span>
+                                        )}
+                                    </div>
+                                ))
+                            ) : (
+                                <p className='text-center text-gray-500 py-4'>
+                                    هنوز نظری برای این اقامتگاه ثبت نشده است
+                                </p>
+                            )}
+                        </div>
+                    )}
                 </div>
             );
         }
@@ -126,11 +160,13 @@ const PropertyTabs = ({ property }) => {
             </div>
 
             {/* دکمه مشاهده بیشتر (مشترک) */}
-            <div className='text-gray-400 w-full flex flex-row justify-center items-center'>
-                <button className='w-[12%] border-2 p-2 rounded-4xl hover:bg-gray-100 transition-colors'>
-                    {tabContents[activeTab].buttonText}
-                </button>
-            </div>
+            {activeTab !== 'amenities' && (
+                <div className='text-gray-400 w-full flex flex-row justify-center items-center'>
+                    <button className='w-[12%] border-2 p-2 rounded-4xl hover:bg-gray-100 transition-colors'>
+                        {tabContents[activeTab].buttonText}
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

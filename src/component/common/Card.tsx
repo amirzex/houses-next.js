@@ -9,7 +9,7 @@ import car from '../../assets/landing/car.svg'
 import { IData } from '@/core/types/IData'
 import { FC } from 'react'
 import Link from 'next/link'
-// import { useRouter } from 'next/router'
+
 
 interface CardProps {
     value: IData
@@ -17,23 +17,16 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ value }) => {
 
-    // console.log(value.id)
-    // const router = useRouter()
-
-    // const handleClick = () => {
-    //     router.push(`FastReserve/${value.id}`)
-    // }
-
     return (
         <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full rounded-4xl overflow-hidden border border-gray-300'>
             {/* image holder */}
             <div className='h-[50%] overflow-hidden'>
                 <Image
-                    src={picture}
-                    // width={500}
-                    // fill
+                    src={value.photos?.[0] || picture}
+                    width={500}
+                    height={100}
                     alt="landing background"
-                    className=" object-cover "
+                    className="object-cover w-full h-100"
                     unoptimized
                 />
             </div>
@@ -46,7 +39,7 @@ const Card: FC<CardProps> = ({ value }) => {
                         <p className='text-gray-400 text-sm'>تومان</p>
                     </span>
                     {value.discounted_price && (
-                        <span className='flex flex-row-reverse justify-center items-center text-2xl text-gray-400 gap-2'>
+                        <span className='flex flex-row-reverse justify-center items-center text-2xl text-gray-400 gap-2 line-through'>
                             {value.discounted_price}
                             <p className='text-gray-400 text-sm'>تومان</p>
                         </span>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ReserveForm = () => {
+const ReserveForm = ({ property }) => {
     return (
         <div className='w-full flex flex-col gap-5'>
             <form className=' w-full flex flex-col gap-5 justify-center items-center ' action="">
@@ -31,15 +31,25 @@ const ReserveForm = () => {
                 </div>
             </form>
 
-            <div className='border-t-2 w-full  border-gray-300 flex flex-col gap-5 pt-5'>
-                <div className='flex flex-row gap-40'>
-                    <span className='flex flex-row-reverse justify-end gap-1 text-gray-400 text-3xl '>5,000,000  <p>تومان</p> </span>
-                    <div className='flex flex-row gap-2 bg-red-500 text-white rounded-4xl p-3'>
-                        <p> تخفیف </p>
-                        <span>50%</span>
-                    </div>
+            <div className='border-t-2 w-full border-gray-300 flex flex-col gap-5 pt-5'>
+                <div className='flex flex-row gap-40 items-center'>
+                    <span className='flex flex-row-reverse justify-end gap-1 text-gray-400 text-3xl line-through'>
+                        {property?.discounted_price || 0}
+                        <p>تومان</p>
+                    </span>
+
+                    {/* calculate the discount */}
+                    {property?.price && property?.discounted_price && (
+                        <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            {Math.round(((property.price - property.discounted_price) / property.price) * 100)}% تخفیف
+                        </div>
+                    )}
                 </div>
-                <span className='flex flex-row-reverse justify-end gap-1 text-3xl'>2,500,000  <p>تومان</p> </span>
+
+                <span className='flex flex-row-reverse justify-end gap-1 text-3xl'>
+                    {property?.price}
+                    <p>تومان</p>
+                </span>
             </div>
 
             <button className='bg-blue-900 p-3 w-full rounded-4xl text-white hover:scale-95 transition-all duration-300'> ثبت درخواست رزرو </button></div>
