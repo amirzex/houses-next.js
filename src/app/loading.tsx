@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LoadingGif from '../assets/landing/Spin@1x-1.0s-200px-200px.gif'
+import LoadingGif from '../assets/landing/output-onlinegiftools.gif'
 
 const Loading = () => {
     return (
