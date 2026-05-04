@@ -3,7 +3,7 @@ export type Option = {
   value: string;
 };
 
-export type DropdwonProps = {
+export type DropDownProps = {
   options: Option[];
   value: string;
   onChange: (value: string) => void;

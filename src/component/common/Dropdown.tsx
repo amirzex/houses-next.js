@@ -1,8 +1,8 @@
 'use client'
-import { DropdwonProps } from '@/core/types/IDropdwon'
+import { DropDownProps } from '@/core/types/IDropdwon'
 import React, { useState } from 'react'
 
-const Dropdown = ({ options, value, onChange }: DropdwonProps) => {
+const Dropdown = ({ options, value, onChange }: DropDownProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const selectedLabel =

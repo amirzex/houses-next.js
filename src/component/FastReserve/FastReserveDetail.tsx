@@ -10,7 +10,6 @@ import loc from '../../assets/reserve/icons8-location-50.png';
 import Link from 'next/link';
 import PropertyTabs from './PropertyTabs';
 import ReserveForm from './ReserveForm';
-import Suggestion from '../Landing/suggestion/Suggestion';
 
 interface IProps {
     id: string;

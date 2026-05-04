@@ -24,7 +24,7 @@ const Form = () => {
                 minPrice: minPrice ? Number(minPrice) : undefined,
                 maxPrice: maxPrice ? Number(maxPrice) : undefined,
                 location: location || undefined,
-                page: 1, // همیشه صفحه اول
+                page: 1,
             });
         }, 500);
 

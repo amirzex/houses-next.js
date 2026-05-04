@@ -1,4 +1,3 @@
-// src/component/FastReserve/FastReserve.tsx
 "use client"; 
 
 import { useEffect } from 'react';

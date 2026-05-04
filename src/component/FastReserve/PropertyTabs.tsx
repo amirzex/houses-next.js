@@ -33,9 +33,9 @@ const PropertyTabs = ({ property }) => {
         }
 
         fetchReviews();
-    }, [activeTab, house_id]); // هر وقت تب عوض شد یا id تغییر کرد، دوباره اجرا کن
+    }, [activeTab, house_id]);
 
-    // تعریف محتوای هر تب به صورت آبجکت
+
     const tabContents = {
         about: {
             title: ` چرا   ${property.title}  رو انتخاب کنیم؟  `,
@@ -51,8 +51,9 @@ const PropertyTabs = ({ property }) => {
             buttonText: "مشاهده همه نظرات"
         }
     };
+    // state management
 
-    // رندر محتوا براساس تب فعال
+    // about tabs
     const renderContent = () => {
         if (activeTab === 'about') {
             return (
@@ -70,27 +71,27 @@ const PropertyTabs = ({ property }) => {
                 </div>
             );
         }
-
+        // tab reviews
         if (activeTab === 'reviews') {
             return (
                 <div className='w-full flex flex-col gap-3'>
                     <h3 className='text-right text-2xl w-full'>{tabContents.reviews.title}</h3>
 
-                    {/* نمایش حالت بارگذاری */}
+
                     {reviewsLoading && (
                         <div className='text-center py-4'>
                             <p>در حال بارگذاری نظرات...</p>
                         </div>
                     )}
 
-                    {/* نمایش خطا */}
+
                     {reviewsError && (
                         <div className='text-center py-4 text-red-500'>
                             <p>{reviewsError}</p>
                         </div>
                     )}
 
-                    {/* نمایش نظرات */}
+                    {/* comments*/}
                     {!reviewsLoading && !reviewsError && (
                         <div className='text-right space-y-4'>
                             {reviews.length > 0 ? (
@@ -123,7 +124,7 @@ const PropertyTabs = ({ property }) => {
 
     return (
         <div className='w-full flex flex-col gap-5 p-4 rounded-lg'>
-            {/* دکمه‌ها */}
+            {/* buttons*/}
             <div className='w-full flex flex-row-reverse items-center justify-start gap-5 flex-wrap'>
                 <button
                     onClick={() => setActiveTab('about')}
@@ -154,12 +155,12 @@ const PropertyTabs = ({ property }) => {
                 </button>
             </div>
 
-            {/* محتوای اصلی با انیمیشن */}
+            {/* main data with animation*/}
             <div className='transition-all duration-500 ease-in-out'>
                 {renderContent()}
             </div>
 
-            {/* دکمه مشاهده بیشتر (مشترک) */}
+            {/* see more button for all tabs */}
             {activeTab !== 'amenities' && (
                 <div className='text-gray-400 w-full flex flex-row justify-center items-center'>
                     <button className='w-[12%] border-2 p-2 rounded-4xl hover:bg-gray-100 transition-colors'>

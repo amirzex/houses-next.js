@@ -1,1 +1,1 @@
-export const BaseUrl = "https://delta-project.liara.run";
+export const BaseUrl = "https://next.genzuni.website";

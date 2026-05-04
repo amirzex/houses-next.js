@@ -35,33 +35,26 @@ export const getData = async (params: IFilterParams): Promise<IData[]> => {
 
 export const getPropertyById = async (id: string): Promise<Property> => {
   try {
-    // console.log('Requesting URL:', `${BaseUrl}/api/houses/${id}`);
-    
     const response = await axios.get(`${BaseUrl}/api/houses/${id}`, {
       headers: {
-        'Content-Type': 'application/json',
-      }
+        "Content-Type": "application/json",
+      },
     });
-    
-    // console.log('Response status:', response.status);
-    // console.log('Response data:', response.data);
-    
+
     return response.data;
   } catch (error: any) {
     if (error.response) {
-      console.error('Server error:', {
+      console.error("Server error:", {
         status: error.response.status,
         data: error.response.data,
-        headers: error.response.headers
+        headers: error.response.headers,
       });
     } else if (error.request) {
-      // درخواست فرستاده شده ولی پاسخی نیومده
-      console.error('No response received:', error.request);
+      console.error("No response received:", error.request);
     } else {
-      // خطا در تنظیم درخواست
-      console.error('Request error:', error.message);
+      console.error("Request error:", error.message);
     }
-    
+
     console.error(`Error in getPropertyById for id ${id}:`, error);
     throw error;
   }
@@ -69,19 +62,19 @@ export const getPropertyById = async (id: string): Promise<Property> => {
 
 export const getSuggestion = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses?`);
-  return response.data.houses.slice(3, 9);
+  return response.data.houses;
 };
 export const getBestChoice = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses?`);
-  return response.data.houses.slice(6, 9);
+  return response.data.houses;
 };
 
 export const getLocationData = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/locations`);
-  return response.data.data.slice(0, 9);
+  return response.data.data;
 };
 
 export const getCommentData = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/comments`);
-  return response.data.data.slice(0, 5);
+  return response.data.data;
 };

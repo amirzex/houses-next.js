@@ -38,3 +38,4 @@ const SortFilter = ({ currentSort, onChange }: IProps) => {
 };
 
 export default SortFilter;
+

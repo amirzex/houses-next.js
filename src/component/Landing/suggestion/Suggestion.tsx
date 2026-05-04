@@ -10,6 +10,7 @@ const Suggestion = async () => {
     id: item.id,
     content: <Card value={item} />
   })) : []
+  console.log(response,"response")
   return (
     <div className="w-full flex flex-col gap-10 p-20">
       {/* Header */}
