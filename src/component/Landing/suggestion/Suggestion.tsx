@@ -5,12 +5,12 @@ import MySwiper from '@/component/common/Swiper'
 
 const Suggestion = async () => {
 
-  const response = await getSuggestion()
-  const slides = Array.isArray(response) ? response.map(item => ({
-    id: item.id,
-    content: <Card value={item} />
-  })) : []
-  console.log(response,"response")
+  // const response = await getSuggestion()
+  // const slides = Array.isArray(response) ? response.map(item => ({
+  //   id: item.id,
+  //   content: <Card value={item} />
+  // })) : []
+  // console.log(response,"response")
   return (
     <div className="w-full flex flex-col gap-10 p-20">
       {/* Header */}
@@ -31,13 +31,13 @@ const Suggestion = async () => {
       </div>
 
       {/* Array map */}
-      <div className="">
+      {/* <div className="">
         {slides.length > 0 ? (
           <MySwiper slides={slides} />
         ) : (
           <p className="text-center text-gray-500">هیچ خانه‌ای یافت نشد</p>
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

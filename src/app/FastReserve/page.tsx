@@ -8,10 +8,10 @@ interface SearchParams {
 
 const FastReservePage = async ({ searchParams }: { searchParams: Promise<SearchParams> }) => {
 
-    const params = await searchParams
-    return (
-        <FastReserve searchParams={params} />
-    )
+    // const params = await searchParams
+    // return (
+    //     <FastReserve searchParams={params} />
+    // )
 }
 
 export default FastReservePage

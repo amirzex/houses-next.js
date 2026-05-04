@@ -41,9 +41,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={shabnam.className}>
         <header><Header /></header>
-        <ReserveProvider>
+        {/* <ReserveProvider> */}
           {children}
-        </ReserveProvider>
+        {/* </ReserveProvider> */}
 
         <footer><Footer /></footer>
       </body>

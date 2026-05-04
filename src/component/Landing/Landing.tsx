@@ -11,16 +11,16 @@ import LandingComment from './customercomment/LandingComment'
 const Landing = async () => {
 
   return (
-    <div className='w-full flex flex-col justify-center items-center mt-10'>
+    <div className='w-full flex flex-col justify-center items-center'>
       <TopSide />
       <Category /> 
-      <Suggestion/>
+      {/* <Suggestion/> */}
       <Choose />
-      <BestChoice />
-      <BestLocation />
+      {/* <BestChoice /> */}
+      {/* <BestLocation /> */}
       <Feature />
       <Help />
-      <LandingComment /> 
+      {/* <LandingComment />  */}
     </div>
   )
 }
