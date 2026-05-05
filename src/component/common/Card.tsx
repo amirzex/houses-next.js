@@ -10,7 +10,6 @@ import { IData } from '@/core/types/IData'
 import { FC } from 'react'
 import Link from 'next/link'
 
-
 interface CardProps {
     value: IData
 }
@@ -18,103 +17,93 @@ interface CardProps {
 const Card: FC<CardProps> = ({ value }) => {
 
     return (
-        <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full rounded-4xl overflow-hidden border border-gray-300'>
+        <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
             {/* image holder */}
-            <div className='h-[50%] overflow-hidden'>
+            <div className='relative h-80 w-full overflow-hidden'>
                 <Image
                     src={value.photos?.[0] || picture}
-                    width={500}
-                    height={100}
+                    fill
                     alt="landing background"
-                    className="object-cover w-full h-100"
+                    className="object-cover"
                     unoptimized
                 />
-            </div>
-            {/* card info */}
-            <div className='flex flex-col gap-10 h-[50%] p-5'>
 
-                <div className='flex flex-row w-full justify-end items-center gap-5 '>
-                    <span className='flex flex-row-reverse justify-center items-center text-2xl gap-2'>
-                        {value.price || "2,500,000"}
-                        <p className='text-gray-400 text-sm'>تومان</p>
-                    </span>
-                    {value.discounted_price && (
-                        <span className='flex flex-row-reverse justify-center items-center text-2xl text-gray-400 gap-2 line-through'>
-                            {value.discounted_price}
-                            <p className='text-gray-400 text-sm'>تومان</p>
-                        </span>
-                    )}
+                {/* Top Right Badges */}
+                <div className='absolute top-3 right-3 flex gap-2'>
+                    <div className='bg-[#FF4D4D] text-white px-4 py-3 rounded-full text-2xl font-bold flex items-center justify-center shadow-md'>
+                        %15
+                    </div>
+                    <div className='bg-[#1E3A8A] text-white px-3 py-3 rounded-full text-2xl font-bold flex items-center justify-center gap-1 shadow-md'>
+                        <span>4.5</span>
+                        {/* You can replace this star with an SVG or icon */}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                        </svg>
+                    </div>
                 </div>
 
-                <div className='flex flex-row justify-end items-center text-2xl w-full'>
-                    {/* <p>خانه ویلایی بسیار عالی</p> */}
-                    <p>{value.title}</p>
-                </div>
-
-                <div className='w-full flex flex-row-reverse gap-1 justify-start items-center'>
+                {/* Location Overlay */}
+                <div className=' w-full absolute bottom-3 right-3 flex flex-row-reverse gap-1 justify-start items-center text-white drop-shadow-md'>
                     <Image
                         src={loc}
-                        // width={500}
-                        // fill
-                        alt="landing background"
-                        className=" object-cover "
+                        width={20}
+                        height={20}
+                        alt="location"
+                        className="object-contain w-[5%] text-white"
                         unoptimized
                     />
-                    {/* <p>مازندران ، تنکابن</p> */}
-                    <p>{value.address}</p>
+                    <p className='text-2xl font-medium'>{value.address || "خیابان 404 بروکلین کالیفرنیا نیویورک"}</p>
                 </div>
-                {/* card bottom */}
-                <div className='w-full flex flex-row-reverse justify-center items-center border-t-gray-200 border-solid border-t-2 pt-5'>
+            </div>
 
-                    <div className='flex flex-row-reverse gap-1 justify-center items-center w-[25%]'>
-                        <Image
-                            src={bed}
-                            // width={500}
-                            // fill
-                            alt="landing background"
-                            className=" object-cover "
-                            unoptimized
-                        />
-                        <span className='text-gray-400'>{value.rooms}</span>
-                        <p className='text-gray-400'> خواب</p>
-                    </div>
-                    <div className='flex flex-row-reverse gap-1 justify-center items-center w-[25%]'>
-                        <Image
-                            src={bath}
-                            // width={500}
-                            // fill
-                            alt="landing background"
-                            className=" object-cover "
-                            unoptimized
-                        />
-                        <span className='text-gray-400'>{value.bathrooms}</span>
-                        <p className='text-gray-400'> حمام</p>
-                    </div>
-                    <div className='flex flex-row-reverse gap-1 justify-center items-center w-[25%]'>
-                        <Image
-                            src={count}
-                            // width={500}
-                            // fill
-                            alt="landing background"
-                            className=" object-cover "
-                            unoptimized
-                        />
-                        <span className='text-gray-400'>{value.num_comments}</span>
-                        <p className='text-gray-400'> نفر</p>
-                    </div>
-                    <div className='flex flex-row-reverse gap-1 justify-center items-center w-[25%]'>
-                        <Image
-                            src={car}
-                            // width={500}
-                            // fill
-                            alt="landing background"
-                            className=" object-cover "
-                            unoptimized
-                        />
-                        <span className='text-gray-400'>{value.parking}</span>
-                        <p className='text-gray-400'> پارکینگ</p>
-                    </div>
+            {/* card info */}
+            <div className='flex flex-col p-5 gap-6'>
 
+                {/* Title */}
+                <div className='flex flex-row-reverse justify-start items-center text-3xl font-extrabold text-gray-800 w-full'>
+                    <p>{value.title || "خانه ویلایی با پارکینگ اختصاصی"}</p>
+                </div>
+
+                {/* Amenities */}
+                <div className='w-full flex text-2xl flex-row-reverse justify-between items-center  text-gray-500 font-medium'>
+                    <div className='flex flex-row-reverse gap-1 justify-center items-center'>
+                        <Image src={bed} width={20} height={20} alt="bed" unoptimized />
+                        <span>{value.rooms || "3"}</span>
+                        <p>خواب</p>
+                    </div>
+                    <div className='flex flex-row-reverse gap-1 justify-center items-center'>
+                        <Image src={bath} width={20} height={20} alt="bath" unoptimized />
+                        <span>{value.bathrooms || "3"}</span>
+                        <p>حمام</p>
+                    </div>
+                    <div className='flex flex-row-reverse gap-1 justify-center items-center'>
+                        <Image src={count} width={20} height={20} alt="guests" unoptimized />
+                        <span>{value.num_comments || "3"}</span>
+                        <p>نفر</p>
+                    </div>
+                    <div className='flex flex-row-reverse gap-1 justify-center items-center'>
+                        <Image src={car} width={20} height={20} alt="parking" unoptimized />
+                        <span>{value.parking || "1"}</span>
+                        <p>پارکینگ</p>
+                    </div>
+                </div>
+
+                {/* Pricing Area */}
+                <div className='bg-[#F3F4F6] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
+                    {value.price && (
+                        <>
+                            <span className='flex flex-row-reverse justify-center items-center text-3xl text-[#EF4444] line-through ml-2 font-medium'>
+                                {value.discounted_price || "5,500,000"}
+                                <span className='mr-1'>تومان</span>
+                            </span>
+                            <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
+                        </>
+                    )}
+                    <span className='flex flex-row-reverse justify-center items-center text-3xl font-bold text-black gap-1'>
+                        {value.price || "4,500,000"}
+                        <span className='text-3xl font-normal ml-1'>ت</span> /
+                        <span className='text-xl text-gray-500 font-normal'> هر شب</span>
+                    </span>
                 </div>
             </div>
         </Link>

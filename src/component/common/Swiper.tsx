@@ -21,22 +21,23 @@ const MySwiper = ({ slides = [] }: MySwiperProps) => {
     if (!slides || slides.length === 0) {
         return null;  
     }
+    console.log(slides)
 
     return (
         <div className="w-full ">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={30}
-                slidesPerView={1}  // پیش‌فرض برای موبایل
+                slidesPerView={1}  
                 navigation
                 pagination={{ clickable: true }}
                 // scrollbar={{ draggable: true }}
                 breakpoints={{
                     640: {
-                        slidesPerView: 2,  // برای تبلت
+                        slidesPerView: 2,  
                     },
                     1024: {
-                        slidesPerView: 3,  // برای دسکتاپ
+                        slidesPerView: 3,  
                     },
                 }}
                 className="mySwiper"

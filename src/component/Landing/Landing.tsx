@@ -13,14 +13,12 @@ const Landing = async () => {
   return (
     <div className='w-full flex flex-col justify-center items-center'>
       <TopSide />
-      <Category /> 
-      {/* <Suggestion/> */}
+      <Category />
+      <Suggestion />
       <Choose />
-      {/* <BestChoice /> */}
-      {/* <BestLocation /> */}
       <Feature />
+      <Suggestion />
       <Help />
-      {/* <LandingComment />  */}
     </div>
   )
 }
