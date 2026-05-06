@@ -15,7 +15,7 @@ const DestinationCard: FC<DestinationCardProps> = ({
     imageSrc
 }) => {
     return (
-        <div className="relative w-[25%] h-90  aspect-[4/3] rounded-3xl overflow-hidden shadow-md font-sans">
+        <div className="relative w-[25%] max-sm:w-full h-90  aspect-[4/3] rounded-3xl overflow-hidden shadow-md font-sans">
             {/* تصویر پس‌زمینه */}
             <Image
                 src={imageSrc}
@@ -31,12 +31,12 @@ const DestinationCard: FC<DestinationCardProps> = ({
                 className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl px-5 py-5 flex justify-between items-center shadow-lg"
             >
                 {/* عنوان */}
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                <h3 className="text-lg sm:text-xl max-sm:text-sm font-bold text-gray-900">
                     {title}
                 </h3>
 
                 {/* دکمه / نشانگر تعداد */}
-                <div className="border border-[#1E3A8A] text-[#1E3A8A] rounded-full px-5 py-2 font-bold text-2xl flex gap-1 justify-center items-center">
+                <div className="border border-[#1E3A8A] text-[#1E3A8A] rounded-full px-5 py-2 font-bold text-2xl max-sm:text-sm flex gap-1 justify-center items-center">
                     <span>{count}</span>
                     <span>{countLabel}</span>
                 </div>

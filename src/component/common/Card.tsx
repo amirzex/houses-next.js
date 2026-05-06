@@ -17,7 +17,7 @@ interface CardProps {
 const Card: FC<CardProps> = ({ value }) => {
 
     return (
-        <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
+        <Link href={`FastReserve/${value.id}`} className='flex flex-col w-full h-full max-sm:h-100 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
             {/* image holder */}
             <div className='relative h-80 w-full overflow-hidden'>
                 <Image
@@ -30,10 +30,10 @@ const Card: FC<CardProps> = ({ value }) => {
 
                 {/* Top Right Badges */}
                 <div className='absolute top-3 right-3 flex gap-2'>
-                    <div className='bg-[#FF4D4D] text-white px-4 py-3 rounded-full text-2xl font-bold flex items-center justify-center shadow-md'>
+                    <div className='bg-[#FF4D4D] text-white px-4 py-3  rounded-full text-2xl max-sm:px-2 max-sm:py-0 max-sm:h-10 max-sm:text-sm font-bold flex items-center justify-center shadow-md'>
                         %15
                     </div>
-                    <div className='bg-[#1E3A8A] text-white px-3 py-3 rounded-full text-2xl font-bold flex items-center justify-center gap-1 shadow-md'>
+                    <div className='bg-[#1E3A8A] text-white px-3 py-3 rounded-full text-2xl max-sm:text-sm max-sm:h-10 font-bold flex items-center justify-center gap-1 shadow-md'>
                         <span>4.5</span>
                         {/* You can replace this star with an SVG or icon */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -52,7 +52,7 @@ const Card: FC<CardProps> = ({ value }) => {
                         className="object-contain w-[5%] text-white"
                         unoptimized
                     />
-                    <p className='text-2xl font-medium'>{value.address || "خیابان 404 بروکلین کالیفرنیا نیویورک"}</p>
+                    <p className='text-2xl max-sm:text-sm font-medium'>{value.address || "خیابان 404 بروکلین کالیفرنیا نیویورک"}</p>
                 </div>
             </div>
 
@@ -60,12 +60,12 @@ const Card: FC<CardProps> = ({ value }) => {
             <div className='flex flex-col p-5 gap-6'>
 
                 {/* Title */}
-                <div className='flex flex-row-reverse justify-start items-center text-3xl font-extrabold text-gray-800 w-full'>
+                <div className='flex flex-row-reverse justify-start items-center text-3xl max-sm:text-xl font-extrabold text-gray-800 w-full'>
                     <p>{value.title || "خانه ویلایی با پارکینگ اختصاصی"}</p>
                 </div>
 
                 {/* Amenities */}
-                <div className='w-full flex text-2xl flex-row-reverse justify-between items-center  text-gray-500 font-medium'>
+                <div className='w-full flex text-2xl max-sm:text-xs flex-row-reverse justify-between items-center  text-gray-500 font-medium'>
                     <div className='flex flex-row-reverse gap-1 justify-center items-center'>
                         <Image src={bed} width={20} height={20} alt="bed" unoptimized />
                         <span>{value.rooms || "3"}</span>
@@ -92,17 +92,17 @@ const Card: FC<CardProps> = ({ value }) => {
                 <div className='bg-[#F3F4F6] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
                     {value.price && (
                         <>
-                            <span className='flex flex-row-reverse justify-center items-center text-3xl text-[#EF4444] line-through ml-2 font-medium'>
+                            <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
                                 {value.discounted_price || "5,500,000"}
                                 <span className='mr-1'>تومان</span>
                             </span>
                             <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
                         </>
                     )}
-                    <span className='flex flex-row-reverse justify-center items-center text-3xl font-bold text-black gap-1'>
+                    <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm font-bold text-black gap-1'>
                         {value.price || "4,500,000"}
-                        <span className='text-3xl font-normal ml-1'>ت</span> /
-                        <span className='text-xl text-gray-500 font-normal'> هر شب</span>
+                        <span className='text-3xl font-normal ml-1 max-sm:text-sm'>ت</span> /
+                        <span className='text-xl max-sm:text-xs text-gray-500 font-normal'> هر شب</span>
                     </span>
                 </div>
             </div>

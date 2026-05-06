@@ -6,7 +6,8 @@ import Link from 'next/link'
 const Choose = () => {
     return (
         <>
-            <div className='flex flex-col justify-center items-center gap-5 mt-20'>
+            {/* header desktop */}
+            <div className='flex flex-col justify-center items-center gap-5 mt-20 max-sm:hidden md:flex'>
                 <p className='text-blue-900 text-2xl'>
                     ویلا ها را با ما انتخاب کنید
                 </p>
@@ -14,7 +15,16 @@ const Choose = () => {
                     اجاره ویلا در محبوب ترین مقاصد ایران
                 </h2>
             </div>
-            <div className='flex flex-row justify-center items-center gap-10 px-25 w-full mt-30 '>
+            {/* header mobile */}
+            <div className='flex flex-col justify-center items-center gap-5 mt-20 max-sm:flex md:hidden'>
+                <p className='text-blue-900 text-2xl max-sm:text-sm'>
+                    ویلا ها را با ما انتخاب کنید
+                </p>
+                <h2 className='text-4xl max-sm:text-xl'>
+                    اجاره ویلا در محبوب ترین مقاصد ایران
+                </h2>
+            </div>
+            <div className='max-sm:flex-col flex flex-row justify-center items-center gap-10 px-25 max-sm:px-5 w-full mt-30 max-sm:mt-10 '>
 
                 <DestinationCard
                     title="اجاره ویلا در سوادکوه"
@@ -42,7 +52,7 @@ const Choose = () => {
                 />
             </div>
             <div className='w-full flex justify-center items-center mt-15'>
-                <Link href="/" className='border border-blue-900 p-5 rounded-full text-blue-900 text-2xl '> مشاهده بیشتر </Link>
+                <Link href="/" className='border border-blue-900 p-5 rounded-full text-blue-900 text-2xl max-sm:text-sm max-sm:p-3 '> مشاهده بیشتر </Link>
             </div>
         </>
 

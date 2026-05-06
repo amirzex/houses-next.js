@@ -32,7 +32,7 @@ const mockComments = [
 
 const Feature = () => {
     return (
-        <section dir="rtl" className='relative w-full min-h-screen py-20  mt-30 flex items-center overflow-hidden'>
+        <section dir="rtl" className='relative w-full min-h-screen py-20  mt-30  flex items-center overflow-hidden max-sm:hidden md:block' >
 
             <div className='absolute inset-0 -z-10'>
                 <Image

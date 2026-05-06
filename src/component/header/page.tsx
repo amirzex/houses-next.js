@@ -1,40 +1,68 @@
+"use client"
+import { useState } from 'react'
 import Image from 'next/image'
-import home from '../../assets/landing/Vector.svg'
 import Link from 'next/link'
-import HeaderNav from './Headernavbar/HeaderNav'
+import home from '../../assets/landing/Vector.svg'
 import user from '../../assets/landing/user.svg'
-
+import HeaderNav from './Headernavbar/HeaderNav'
+import MobileMenuDrawer from './MobileMenuDrawer' // اضافه کردن کامپوننت موبایل
 
 const Header = () => {
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className='z-10 absolute top-0 w-full flex flex-row-reverse justify-center items-center'>
-      {/* logo */}
-      <div className='w-[25%] flex flex-row gap-5 justify-end items-center pr-25'>
-        <p className='text-4xl font-bold text-white'>لوگو</p>
-        <Image
-          src={home}
-          width={50}
-          height={50}
-          unoptimized
-          alt={''} 
-          className='text-white'/>
-      </div>
-      {/* navigate */}
-      <div className='w-[50%] p-10 font-bold text-2xl flex flex-row-reverse gap-10 justify-center items-center text-black '>
-        <HeaderNav />
-      </div>
-      {/* signin */}
-      <div className='w-[25%] flex flex-row-reverse gap-5 justify-center items-center '>
-        <button className=' text-white bg-blue-900 flex flex-row gap-3 px-5 py-4 rounded-full text-2xl'>
-          <Link href={'Register'}> ورود / ثبت نام  </Link>
+    <>
+      <div className='z-10 absolute top-0 w-full flex flex-row-reverse justify-between items-center px-4 py-3 '>
+
+        {/* Logo (Right) */}
+        <div className='flex flex-row-reverse items-center gap-2 md:w-[25%] md:justify-center'>
           <Image
-          src={user}
-          alt='user'
-          unoptimized />
-        </button>
+            src={home}
+            width={40}
+            height={40}
+            unoptimized
+            alt='logo'
+            className='w-5 h-5 md:w-[50px] md:h-[50px]'
+          />
+          <p className='text-2xl max-sm:text-sm md:text-4xl font-bold text-black'>Home</p>
+        </div>
+
+        {/* Navigate Desktop */}
+        <div className='hidden md:flex md:w-[50%] p-2 font-bold text-lg lg:text-2xl flex-row-reverse gap-10 justify-center items-center text-black'>
+          <HeaderNav />
+        </div>
+
+        {/* Hamburger Menu  */}
+        <div className='flex flex-row-reverse items-center gap-13 md:w-[25%]  md:justify-center'>
+
+          {/* Signin Button */}
+          <Link href={'/Register'}>
+            <button className='text-white bg-[#2644a6] flex flex-row-reverse items-center gap-2 px-4 py-2 md:px-5 md:py-3 rounded-full text-sm md:text-xl'>
+              <Image src={user} width={20} height={20} alt='user' className='w-5 h-5 md:w-6 md:h-6' unoptimized />
+              <span>ورود / ثبت نام</span>
+            </button>
+          </Link>
+
+          {/* Hamburger Menu Mobile */}
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className='md:hidden bg-[#2644a6] flex flex-col justify-center items-center gap-[4px] w-10 h-10 rounded-full'
+          >
+            <span className='block w-5 h-[2px] bg-white rounded-full'></span>
+            <span className='block w-5 h-[2px] bg-white rounded-full'></span>
+            <span className='block w-5 h-[2px] bg-white rounded-full'></span>
+          </button>
+
+        </div>
       </div>
 
-    </div>
+      {/* mobile header*/}
+      <MobileMenuDrawer
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+    </>
   )
 }
 

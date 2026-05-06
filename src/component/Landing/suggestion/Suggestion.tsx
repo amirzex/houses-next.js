@@ -77,9 +77,9 @@ const Suggestion = async () => {
   ]
 
   return (
-    <div className="w-full flex flex-col gap-10 p-20">
+    <div className="w-full flex flex-col gap-10 p-20 max-sm:p-5 max-sm:mt-20">
       {/* Header */}
-      <div className="w-full flex flex-col gap-7">
+      <div className="w-full flex flex-col gap-7 max-sm:hidden md:block">
         <div className="w-full flex flex-row-reverse justify-center items-center text-2xl gap-5">
           <div className='flex flex-row px-7 py-3 rounded-full gap-3 bg-orange-500 justify-center items-center'>
             <Image
@@ -94,8 +94,14 @@ const Suggestion = async () => {
         <h2 className='w-full text-center text-5xl'> تخفیفات ویژه  برای شروع تابستان </h2>
       </div>
 
+      {/* header mobile */}
+      <div className='max-sm:flex flex-col justify-center items-center gap-3 md:hidden'>
+        <p className='text-blue-900 text-sm'> ویژگی های ویژه </p>
+        <h2 className='text-xl font-bold'> برای شما توصیه می شود </h2>
+      </div>
+
       {/* Array map */}
-      <div className=" gap-10 flex flex-row w-full ">
+      <div className=" gap-10 flex flex-row w-full max-sm:flex-col ">
         {/* {slides.length > 0 ? (
           <MySwiper slides={slides} />
         ) : (
@@ -106,7 +112,7 @@ const Suggestion = async () => {
         ))}
       </div>
       <div className='w-full flex justify-center items-center '>
-        <Link href="/" className='border border-blue-900 p-5 rounded-full text-blue-900 text-2xl '> مشاهده بیشتر </Link>
+        <Link href="/" className='border border-blue-900 p-5 max-sm:p-3 rounded-full text-blue-900 text-2xl max-sm:text-sm'> مشاهده بیشتر </Link>
       </div>
     </div>
   )
