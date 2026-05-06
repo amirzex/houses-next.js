@@ -16,7 +16,7 @@ const Header = () => {
       <div className='z-10 absolute top-0 w-full flex flex-row-reverse justify-between items-center px-4 py-3 '>
 
         {/* Logo (Right) */}
-        <div className='flex flex-row-reverse items-center gap-2 md:w-[25%] md:justify-center'>
+        <div className='flex flex-row-reverse items-center gap-2 md:w-[25%] md:justify-start md:pr-10'>
           <Image
             src={home}
             width={40}
@@ -34,7 +34,7 @@ const Header = () => {
         </div>
 
         {/* Hamburger Menu  */}
-        <div className='flex flex-row-reverse items-center gap-13 md:w-[25%]  md:justify-center'>
+        <div className='flex flex-row-reverse items-center gap-13 md:w-[25%]  md:justify-end md:pl-10'>
 
           {/* Signin Button */}
           <Link href={'/Register'}>

@@ -5,6 +5,114 @@ import MySwiper from '@/component/common/Swiper'
 import Image from 'next/image'
 import clock from '../../../assets/landing/megaphone-01.svg'
 
+export const slides = [
+  {
+    id: 1,
+    title: "ویلای مدرن با چشم‌انداز کوهستان",
+    adress: "بلوار ساحلی، سانتا مونیکا، لس آنجلس",
+    bed: 3,
+    bath: 2,
+    space: 180,
+    park: 2,
+    rate: 4.7,
+    discount: 3200000,
+    price: 4800000
+  },
+  {
+    id: 2,
+    title: "خانه کلاسیک حیاط‌دار",
+    adress: "خیابان 12 شرقی، بروکلین، نیویورک",
+    bed: 4,
+    bath: 2,
+    space: 210,
+    park: 1,
+    rate: 4.3,
+    discount: 2500000,
+    price: 3900000
+  },
+  {
+    id: 3,
+    title: "پنت‌هاوس لوکس با بالکن بزرگ",
+    adress: "خیابان 5 مرکزی، منهتن، نیویورک",
+    bed: 2,
+    bath: 2,
+    space: 150,
+    park: 1,
+    rate: 4.9,
+    discount: 5200000,
+    price: 6800000
+  },
+  {
+    id: 4,
+    title: "خانه ویلایی استخردار",
+    adress: "خیابان سن‌دیگو 45، کالیفرنیا",
+    bed: 5,
+    bath: 3,
+    space: 260,
+    park: 3,
+    rate: 4.6,
+    discount: 4100000,
+    price: 6200000
+  },
+  {
+    id: 5,
+    title: "آپارتمان شیک نزدیک مرکز شهر",
+    adress: "خیابان هالیوود 222، لس آنجلس",
+    bed: 1,
+    bath: 1,
+    space: 95,
+    park: 1,
+    rate: 4.2,
+    discount: 1500000,
+    price: 2500000
+  },  {
+    id: 5,
+    title: "آپارتمان شیک نزدیک مرکز شهر",
+    adress: "خیابان هالیوود 222، لس آنجلس",
+    bed: 1,
+    bath: 1,
+    space: 95,
+    park: 1,
+    rate: 4.2,
+    discount: 1500000,
+    price: 2500000
+  },  {
+    id: 5,
+    title: "آپارتمان شیک نزدیک مرکز شهر",
+    adress: "خیابان هالیوود 222، لس آنجلس",
+    bed: 1,
+    bath: 1,
+    space: 95,
+    park: 1,
+    rate: 4.2,
+    discount: 1500000,
+    price: 2500000
+  },  {
+    id: 5,
+    title: "آپارتمان شیک نزدیک مرکز شهر",
+    adress: "خیابان هالیوود 222، لس آنجلس",
+    bed: 1,
+    bath: 1,
+    space: 95,
+    park: 1,
+    rate: 4.2,
+    discount: 1500000,
+    price: 2500000
+  },  {
+    id: 5,
+    title: "آپارتمان شیک نزدیک مرکز شهر",
+    adress: "خیابان هالیوود 222، لس آنجلس",
+    bed: 1,
+    bath: 1,
+    space: 95,
+    park: 1,
+    rate: 4.2,
+    discount: 1500000,
+    price: 2500000
+  },
+]
+
+
 const Suggestion = async () => {
 
   // const response = await getSuggestion()
@@ -13,68 +121,6 @@ const Suggestion = async () => {
   //   content: <Card value={item} />
   // })) : []
   // console.log(response,"response")
-  const slides = [
-    {
-      id: 1,
-      title: "ویلای مدرن با چشم‌انداز کوهستان",
-      adress: "بلوار ساحلی، سانتا مونیکا، لس آنجلس",
-      bed: 3,
-      bath: 2,
-      space: 180,
-      park: 2,
-      rate: 4.7,
-      discount: 3200000,
-      price: 4800000
-    },
-    {
-      id: 2,
-      title: "خانه کلاسیک حیاط‌دار",
-      adress: "خیابان 12 شرقی، بروکلین، نیویورک",
-      bed: 4,
-      bath: 2,
-      space: 210,
-      park: 1,
-      rate: 4.3,
-      discount: 2500000,
-      price: 3900000
-    },
-    {
-      id: 3,
-      title: "پنت‌هاوس لوکس با بالکن بزرگ",
-      adress: "خیابان 5 مرکزی، منهتن، نیویورک",
-      bed: 2,
-      bath: 2,
-      space: 150,
-      park: 1,
-      rate: 4.9,
-      discount: 5200000,
-      price: 6800000
-    },
-    {
-      id: 4,
-      title: "خانه ویلایی استخردار",
-      adress: "خیابان سن‌دیگو 45، کالیفرنیا",
-      bed: 5,
-      bath: 3,
-      space: 260,
-      park: 3,
-      rate: 4.6,
-      discount: 4100000,
-      price: 6200000
-    },
-    {
-      id: 5,
-      title: "آپارتمان شیک نزدیک مرکز شهر",
-      adress: "خیابان هالیوود 222، لس آنجلس",
-      bed: 1,
-      bath: 1,
-      space: 95,
-      park: 1,
-      rate: 4.2,
-      discount: 1500000,
-      price: 2500000
-    }
-  ]
 
   return (
     <div className="w-full flex flex-col gap-10 p-20 max-sm:p-5 max-sm:mt-20">

@@ -4,34 +4,34 @@ import axios from "axios";
 import { IFilterParams } from "../types/IFilterParams";
 import { Property } from "../types/IReserveContext";
 
-// export const getData = async (params: IFilterParams): Promise<IData[]> => {
-//   const response = await axios.get(`${BaseUrl}/api/houses`, {
-//     params: {
-//       page: params.page ? Number(params.page) : 1,
-//       limit: params.limit ? Number(params.limit) : 9,
-//       search: params.search || "",
-//       sort: params.sort || "last_updated",
-//       location: params.location || "",
-//       minPrice:
-//         params.minPrice !== undefined ? Number(params.minPrice) : undefined,
-//       maxPrice:
-//         params.maxPrice !== undefined ? Number(params.maxPrice) : undefined,
-//     },
-//     paramsSerializer: {
-//       serialize: (params) => {
-//         const searchParams = new URLSearchParams();
-//         Object.entries(params).forEach(([key, value]) => {
-//           if (value !== undefined && value !== "") {
-//             searchParams.append(key, String(value));
-//           }
-//         });
-//         return searchParams.toString();
-//       },
-//     },
-//   });
+export const getData = async (params: IFilterParams): Promise<IData[]> => {
+  const response = await axios.get(`${BaseUrl}/api/houses`, {
+    params: {
+      page: params.page ? Number(params.page) : 1,
+      limit: params.limit ? Number(params.limit) : 9,
+      search: params.search || "",
+      sort: params.sort || "last_updated",
+      location: params.location || "",
+      minPrice:
+        params.minPrice !== undefined ? Number(params.minPrice) : undefined,
+      maxPrice:
+        params.maxPrice !== undefined ? Number(params.maxPrice) : undefined,
+    },
+    paramsSerializer: {
+      serialize: (params) => {
+        const searchParams = new URLSearchParams();
+        Object.entries(params).forEach(([key, value]) => {
+          if (value !== undefined && value !== "") {
+            searchParams.append(key, String(value));
+          }
+        });
+        return searchParams.toString();
+      },
+    },
+  });
 
-//   return response.data.houses;
-// };
+  return response.data.houses;
+};
 
 export const getPropertyById = async (id: string): Promise<Property> => {
   try {

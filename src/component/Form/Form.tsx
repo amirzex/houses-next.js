@@ -15,7 +15,6 @@ const Form = () => {
     const [maxPrice, setMaxPrice] = useState(filters.maxPrice?.toString() || "");
     const [location, setLocation] = useState(filters.location || "");
 
-    // دیباونس برای اعمال فیلترها
     useEffect(() => {
         const timer = setTimeout(() => {
             setFilters({

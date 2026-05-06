@@ -1,93 +1,65 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import apartment from '../../assets/register/modern-tokyo-street-background_23-2149394920.avif'
-import person1 from '../../assets/register/1.jpg'
-import person2 from '../../assets/register/2.webp'
-import person3 from '../../assets/register/5.jpeg'
-import person4 from '../../assets/register/4.webp'
-import home from '../../assets/register/icons8-home-logo-48.png'
+'use client';
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+// عکس اصلی خانه را وارد کنید
+import apartment from '../../assets/register/modern-tokyo-street-background_23-2149394920.avif';
+import { Step1Form } from './steps/Step1Form';
+import { Step2Form } from './steps/Step2Form';
+import { Step3Form } from './steps/Step3Form';
 
 const Forgot = () => {
+    const [step, setStep] = useState(1);
+
     return (
-        <div className='w-full flex flex-row-reverse items-center justify-center p-15 gap-10'>
-            {/* right div */}
-            <div className='w-[35%] h-197 flex flex-col justify-center bg-white shadow-black shadow-sm text-right rounded-4xl p-5 '>
-                {/* top */}
-                <Link className='mb-5 mt-20 flex flex-row-reverse items-center gap-1 text-blue-900' href={'Login'}>
-                    <Image
-                        src={home}
-                        width={25}
-                        alt="landing background"
-                        className=" object-cover overflow-hidden"
-                        unoptimized
-                    />
-                    صفحه اصلی
-                </Link>
-                <div className='w-full flex flex-col gap-2 '>
-                    <h2 className='font-black text-2xl w-full'>   فراموشی رمز عبور   (مرحله اول)     </h2>
-                    <p className='w-full'>  ایمیلت رو وارد کن و با دریافت کد قدم اولت رو بردار  </p>
-                </div>
-                {/* form */}
-                <div className='w-full mt-7 mb-10'>
-                    <form className='w-full flex flex-col gap-5 ' action="">
-                        <input className='bg-gray-200 outline-0 text-right p-3 rounded-4xl' placeholder='ایمیل خود را وارد کنید' type="text" />
-                        <button className='bg-blue-900 text-white p-3 rounded-4xl'>
-                            <Link href={"Forget2"}>
-                                ارسال کد تایید
-                            </Link>
-                        </button>
-                    </form>
+        <div className=" flex items-center justify-center p-4 font-sans mt-30 max-sm:mt-20 max-sm:p-0" dir="rtl">
+            <div className="  p-3 flex flex-col gap-10 md:flex-row w-[80%] max-sm:w-full">
+
+                {/* سمت راست: فرم فراموشی رمز */}
+                <div className="w-full md:w-[40%] flex flex-col px-8 py-10 lg:px-16 max-sm:px-5 relative justify-center shadow-sm rounded-[32px]">
+
+                    {/* لوگو Home */}
+                    <div className="flex justify-center items-center gap-2 mb-4">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a3b99]">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span className="text-3xl font-black tracking-tight">Home</span>
+                    </div>
+
+                    <h2 className="text-xl font-bold text-center mb-8">فراموشی رمز عبور</h2>
+
+                    {/* رندر کردن مراحل فرم */}
+                    {step === 1 && <Step1Form onNext={() => setStep(2)} />}
+                    {step === 2 && <Step2Form onNext={() => setStep(3)} onBack={() => setStep(1)} />}
+                    {step === 3 && <Step3Form onBack={() => setStep(2)} />}
 
                 </div>
-            </div>
-            {/* left side */}
-            <div className='relative w-[35%] h-197 shadow-sm shadow-black overflow-hidden flex flex-col justify-center items-center rounded-4xl '>
-                <Image
-                    src={apartment}
-                    width={650}
-                    alt="landing background"
-                    className=" object-cover overflow-hidden"
-                    unoptimized
-                />
-                <div className='w-[95%] bg-gray-900/70  flex flex-row-reverse justify-center items-center gap-5 rounded-4xl  absolute bottom-4'>
-                    <div className='relative flex flex-row justify-center items-center w-[20%] p-11'>
+
+                {/* سمت چپ: تصویر */}
+                <div className="hidden md:block md:w-[60%] relative h-[700px]">
+                    <div className="w-full h-full relative rounded-[28px] overflow-hidden bg-gray-200">
                         <Image
-                            src={person3}
-                            width={45}
-                            alt="landing background"
-                            className=" object-cover overflow-hidden rounded-4xl absolute right-0 border-2 border-white hover:z-50 hover:scale-110 transition-all duration-300"
+                            src={apartment}
+                            fill
+                            alt="modern apartment"
+                            className="object-cover"
                             unoptimized
                         />
-                        <Image
-                            src={person2}
-                            width={45}
-                            alt="landing background"
-                            className=" object-cover overflow-hidden rounded-4xl absolute right-8 border-2 border-white hover:z-50 hover:scale-110 transition-all duration-300"
-                            unoptimized
-                        />
-                        <Image
-                            src={person4}
-                            width={45}
-                            alt="landing background"
-                            className=" object-cover overflow-hidden rounded-4xl absolute right-16 border-2 border-white hover:z-50 hover:scale-110 transition-all duration-300"
-                            unoptimized
-                        />
-                        <Image
-                            src={person1}
-                            width={45}
-                            alt="landing background"
-                            className=" object-cover overflow-hidden rounded-4xl absolute right-24 border-2 border-white hover:z-50 hover:scale-110 transition-all duration-300 "
-                            unoptimized
-                        />
-                    </div>
-                    <div className='w-[70%] flex flex-col gap-1 text-white text-right pr-5 '>
-                        <h2> همین حالا به ما بپیوند </h2>
-                        <p>همراه هزارات کاربر دیگر از خدمات ما استفاده کنید    </p>
+                        {/* دکمه‌های اسلایدر (طبق عکس) */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                            <div className="w-8 h-2.5 bg-[#1a3b99] rounded-full"></div>
+                            <div className="w-2.5 h-2.5 bg-white/80 rounded-full"></div>
+                            <div className="w-2.5 h-2.5 bg-white/80 rounded-full"></div>
+                            <div className="w-2.5 h-2.5 bg-white/80 rounded-full"></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Forgot
+
+export default Forgot;

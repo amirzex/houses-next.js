@@ -11,12 +11,12 @@ const HeaderNav = () => {
         { href: '/', label: 'خانه' },
         { href: '/rent', label: 'رهن و اجاره' },
         { href: '/FastReserve', label: 'رزرو سریع' },
-        { href: '/about', label: 'تماس با ما' },
+        { href: '/ContactUs', label: 'تماس با ما' },
 
     ]
 
     return (
-        <div className='w-full bg-white p-2 text-gray-700 rounded-full text-2xl flex flex-row-reverse gap-10 justify-center items-center '>
+        <div className='w-full bg-gray-100 p-2 text-gray-700 rounded-full text-2xl flex flex-row-reverse gap-10 justify-center items-center '>
             {navItems.map((item) => (
                 <Link
                     key={item.href}
