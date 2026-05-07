@@ -64,15 +64,6 @@ const LocationMap = () => {
 
     return (
         <div className="flex flex-col justify-end h-full ">
-
-            <div className="h-[30%] pt-5 pb-5 flex flex-row-reverse w-full gap-3 ">
-                <input
-                    type="text"
-                    className="bg-gray-100 w-[80%] rounded-4xl text-right pr-2 outline-0"
-                    placeholder="جستجو شهر" />
-                <button className="bg-blue-900 text-white w-[20%] hover:scale-95 transition-all duration-200 rounded-4xl">جستجو</button>
-            </div>
-
             <MapContainer
                 center={[35.6892, 51.3890]}
                 zoom={13}

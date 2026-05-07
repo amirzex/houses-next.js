@@ -19,12 +19,18 @@
 // export default ReserveDetail
 
 import FastReserveDetail from '@/component/FastReserve/FastReserveDetail'
-import React from 'react'
+import { FC, use } from 'react'
 
-const page = () => {
+interface IProps {
+    params: Promise<{ id: string }>
+}
+
+const page: FC<IProps> = ({ params }) => {
+
+    const { id } = use(params)
     return (
         <div className='flex flex-col justify-center items-center mt-30'>
-            <FastReserveDetail />
+            <FastReserveDetail id={id} />
         </div>
     )
 }
