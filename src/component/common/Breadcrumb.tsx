@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 const routeNameMap: Record<string, string> = {
     rent: "رهن و اجاره",
     apartment: "آپارتمان",
-    rasht: "رشت",
+    FastReserve: "رزور سریع",
     buy: "خرید",
     villa: "ویلا",
     ContactUs: "تماس با ما ",
