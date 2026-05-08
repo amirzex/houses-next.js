@@ -4,6 +4,7 @@ import Card from '../common/Card'
 import { slides } from '../Landing/suggestion/Suggestion'
 import FilterForm from './FilterForm'
 import Breadcrumb from '../common/Breadcrumb'
+import FilterWithMobileMenu from './FilterWithMobileMenu'
 
 const Rent = () => {
     return (
@@ -14,10 +15,20 @@ const Rent = () => {
 
             {/* filter form div */}
             <div className="px-10 lg:px-20 w-full mb-4">
-                <FilterForm />
+                {/* desktop */}
+                <div className='max-sm:hidden md:block'>
+                    <FilterForm />
+                </div>
+
+
+                {/* mobile */}
+                <div className='max-sm:block md:hidden'>
+                    <FilterWithMobileMenu />
+                </div>
+
             </div>
 
-            <div className='flex flex-row justify-center p-10 items-center flex-wrap gap-6 max-sm:flex-col max-sm:p-5' dir='ltr'>
+            <div className='flex flex-row max-sm:flex-col justify-center p-10 items-center flex-wrap gap-6 max-sm:flex-col max-sm:p-5' dir='ltr'>
                 {slides.map((item, index) => (
                     <Card value={item} key={index} />
                 ))}

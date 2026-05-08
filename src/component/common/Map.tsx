@@ -63,7 +63,7 @@ const LocationMap = () => {
     };
 
     return (
-        <div className="flex flex-col justify-end h-full ">
+        <div className="flex flex-col justify-end h-full max-sm:p-5 ">
             <MapContainer
                 center={[35.6892, 51.3890]}
                 zoom={13}

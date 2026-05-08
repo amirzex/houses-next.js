@@ -15,7 +15,7 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ value }) => {
-
+    console.log(value)
     return (
         <Link href={`FastReserve/${value.id}`} className='flex flex-col mt-15 w-[30%] max-sm:w-full max-sm:h-100 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
             {/* image holder */}

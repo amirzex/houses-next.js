@@ -7,7 +7,7 @@ const routeNameMap: Record<string, string> = {
     rent: "رهن و اجاره",
     apartment: "آپارتمان",
     FastReserve: "رزور سریع",
-    buy: "خرید",
+    Payment: "رزرو هتل ",
     villa: "ویلا",
     ContactUs: "تماس با ما ",
 }

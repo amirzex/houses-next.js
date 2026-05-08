@@ -88,6 +88,8 @@ import { slides } from '../Landing/suggestion/Suggestion'
 import LocationMap from '../common/Map'
 import FilterForm from '../rent/FilterForm'
 import FastCard from '../common/FastCard'
+import FilterWithMobileMenu from '../rent/FilterWithMobileMenu'
+import Card from '../common/Card'
 
 
 const FastReserve = () => {
@@ -97,19 +99,33 @@ const FastReserve = () => {
             <Breadcrumb />
 
             {/* filter div */}
-            <div className='w-full p-10 mb-10'>
-                <FilterForm />
+            <div className='w-full p-10 mb-10 max-sm:mb-0'>
+                {/* desktop */}
+                <div className='max-sm:hidden md:block'>
+                    <FilterForm />
+                </div>
+
+
+                {/* mobile */}
+                <div className='max-sm:block md:hidden'>
+                    <FilterWithMobileMenu />
+                </div>
             </div>
 
-            <div className='w-full flex flex-row justify-center items-start gap-5 '>
+            <div className='w-full flex flex-row max-sm:flex-col-reverse justify-center items-start gap-5 max-sm:gap-0 '>
 
-                <div className='w-[60%] flex flex-col justify-start items-center gap-5 pr-10 h-200 overflow-y-auto ' >
+                <div className='w-[60%] max-sm:hidden md:flex flex flex-col justify-start items-center gap-5 pr-10 h-200 overflow-y-auto ' >
                     {slides.map((item, index) => (
                         <FastCard item={item} key={index} />
                     ))}
                 </div>
+                <div className='w-full max-sm:flex md:hidden flex flex-col justify-start items-center gap-5 p-5 ' >
+                    {slides.map((item, index) => (
+                        <Card value={item} key={index} />
+                    ))}
+                </div>
 
-                <div className='w-[40%] pl-10'>
+                <div className='w-[40%]  max-sm:pl-0  max-sm:w-full pl-10'>
                     <LocationMap />
                 </div>
             </div>
