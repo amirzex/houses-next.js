@@ -63,6 +63,7 @@
 
 import Image from 'next/image';
 import home from '../../assets/reserve/home.svg';
+import Link from 'next/link';
 
 // کامپوننت‌های SVG برای آیکون‌ها (برای خوانایی بیشتر جدا شده‌اند)
 const CalendarIcon = () => (
@@ -94,8 +95,6 @@ const ArrowLeftIcon = () => (
     </svg>
 );
 
-
-// کامپوننت اصلی فرم
 const ReservationForm = () => {
     return (
         <div dir="rtl" className="w-[90%] flex flex-col justify-center items-center bg-[#FFFFFA] border rounded-3xl p-6 gap-5">
@@ -192,10 +191,10 @@ const ReservationForm = () => {
                 </div>
 
                 {/* دکمه رزرو */}
-                <button type="submit" className="w-full bg-blue-900 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300">
+                <Link href="2/Payment" className="w-full bg-blue-900 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300">
                     <span>همین الان رزرو کن</span>
                     <ArrowLeftIcon />
-                </button>
+                </Link>
 
             </form >
         </div >

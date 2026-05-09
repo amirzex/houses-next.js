@@ -14,7 +14,7 @@ const Rent = () => {
             <Breadcrumb />
 
             {/* filter form div */}
-            <div className="px-10 lg:px-20 w-full mb-4">
+            <div className="px-10 max-sm:px-5 max-sm:mb-0  w-full mb-4">
                 {/* desktop */}
                 <div className='max-sm:hidden md:block'>
                     <FilterForm />

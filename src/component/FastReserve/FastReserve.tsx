@@ -99,7 +99,7 @@ const FastReserve = () => {
             <Breadcrumb />
 
             {/* filter div */}
-            <div className='w-full p-10 mb-10 max-sm:mb-0'>
+            <div className='w-full p-10 mb-10  max-sm:p-5 max-sm:mb-0'>
                 {/* desktop */}
                 <div className='max-sm:hidden md:block'>
                     <FilterForm />

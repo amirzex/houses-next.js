@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { slides } from '../Landing/suggestion/Suggestion'
 
 import PayMentCard from '@/app/FastReserve/[id]/Payment/PayMentCard'
+import PaymentWizard from '@/app/FastReserve/[id]/Payment/formwizard/PaymentWizard'
 
 const PayMentsForm = ({ id }) => {
     const value = slides.find(slide => slide.id === Number(id))
@@ -17,8 +18,8 @@ const PayMentsForm = ({ id }) => {
             <div className='w-full flex flex-row justify-center items-center gap-10 p-10 '>
 
                 {/* form wizard */}
-                <form className='w-[70%] flex flex-col justify-center items-center gap-5 border' action="">
-
+                <form className='w-[70%] flex flex-col justify-center items-center gap-5 ' action="">
+                    <PaymentWizard />
                 </form>
 
                 {/* card */}

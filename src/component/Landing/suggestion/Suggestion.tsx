@@ -65,7 +65,7 @@ export const slides = [
     rate: 4.2,
     discount: 1500000,
     price: 2500000
-  },  {
+  }, {
     id: 5,
     title: "آپارتمان شیک نزدیک مرکز شهر",
     adress: "خیابان هالیوود 222، لس آنجلس",
@@ -76,7 +76,7 @@ export const slides = [
     rate: 4.2,
     discount: 1500000,
     price: 2500000
-  },  {
+  }, {
     id: 5,
     title: "آپارتمان شیک نزدیک مرکز شهر",
     adress: "خیابان هالیوود 222، لس آنجلس",
@@ -87,7 +87,7 @@ export const slides = [
     rate: 4.2,
     discount: 1500000,
     price: 2500000
-  },  {
+  }, {
     id: 5,
     title: "آپارتمان شیک نزدیک مرکز شهر",
     adress: "خیابان هالیوود 222، لس آنجلس",
@@ -98,7 +98,7 @@ export const slides = [
     rate: 4.2,
     discount: 1500000,
     price: 2500000
-  },  {
+  }, {
     id: 5,
     title: "آپارتمان شیک نزدیک مرکز شهر",
     adress: "خیابان هالیوود 222، لس آنجلس",

@@ -170,7 +170,7 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
         {/* middle div */}
         <div className='w-full flex flex-row justify-center items-start gap-20 p-10 '>
 
-          {/* commenst and description  */}
+          {/* comments and description  */}
           <div className="w-[70%] bg-white flex flex-col justify-center items-center rounded-lg">
             <section>
               <h2 className="text-3xl font-bold text-gray-800 mb-4 text-right">چرا {data?.title} رو انتخاب کنیم؟</h2>
