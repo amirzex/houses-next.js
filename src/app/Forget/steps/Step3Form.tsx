@@ -7,7 +7,7 @@ export const Step3Form = ({ onBack }) => (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             </span>
             <input
-                className="w-full border border-gray-200 text-gray-700 outline-none p-4 pr-12 rounded-full focus:border-[#1a3b99] transition-colors placeholder:text-gray-400 text-sm"
+                className="w-full border dark:bg-[#353535] dark:text-white text-gray-700 outline-none p-4 pr-12 rounded-full focus:border-[#1a3b99] transition-colors placeholder:text-gray-400 text-sm"
                 placeholder="رمز عبور جدید"
                 type="password"
             />
@@ -19,7 +19,7 @@ export const Step3Form = ({ onBack }) => (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             </span>
             <input
-                className="w-full border border-gray-200 text-gray-700 outline-none p-4 pr-12 rounded-full focus:border-[#1a3b99] transition-colors placeholder:text-gray-400 text-sm"
+                className="w-full border dark:bg-[#353535] dark:text-white text-gray-700 outline-none p-4 pr-12 rounded-full focus:border-[#1a3b99] transition-colors placeholder:text-gray-400 text-sm"
                 placeholder="تکرار رمز عبور"
                 type="password"
             />

@@ -120,6 +120,7 @@ import house2 from '../../assets/reserve/image 3.svg'
 import ReserveComments from './ReserveComments';
 import ReservationForm from './ReserveForm';
 import Facilities from './Facilities';
+import Card from '../common/Card';
 interface IProps {
   id: string;
 }
@@ -171,10 +172,10 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
         <div className='w-full flex flex-row justify-center items-start gap-20 p-10 '>
 
           {/* comments and description  */}
-          <div className="w-[70%] bg-white flex flex-col justify-center items-center rounded-lg">
+          <div className="w-[70%] bg-white dark:bg-transparent flex flex-col justify-center items-center rounded-lg">
             <section>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 text-right">چرا {data?.title} رو انتخاب کنیم؟</h2>
-              <p className="text-gray-600 leading-relaxed text-xl text-right">
+              <h2 className="text-3xl font-bold text-gray-800 mb-4 text-right dark:text-[#D9D9E0]">چرا {data?.title} رو انتخاب کنیم؟</h2>
+              <p className="text-gray-600 leading-relaxed text-xl text-right dark:text-[#D9D9E0]">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد. تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
               <div className="w-full  flex flex-row  justify-center items-center gap-10 p-5">
@@ -184,7 +185,7 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
                 </div>
 
               </div>
-              <p className="text-gray-600 leading-relaxed text-xl text-right">
+              <p className="text-gray-600 leading-relaxed text-xl text-right dark:text-[#D9D9E0]">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد. تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراح
               </p>
             </section>
@@ -204,6 +205,11 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
           </div>
         </div>
 
+      </div>
+      <div className=' w-full flex flex-row overflow-x-auto' dir='ltr'>
+        {slides.slice(0, 3).map((item, index) => (
+          <Card value={item} key={index} />
+        ))}
       </div>
     </div>
   )

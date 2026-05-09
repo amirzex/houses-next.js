@@ -10,6 +10,7 @@ interface CommentCardProps {
 }
 
 const CommentCard: FC<CommentCardProps> = ({ value }) => {
+
     return (
         <div dir="rtl" className='bg-[#2A8481] rounded-[2.5rem] w-full flex flex-col p-6 shadow-md text-white font-sans'>
 

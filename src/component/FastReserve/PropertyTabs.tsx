@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import IconHolder from './IconHolder';
-import { getComment } from '@/core/api/FastComments';
+import { getComment } from '@/core/api/comments/FastComments';
 
 
 const PropertyTabs = ({ property }) => {

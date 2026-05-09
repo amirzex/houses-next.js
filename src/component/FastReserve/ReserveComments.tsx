@@ -3,7 +3,7 @@ import userprofile from '../../assets/reserve/Ellipse 15.svg'
 
 const ReserveComments = () => {
     return (
-        <div className="w-full border rounded-2xl bg-[#FFFFFA] mt-10 " dir="rtl">
+        <div className="w-full border rounded-2xl bg-[#FFFFFA] dark:bg-[#272727] mt-10 " dir="rtl">
             <section className="w-full  p-6">
 
                 {/* comments*/}
@@ -15,12 +15,12 @@ const ReserveComments = () => {
                             className="w-12 h-12 rounded-full object-cover"
                         />
                         <div className="flex flex-col">
-                            <span className="font-bold text-lg text-gray-900">امیر محمد</span>
+                            <span className="font-bold text-lg  text-gray-900 dark:text-[#D9D9E0]">امیر محمد</span>
                             <span className="text-gray-400 text-sm">@amirKh</span>
                         </div>
                     </div>
 
-                    <p className="text-gray-500 leading-8 text-sm md:text-base">
+                    <p className="text-gray-500 dark:text-[#D9D9E0] leading-8 text-sm md:text-base">
                         سلام عزیز.
                         <br />
                         حدودا ۹ روز دیگه (۱ اردیبهشت) برای این دوره تخفیف خواهیم داشت.
@@ -31,8 +31,8 @@ const ReserveComments = () => {
 
                 {/* create comments*/}
                 <div className="mb-8">
-                    <p className="font-bold text-gray-900 mb-4 text-base">نظر خود را وارد کنید</p>
-                    <div className="flex items-center justify-between w-full px-5 py-3 bg-[#f5f5f5] rounded-full cursor-pointer transition-colors hover:bg-gray-200">
+                    <p className="font-bold text-gray-900 mb-4 text-base dark:text-[#D9D9E0]">نظر خود را وارد کنید</p>
+                    <div className="flex items-center justify-between w-full px-5 py-3 bg-[#f5f5f5] dark:bg-[#353535] rounded-full cursor-pointer transition-colors hover:bg-gray-200">
                         <p className="text-sm text-gray-400">تایپ کنید</p>
 
                         {/* آیکون فلش (Chevron Down) */}
@@ -43,7 +43,7 @@ const ReserveComments = () => {
                 </div>
 
                 {/* reply*/}
-                <div className="bg-[#f5f5f5] rounded-2xl p-5 border-r-[4px] border-[#1d3557]">
+                <div className="bg-[#f5f5f5] dark:bg-[#353535] rounded-2xl p-5 border-r-[4px] border-[#1d3557]">
                     <div className="flex items-center gap-3 mb-4">
                         <Image
                             src={userprofile}
@@ -51,7 +51,7 @@ const ReserveComments = () => {
                             className="w-12 h-12 rounded-full object-cover"
                         />
                         <div className="flex flex-col">
-                            <span className="font-bold text-lg text-gray-900">امیر محمد</span>
+                            <span className="font-bold text-lg text-gray-900 dark:text-[#D9D9E0]">امیر محمد</span>
                             <span className="text-gray-400 text-sm">@amirKh</span>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ const ReserveComments = () => {
                     
                     <hr className="border-gray-200 mb-4" />
 
-                    <p className="text-gray-500 leading-8 text-sm md:text-base">
+                    <p className="text-gray-500 dark:text-[#D9D9E0] leading-8 text-sm md:text-base">
                         سلام عزیز.
                         <br />
                         حدودا ۹ روز دیگه (۱ اردیبهشت) برای این دوره تخفیف خواهیم داشت.

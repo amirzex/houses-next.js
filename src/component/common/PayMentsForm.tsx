@@ -15,15 +15,15 @@ const PayMentsForm = ({ id }) => {
             <Breadcrumb />
 
             {/* middle holder div */}
-            <div className='w-full flex flex-row justify-center items-center gap-10 p-10 '>
+            <div className='w-full flex flex-row max-sm:flex-col justify-center items-center gap-10 p-10 max-sm:p-5 '>
 
                 {/* form wizard */}
-                <form className='w-[70%] flex flex-col justify-center items-center gap-5 ' action="">
+                <form className='w-[70%] max-sm:w-full flex flex-col justify-center items-center gap-5 ' action="">
                     <PaymentWizard />
                 </form>
 
                 {/* card */}
-                <div className='w-[30%] p-10'>
+                <div className='w-[30%] max-sm:w-full p-10 max-sm:p-5'>
                     <PayMentCard value={value} />
                 </div>
 

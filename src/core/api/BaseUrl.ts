@@ -1,1 +1,1 @@
-export const BaseUrl = "http://next.genzuni.website/";
+export const BaseUrl = "http://next.genzuni.website";

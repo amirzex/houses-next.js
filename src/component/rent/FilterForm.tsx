@@ -7,11 +7,11 @@ const FilterForm = () => {
             {/* ردیف اول */}
             <div className="w-full flex flex-row max-sm:flex-col justify-center items-center gap-4 ">
                 <div className="flex flex-col gap-3 w-[25%] max-sm:w-full ">
-                    <label className="text-xs font-bold text-gray-800 px-2">جستجو</label>
+                    <label className="text-xs font-bold text-gray-800 px-2 dark:text-[#D9D9E0]">جستجو</label>
                     <input
                         type="text"
                         placeholder="نام محل مورد نظر ..."
-                        className="w-full bg-gray-100/80 text-gray-500 text-sm rounded-full px-4 py-3 outline-none focus:ring-2 focus:ring-[#1a3b99]/20 transition-all placeholder:text-gray-400"
+                        className="w-full bg-gray-100/80 text-gray-500 dark:text-[#D9D9E0] dark:bg-[#353535] text-sm rounded-full px-4 py-3 outline-none focus:ring-2 focus:ring-[#1a3b99]/20 transition-all placeholder:text-gray-400"
                     />
                 </div>
                 <div className='w-[75%] flex flex-row max-sm:flex-col max-sm:w-full justify-center gap-5 items-center'>

@@ -11,10 +11,11 @@ import step3 from "../../../../../assets/payment/Tick.svg";
 import step3blue from "../../../../../assets/payment/Tickblue.svg";
 import step4 from "../../../../../assets/payment/money-01.svg";
 import step5 from "../../../../../assets/payment/tiket.svg";
+import MobilePayMentNav from "./MobilePayMentNav";
 
 const PaymentWizard = () => {
 
-    const [currentStep, setCurrentStep] = useState(3);
+    const [currentStep, setCurrentStep] = useState(2);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const steps = [
@@ -40,28 +41,28 @@ const PaymentWizard = () => {
     };
 
     return (
-        <div dir="rtl" className="w-full h-full p-4 relative">
+        <div dir="rtl" className="w-full h-full p-4 max-sm:p-0 relative">
 
             {/*  Progress Navigation */}
-            <div className="flex items-center justify-between bg-gray-50 p-2 rounded-full mb-6 border text-sm overflow-x-auto">
+            <div className=" flex items-center justify-between bg-gray-50 dark:bg-[#353535] dark:text-white p-2 rounded-full mb-6 border text-sm overflow-x-auto">
                 {steps.map((step, index) => (
                     <React.Fragment key={step.id}>
                         <div
                             onClick={() => setCurrentStep(step.id)}
                             className={`flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer transition-colors ${step.status === 'completed' ? 'bg-blue-800 text-white' :
-                                step.status === 'active' ? 'border border-blue-800 text-blue-800 bg-white shadow-sm' :
+                                step.status === 'active' ? 'border border-blue-800 text-blue-800 bg-white dark:bg-[#353535] shadow-sm' :
                                     'text-gray-400'
                                 }`}
                         >
                             <span >
-                                {step.id === 1 && <Image src={step1} alt="" unoptimized className="w-10" />}
-                                {step.id === 2 && <Image src={step.status === 'completed' ? step2 : step2blue} alt="" unoptimized className="w-10"/>}
-                                {step.id === 3 && <Image src={step.status === 'completed' ? step3 : step3blue} alt="" unoptimized className="w-10"/>}
-                                {step.id === 4 && <Image src={step4} alt="" unoptimized className="w-10"/>}
-                                {step.id === 5 && <Image src={step5} alt="" unoptimized className="w-10"/>}
+                                {step.id === 1 && <Image src={step1} alt="" unoptimized className="w-10 max-sm:w-50 max-sm:py-2" />}
+                                {step.id === 2 && <Image src={step.status === 'completed' ? step2 : step2blue} alt="" unoptimized className="w-10 max-sm:w-50 max-sm:py-2" />}
+                                {step.id === 3 && <Image src={step.status === 'completed' ? step3 : step3blue} alt="" unoptimized className="w-10 max-sm:w-50 max-sm:py-2" />}
+                                {step.id === 4 && <Image src={step4} alt="" unoptimized className="w-10 max-sm:w-50 max-sm:py-2" />}
+                                {step.id === 5 && <Image src={step5} alt="" unoptimized className="w-10 max-sm:w-50 max-sm:py-2" />}
                             </span>
 
-                            <span className='text-sm md:text-base font-medium whitespace-nowrap'>{step.title}</span>
+                            <span className='text-sm md:text-base font-medium whitespace-nowrap max-sm:hidden'>{step.title}</span>
                         </div>
 
                         {/* line */}
@@ -73,8 +74,13 @@ const PaymentWizard = () => {
                 ))}
             </div>
 
+            {/* mobile */}
+            {/* <div className="w-full border max-sm:flex md:hidden">
+                <MobilePayMentNav />
+            </div> */}
+
             {/*  Main Form  */}
-            <div className="border border-gray-200 rounded-3xl p-6 md:p-8 bg-white shadow-sm flex flex-col gap-8">
+            <div className="border  rounded-3xl p-6 md:p-8 bg-white dark:bg-[#272727] shadow-sm flex flex-col gap-8">
 
                 {/* steps */}
                 {currentStep === 2 && <Step2Passengers />}
@@ -83,7 +89,7 @@ const PaymentWizard = () => {
 
                 <hr className="border-gray-200" />
 
-                <div className="flex items-center justify-between pt-2" dir='ltr'>
+                <div className="flex items-center justify-between pt-2 max-sm:hidden" dir='ltr'>
                     <button
                         onClick={handleNextStep}
                         className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex flex-row-reverse items-center gap-2 hover:bg-blue-700 transition"

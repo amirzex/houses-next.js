@@ -16,7 +16,7 @@ const Forgot = () => {
             <div className="  p-3 flex flex-col gap-10 md:flex-row w-[80%] max-sm:w-full">
 
                 {/* سمت راست: فرم فراموشی رمز */}
-                <div className="w-full md:w-[40%] flex flex-col px-8 py-10 lg:px-16 max-sm:px-5 relative justify-center shadow-sm rounded-[32px]">
+                <div className="w-full dark:bg-[#272727] dark:text-white md:w-[40%] flex flex-col px-8 py-10 lg:px-16 max-sm:px-5 relative justify-center shadow-sm rounded-[32px]">
 
                     {/* لوگو Home */}
                     <div className="flex justify-center items-center gap-2 mb-4">

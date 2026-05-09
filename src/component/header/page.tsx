@@ -5,10 +5,14 @@ import Link from 'next/link'
 import home from '../../assets/landing/Vector.svg'
 import user from '../../assets/landing/user.svg'
 import HeaderNav from './Headernavbar/HeaderNav'
-import MobileMenuDrawer from './MobileMenuDrawer' // اضافه کردن کامپوننت موبایل
+import MobileMenuDrawer from './MobileMenuDrawer'
+import moon from '../../assets/dark/moon.svg'
 
 const Header = () => {
 
+  const handleDarkMode = () => {
+    document.documentElement.classList.toggle("dark")
+  }
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -25,7 +29,7 @@ const Header = () => {
             alt='logo'
             className='w-5 h-5 md:w-[50px] md:h-[50px]'
           />
-          <p className='text-2xl max-sm:text-sm md:text-4xl font-bold text-black'>Home</p>
+          <p className='text-2xl max-sm:text-sm md:text-4xl font-bold text-black dark:text-[#D9D9E0]'>Home</p>
         </div>
 
         {/* Navigate Desktop */}
@@ -36,9 +40,15 @@ const Header = () => {
         {/* Hamburger Menu  */}
         <div className='flex flex-row-reverse items-center gap-13 md:w-[25%]  md:justify-end md:pl-10'>
 
+          {/* dark mode  */}
+
+          <div onClick={handleDarkMode} className='p-3 ml-[-40px] bg-blue-900 rounded-full'>
+            <Image src={moon} alt='moon' unoptimized />
+          </div>
+
           {/* Signin Button */}
           <Link href={'/Register'}>
-            <button className='text-white bg-[#2644a6] flex flex-row-reverse items-center gap-2 px-4 py-2 md:px-5 md:py-3 rounded-full text-sm md:text-xl'>
+            <button className='text-white bg-blue-900 flex flex-row-reverse items-center gap-2 px-4 py-2 md:px-5 md:py-3 rounded-full text-sm md:text-xl'>
               <Image src={user} width={20} height={20} alt='user' className='w-5 h-5 md:w-6 md:h-6' unoptimized />
               <span>ورود / ثبت نام</span>
             </button>
@@ -47,7 +57,7 @@ const Header = () => {
           {/* Hamburger Menu Mobile */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className='md:hidden bg-[#2644a6] flex flex-col justify-center items-center gap-[4px] w-10 h-10 rounded-full'
+            className='md:hidden bg-blue-900 flex flex-col justify-center items-center gap-[4px] w-10 h-10 rounded-full'
           >
             <span className='block w-5 h-[2px] bg-white rounded-full'></span>
             <span className='block w-5 h-[2px] bg-white rounded-full'></span>
@@ -62,6 +72,7 @@ const Header = () => {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
+
     </>
   )
 }

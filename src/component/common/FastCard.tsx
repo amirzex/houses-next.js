@@ -19,7 +19,7 @@ interface CardProps {
 const FastCard: FC<CardProps> = ({ item }) => {
     return (
         <div>
-            <div className='w-full flex flex-row justify-center items-center gap-5 border rounded-3xl p-5'>
+            <div className='w-full dark:bg-[#272727] flex flex-row justify-center items-center gap-5 border rounded-3xl p-5'>
                 <div className='w-[30%] h-70'>
                     <Image src={img} alt='' unoptimized className='w-full h-full rounded-2xl ' />
                 </div>
@@ -58,7 +58,7 @@ const FastCard: FC<CardProps> = ({ item }) => {
                         </div>
                     </div>
                     <div className='w-full flex flex-row gap-10'>
-                        <div className='w-[80%] bg-gray-200 flex flex-row justify-center items-center p-5 rounded-full'>
+                        <div className='w-[80%] bg-gray-200 dark:bg-[#353535] flex flex-row justify-center items-center p-5 rounded-full'>
                             <p className='w-[40%] text-gray-400 text-2xl'>اجاره ماهانه </p>
                             <div className='w-[60%] flex flex-row-reverse text-2xl justify-start items-center gap-3'>
                                 <p className='text-gray-400'>هر شب</p>

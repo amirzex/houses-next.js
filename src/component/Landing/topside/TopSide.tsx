@@ -56,10 +56,10 @@ const TopSide = () => {
                                 ))}
                             </div>
                             {/* form */}
-                            <div className='w-[80%] max-sm:hidden flex flex-row-reverse justify-center items-center bg-white h-auto rounded-4xl p-5'>
+                            <div className='w-[80%] max-sm:hidden flex flex-row-reverse justify-center items-center bg-white dark:bg-[#272727] h-auto rounded-4xl p-5'>
                                 <FormSearch />
                             </div>
-                            <div className='max-sm:flex md:hidden w-full rounded-4xl bg-white'>
+                            <div className='max-sm:flex md:hidden w-full rounded-4xl bg-white '>
                                 <FormSearchMobile />
                             </div>
 

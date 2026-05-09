@@ -1,8 +1,8 @@
 export const SelectInput = ({ label, placeholder }) => (
     <div className="flex flex-col gap-3 w-full">
-        <label className="text-xs font-bold text-gray-800 px-2">{label}</label>
+        <label className="text-xs font-bold text-gray-800 px-2 dark:text-[#D9D9E0]">{label}</label>
         <div className="relative w-full">
-            <select className="w-full bg-gray-100/80 text-gray-500 text-sm rounded-full px-4 py-3 appearance-none outline-none focus:ring-2 focus:ring-[#1a3b99]/20 cursor-pointer transition-all">
+            <select className="w-full bg-gray-100/80 text-gray-500 dark:text-[#D9D9E0] dark:bg-[#353535] text-sm rounded-full px-4 py-3 appearance-none outline-none focus:ring-2 focus:ring-[#1a3b99]/20 cursor-pointer transition-all">
                 <option value="">{placeholder}</option>
                 <option value="1">گزینه تستی ۱</option>
                 <option value="2">گزینه تستی ۲</option>

@@ -28,15 +28,15 @@ const DestinationCard: FC<DestinationCardProps> = ({
             {/* باکس سفید پایین عکس */}
             <div
                 dir="rtl"
-                className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl px-5 py-5 flex justify-between items-center shadow-lg"
+                className="absolute bottom-4 left-4 right-4 bg-white dark:bg-[#353535]  rounded-2xl px-5 py-5 flex justify-between items-center shadow-lg" 
             >
                 {/* عنوان */}
-                <h3 className="text-lg sm:text-xl max-sm:text-sm font-bold text-gray-900">
+                <h3 className="text-lg sm:text-xl max-sm:text-sm dark:text-white font-bold text-gray-900">
                     {title}
                 </h3>
 
                 {/* دکمه / نشانگر تعداد */}
-                <div className="border border-[#1E3A8A] text-[#1E3A8A] rounded-full px-5 py-2 font-bold text-2xl max-sm:text-sm flex gap-1 justify-center items-center">
+                <div className="border border-[#1E3A8A] text-[#1E3A8A] dark:text-blue-600/90  dark:border-blue-600/90 rounded-full px-5 py-2 font-bold text-2xl max-sm:text-sm flex gap-1 justify-center items-center">
                     <span>{count}</span>
                     <span>{countLabel}</span>
                 </div>

@@ -97,7 +97,7 @@ const ArrowLeftIcon = () => (
 
 const ReservationForm = () => {
     return (
-        <div dir="rtl" className="w-[90%] flex flex-col justify-center items-center bg-[#FFFFFA] border rounded-3xl p-6 gap-5">
+        <div dir="rtl" className="w-[90%] flex flex-col justify-center items-center bg-[#FFFFFA] dark:bg-[#272727] border rounded-3xl p-6 gap-5">
 
             {/* title */}
 
@@ -110,7 +110,7 @@ const ReservationForm = () => {
                 {/* inputs */}
                 <div className='w-full flex flex-col gap-3'>
                     <p className="text-xl">تاریخ رفت</p>
-                    <div className="w-full flex items-center justify-between bg-gray-100 rounded-full px-4 py-3">
+                    <div className="w-full flex items-center justify-between dark:bg-[#353535] bg-gray-100 rounded-full px-4 py-3">
                         <div className="flex items-center gap-3">
                             <input type='date' className="font-semibold text-sm" placeholder='1403-4-5' />
                         </div>
@@ -119,7 +119,7 @@ const ReservationForm = () => {
 
                 <div className='w-full flex flex-col gap-3'>
                     <p className="text-xl">تاریخ برگشت</p>
-                    <div className="w-full flex items-center justify-between bg-gray-100 rounded-full px-4 py-3">
+                    <div className="w-full flex items-center justify-between dark:bg-[#353535] bg-gray-100 rounded-full px-4 py-3">
                         <div className="flex items-center gap-3">
                             <input type='date' className="font-semibold text-sm" placeholder='1403-4-5' />
                         </div>
@@ -128,7 +128,7 @@ const ReservationForm = () => {
 
                 <div className='w-full flex flex-col gap-3'>
                     <p className="text-xl"> تعداد مسافران</p>
-                    <div className="w-full flex items-center justify-between bg-gray-100 rounded-full px-4 py-3">
+                    <div className="w-full flex items-center justify-between dark:bg-[#353535] bg-gray-100 rounded-full px-4 py-3">
                         <div className="flex items-center gap-3">
                             <input type='text' className="font-semibold text-sm" placeholder='5 نفر' />
                         </div>
@@ -140,9 +140,9 @@ const ReservationForm = () => {
                 <div className='w-full flex flex-col justify-center items-center'>
                     <div className="w-full flex items-center gap-2 mb-4 ">
                         <div className='w-[33%] border-b border-2'></div>
-                        <div className='w-[33%] flex flex-row justify-center items-center gap-2'>
+                        <div className='w-[33%] dark:text-[#D9D9E0] flex flex-row justify-center items-center gap-2'>
                             <PriceTagIcon />
-                            <h3 className="font-bold text-gray-800 ">قیمت های رزرو</h3>
+                            <h3 className="font-bold text-gray-800 dark:text-[#D9D9E0]">قیمت های رزرو</h3>
                         </div>
                         <div className='w-[33%] border-b border-2'></div>
                     </div>
@@ -152,13 +152,13 @@ const ReservationForm = () => {
                         <div className="flex justify-between items-center pb-2 ">
 
                             <div className="flex items-center gap-3">
-                                <span className="text-gray-400">5 شب</span>
-                                <span className="text-gray-400  flex flex-row-reverse gap-1 ">
+                                <span className="text-gray-400 dark:text-[#D9D9E0]">5 شب</span>
+                                <span className="text-gray-400 dark:text-[#D9D9E0]  flex flex-row-reverse gap-1 ">
                                     <p>ت</p>
                                     17.000.000
                                 </span>
                             </div>
-                            <span className="text-gray-600  flex flex-row-reverse gap-1 ">
+                            <span className="text-gray-600 dark:text-[#D9D9E0]  flex flex-row-reverse gap-1 ">
                                 <p>ت</p>
                                 18.000.000
                             </span>
@@ -173,7 +173,7 @@ const ReservationForm = () => {
                         <div className='w-[33%] border-b border-2'></div>
                         <div className='w-[33%] flex flex-row justify-center items-center gap-2'>
                             <PriceTagIcon />
-                            <h3 className="font-bold text-gray-800 ">قیمت  نهایی</h3>
+                            <h3 className="font-bold text-gray-800 dark:text-[#D9D9E0]">قیمت  نهایی</h3>
                         </div>
                         <div className='w-[33%] border-b border-2'></div>
                     </div>

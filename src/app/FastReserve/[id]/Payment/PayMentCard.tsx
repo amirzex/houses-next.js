@@ -7,8 +7,8 @@ import loc from '../../../../assets/landing/location.svg'
 const PayMentCard = ({ value }) => {
 
     return (
-        <div className='w-full  flex flex-col justify-center items-center  '>
-            <Link href={`FastReserve/${value?.id}`} className='flex flex-col w-full  max-sm:w-full max-sm:h-100 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
+        <div className='w-full flex flex-col justify-center items-center  '>
+            <Link href={`FastReserve/${value?.id}`} className='flex flex-col w-full max-sm:w-full max-sm:h-130 bg-white rounded-3xl overflow-hidden border dark:border-[#313131] shadow-sm mx-auto font-sans'>
                 {/* image holder */}
                 <div className='relative h-80 w-full overflow-hidden'>
                     <Image
@@ -48,7 +48,7 @@ const PayMentCard = ({ value }) => {
                 </div>
 
                 {/* card info */}
-                <div className='flex flex-col bg-[#FFFFFA] p-5 gap-6'>
+                <div className='flex flex-col bg-[#FFFFFA] dark:bg-[#353535] p-5 gap-6'>
 
                     <div className='w-full flex flex-row justify-center items-center '>
                         <p className='w-[50%] text-sm text-gray-400 '>تاریخ ورود به هتل  </p>
@@ -61,7 +61,7 @@ const PayMentCard = ({ value }) => {
 
 
                     {/* Pricing Area */}
-                    <div className='bg-[#F3F4F6] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
+                    <div className='bg-[#F3F4F6] rounded-full max-sm:py-3 flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
                         {value?.price && (
                             <>
                                 <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
@@ -71,15 +71,15 @@ const PayMentCard = ({ value }) => {
                                 <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
                             </>
                         )}
-                        <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm font-bold text-black gap-1'>
+                        <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-xl font-bold text-black gap-1'>
                             {value?.price || "4,500,000"}
-                            <span className='text-3xl font-normal ml-1 max-sm:text-sm'>ت</span> /
-                            <span className='text-xl max-sm:text-xs text-gray-500 font-normal'> هر شب</span>
+                            <span className='text-3xl font-normal ml-1 max-sm:text-xl'>ت</span> /
+                            <span className='text-xl max-sm:text-sm text-gray-500 font-normal'> هر شب</span>
                         </span>
                     </div>
                     {/* button */}
 
-                    <button className='w-full rounded-full bg-blue-900 p-5 flex justify-center items-center text-white'>
+                    <button className='w-full rounded-full bg-blue-900 p-5 max-sm:p-3 flex justify-center items-center text-white'>
                         <p>تغییر هتل</p>
                     </button>
                 </div>

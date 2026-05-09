@@ -16,7 +16,7 @@ const HeaderNav = () => {
     ]
 
     return (
-        <div className='w-full bg-gray-100 p-2 text-gray-700 rounded-full text-2xl flex flex-row-reverse gap-10 justify-center items-center '>
+        <div className='w-full bg-gray-100 dark:bg-[#272727] dark:text-white p-2 text-gray-700 rounded-full text-2xl flex flex-row-reverse gap-10 justify-center items-center '>
             {navItems.map((item) => (
                 <Link
                     key={item.href}

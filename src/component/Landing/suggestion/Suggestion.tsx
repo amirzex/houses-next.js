@@ -1,3 +1,4 @@
+
 import { getSuggestion } from '@/core/api/Landing'
 import Link from 'next/link'
 import Card from '@/component/common/Card'
@@ -116,6 +117,7 @@ export const slides = [
 const Suggestion = async () => {
 
   // const response = await getSuggestion()
+  // console.log(response)
   // const slides = Array.isArray(response) ? response.map(item => ({
   //   id: item.id,
   //   content: <Card value={item} />

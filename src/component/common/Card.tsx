@@ -16,7 +16,7 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ value }) => {
     return (
-        <Link href={`FastReserve/${value.id}`} className='flex flex-col mt-15 w-[30%] max-sm:w-full max-sm:h-100 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm mx-auto font-sans'>
+        <Link href={`rent/${value.id}`} className='flex flex-col mt-15 w-[30%] max-sm:w-full max-sm:h-100 bg-white dark:bg-[#272727] rounded-3xl overflow-hidden border dark:border-none border-gray-200 shadow-sm mx-auto font-sans'>
             {/* image holder */}
             <div className='relative h-80 w-full overflow-hidden'>
                 <Image
@@ -59,7 +59,7 @@ const Card: FC<CardProps> = ({ value }) => {
             <div className='flex flex-col p-5 gap-6'>
 
                 {/* Title */}
-                <div className='flex flex-row-reverse justify-start items-center text-3xl max-sm:text-xl font-extrabold text-gray-800 w-full'>
+                <div className='flex dark:text-blue-600/90 flex-row-reverse justify-start items-center text-3xl max-sm:text-xl font-extrabold text-gray-800 w-full'>
                     <p>{value.title || "خانه ویلایی با پارکینگ اختصاصی"}</p>
                 </div>
 
@@ -88,7 +88,7 @@ const Card: FC<CardProps> = ({ value }) => {
                 </div>
 
                 {/* Pricing Area */}
-                <div className='bg-[#F3F4F6] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
+                <div className='bg-[#F3F4F6] dark:bg-[#353535] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
                     {value.price && (
                         <>
                             <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
@@ -98,10 +98,10 @@ const Card: FC<CardProps> = ({ value }) => {
                             <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
                         </>
                     )}
-                    <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm font-bold text-black gap-1'>
+                    <span className='flex flex-row-reverse justify-center  dark:text-white items-center text-3xl max-sm:text-sm font-bold text-black gap-1'>
                         {value.price || "4,500,000"}
                         <span className='text-3xl font-normal ml-1 max-sm:text-sm'>ت</span> /
-                        <span className='text-xl max-sm:text-xs text-gray-500 font-normal'> هر شب</span>
+                        <span className='text-xl max-sm:text-xs text-gray-500 font-normal dark:text-gray-200'> هر شب</span>
                     </span>
                 </div>
             </div>

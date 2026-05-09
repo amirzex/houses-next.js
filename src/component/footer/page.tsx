@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer dir="rtl" className="bg-[#F0F0F0] rounded-[2rem] mt-20 mx-4 md:mx-8 mb-8 pt-12 pb-6 px-6 md:px-12 font-sans text-gray-800">
+    <footer dir="rtl" className="bg-[#F0F0F0] dark:bg-[#272727] dark:text-white rounded-[2rem] mt-20 mx-4 md:mx-8 mb-8 pt-12 pb-6 px-6 md:px-12 font-sans text-gray-800">
       <div className=" mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-6">
 
         {/* ستون اول: لوگو و توضیحات (سمت راست) */}
@@ -19,7 +19,7 @@ const Footer = () => {
             </svg>
             <span className="text-2xl font-black tracking-wide">Home</span>
           </div>
-          <p className="text-sm leading-7 font-medium text-gray-700 text-right">
+          <p className="text-sm leading-7 font-medium dark:text-white text-gray-700 text-right">
             ما همراه شما هستیم در مسیر اجاره، خرید و فروش ویلا؛ تا با اطمینان و آرامش، تجربه‌ای دلنشین از انتخاب اقامتگاه یا سرمایه‌گذاری به‌یادماندنی داشته باشید.
           </p>
           {/* شبکه‌های اجتماعی */}
@@ -40,9 +40,9 @@ const Footer = () => {
         </div>
 
         {/* ستون دوم: نحوه رزرو اقامتگاه */}
-        <div className="lg:w-1/5 flex flex-col gap-4">
-          <h3 className="text-[#1E3A8A] font-bold text-lg mb-2">نحوه رزرو اقامتگاه</h3>
-          <ul className="flex flex-col gap-3 text-sm font-medium text-gray-700 list-disc list-inside marker:text-black">
+        <div className="lg:w-1/5 flex flex-col gap-4 ">
+          <h3 className="text-[#1E3A8A] dark:text-blue-600/90 font-bold text-lg mb-2 ">نحوه رزرو اقامتگاه</h3>
+          <ul className="flex flex-col gap-3 text-sm dark:text-white font-medium text-gray-700 list-disc list-inside marker:text-black">
             <li className="hover:text-black cursor-pointer">راهنمای رزرو اقامتگاه</li>
             <li className="hover:text-black cursor-pointer">شیوه پرداخت</li>
             <li className="hover:text-black cursor-pointer">لغو رزرو اقامتگاه</li>
@@ -51,8 +51,8 @@ const Footer = () => {
 
         {/* ستون سوم: خدمات مشتریان */}
         <div className="lg:w-1/5 flex flex-col gap-4">
-          <h3 className="text-[#1E3A8A] font-bold text-lg mb-2">خدمات مشتریان</h3>
-          <ul className="flex flex-col gap-3 text-sm font-medium text-gray-700 list-disc list-inside marker:text-black">
+          <h3 className="text-[#1E3A8A] dark:text-blue-600/90 font-bold text-lg mb-2">خدمات مشتریان</h3>
+          <ul className="flex flex-col gap-3 dark:text-white text-sm font-medium text-gray-700 list-disc list-inside marker:text-black">
             <li className="hover:text-black cursor-pointer">پرسش های متداول مهمان</li>
             <li className="hover:text-black cursor-pointer">پرسش های متداول میزبان</li>
             <li className="hover:text-black cursor-pointer">چطور اقامتگاه ثبت کنم ؟</li>
@@ -62,8 +62,8 @@ const Footer = () => {
 
         {/* ستون چهارم: راه ارتباطی با ما */}
         <div className="lg:w-1/4 flex flex-col gap-4">
-          <h3 className="text-[#1E3A8A] font-bold text-lg mb-2">راه ارتباطی با ما</h3>
-          <div className="flex flex-col gap-4 text-sm font-medium text-gray-800">
+          <h3 className="text-[#1E3A8A] dark:text-blue-600/90 font-bold text-lg mb-2">راه ارتباطی با ما</h3>
+          <div className="flex flex-col gap-4 text-sm dark:text-white font-medium text-gray-800">
             <p dir="ltr" className="text-right">09229167194 - 098541612310</p>
             <p dir="ltr" className="text-right">Delta@gmail.com</p>
             <p className="leading-6">گیلان ، رشت ، میدان آزادی ، جنب<br />چهار راه عظیمی زاده</p>

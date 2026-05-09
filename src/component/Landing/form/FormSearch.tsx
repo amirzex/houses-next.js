@@ -8,10 +8,10 @@ const FormSearch = () => {
 
             <form className=' w-full flex flex-row-reverse justify-center items-center' action="">
                 <div className="w-full text-black flex flex-col gap-1 items-end p-5">
-                    <p className="text-xl font-bold">انتخاب مقصد</p>
+                    <p className="text-xl font-bold dark:text-white">انتخاب مقصد</p>
                     <div className="relative w-full">
                         <select
-                            className="appearance-none bg-gray-100 w-full text-right p-5 rounded-4xl cursor-pointer pr-4"
+                            className="appearance-none bg-gray-100 dark:bg-[#353535] dark:text-white w-full text-right p-5 rounded-4xl cursor-pointer pr-4"
                             defaultValue=""
                         >
                             <option value="" disabled>
@@ -31,26 +31,26 @@ const FormSearch = () => {
                     </div>
                 </div>
                 <div className='w-full text-black  flex flex-col gap-1 items-end p-5'>
-                    <p className='text-xl font-bold' >تعداد نفرات</p>
-                    <input className='bg-gray-100 w-full text-right p-4 rounded-4xl' type="text" placeholder=' تعداد نفرات را انتخاب کنید' />
+                    <p className='text-xl font-bold dark:text-white' >تعداد نفرات</p>
+                    <input className='bg-gray-100 dark:bg-[#353535] dark:text-white w-full text-right p-4 rounded-4xl' type="text" placeholder=' تعداد نفرات را انتخاب کنید' />
                 </div>
                 <div className="w-full text-black flex flex-col gap-1 items-end p-5">
-                    <p className="text-xl font-bold">تاریخ ورود</p>
+                    <p className="text-xl font-bold dark:text-white">تاریخ ورود</p>
                     <div className="relative w-full">
                         <input
                             type="date"
-                            className="bg-gray-100 w-full text-right p-4 rounded-4xl cursor-pointer appearance-none"
+                            className="bg-gray-100 dark:bg-[#353535] dark:text-white w-full text-right p-4 rounded-4xl cursor-pointer appearance-none"
                             placeholder="تاریخ ورود را انتخاب کنید"
                         />
                     </div>
                 </div>
 
                 <div className="w-full text-black flex flex-col gap-1 items-end p-5">
-                    <p className="text-xl font-bold">تاریخ خروج</p>
+                    <p className="text-xl font-bold dark:text-white">تاریخ خروج</p>
                     <div className="relative w-full">
                         <input
                             type="date"
-                            className="bg-gray-100 w-full text-right p-4 rounded-4xl cursor-pointer appearance-none"
+                            className="bg-gray-100 dark:bg-[#353535] dark:text-white w-full text-right p-4 rounded-4xl cursor-pointer appearance-none"
                             placeholder="تاریخ خروج را انتخاب کنید"
                         />
                     </div>

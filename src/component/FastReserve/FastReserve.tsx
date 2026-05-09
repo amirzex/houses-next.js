@@ -114,7 +114,7 @@ const FastReserve = () => {
 
             <div className='w-full flex flex-row max-sm:flex-col-reverse justify-center items-start gap-5 max-sm:gap-0 '>
 
-                <div className='w-[60%] max-sm:hidden md:flex flex flex-col justify-start items-center gap-5 pr-10 h-200 overflow-y-auto ' >
+                <div className='w-[60%] max-sm:hidden md:flex flex flex-col justify-start items-center gap-5 pr-10 h-370 overflow-y-auto ' >
                     {slides.map((item, index) => (
                         <FastCard item={item} key={index} />
                     ))}

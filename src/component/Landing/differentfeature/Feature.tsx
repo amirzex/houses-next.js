@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import feature from '../../../assets/landing/commentsbg.svg'
 import CommentCard from '@/component/common/CommentCard';
+import { getAllComment } from '@/core/api/comments/FastComments';
 
 
 const mockComments = [
@@ -31,6 +32,15 @@ const mockComments = [
 ];
 
 const Feature = () => {
+
+    // const { data, isLoading } = getAllComment()
+
+    // console.log(data?.data,'data')
+
+    // if (isLoading) {
+    //     <div> در حال بارگزاری ... </div>
+    // }
+
     return (
         <section dir="rtl" className='relative w-full min-h-screen py-20  mt-30  flex items-center overflow-hidden max-sm:hidden md:block' >
 
@@ -60,7 +70,7 @@ const Feature = () => {
 
                         <div className='w-full max-w-[420px] h-[700px] overflow-y-auto overflow-x-hidden py-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden'>
                             <div className='flex flex-col gap-8'>
-                                {mockComments.map((comment, index) => (
+                                {mockComments?.map((comment, index) => (
                                     <CommentCard key={index} value={comment as any} />
                                 ))}
                             </div>
