@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      <div className='z-10 absolute top-0 w-full flex flex-row-reverse justify-between items-center px-4 py-3 '>
+      <div className='z-10 absolute top-0 w-full flex flex-row-reverse justify-between items-center px-4 py-3 ' dir='ltr'>
 
         {/* Logo (Right) */}
         <div className='flex flex-row-reverse items-center gap-2 md:w-[25%] md:justify-start md:pr-10'>

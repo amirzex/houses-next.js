@@ -1,72 +1,117 @@
-import { ArrowUpLeft, ArrowDownRight, CreditCard, Download } from 'lucide-react';
+"use client";
+import React from 'react';
+import { Download, ChevronDown, CheckCircle2, XCircle, Receipt, ArrowUpLeft, ArrowDownRight } from 'lucide-react';
 
-export default function FinancialPage() {
+const FinancialPage = () => {
     const transactions = [
-        { id: 1, type: 'deposit', title: 'افزایش اعتبار کیف پول', amount: '۱,۲۰۰,۰۰۰+', date: '۱۴ آبان ۱۴۰۲', status: 'موفق' },
-        { id: 2, type: 'withdraw', title: 'رزرو اقامتگاه بومگردی', amount: '۸۵۰,۰۰۰-', date: '۱۰ آبان ۱۴۰۲', status: 'موفق' },
-        { id: 3, type: 'deposit', title: 'هدیه دعوت از دوستان', amount: '۵۰,۰۰۰+', date: '۰۵ آبان ۱۴۰۲', status: 'موفق' },
+        { id: 1, date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", trackingId: "۱۲۳۴۵۶۷۸۹۱۲۳۴۵۶", amount: "۱,۲۵۰,۰۰۰", status: "تایید شده", type: "شارژ کیف پول" },
+        { id: 2, date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", trackingId: "۱۲۳۴۵۶۷۸۹۱۲۳۴۵۶", amount: "۱,۲۵۰,۰۰۰", status: "تایید شده", type: "شارژ کیف پول" },
+        { id: 3, date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", trackingId: "۱۲۳۴۵۶۷۸۹۱۲۳۴۵۶", amount: "۱,۲۵۰,۰۰۰", status: "تایید نشده", type: "رزرو" },
+        { id: 4, date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", trackingId: "۱۲۳۴۵۶۷۸۹۱۲۳۴۵۶", amount: "۱,۲۵۰,۰۰۰", status: "تایید شده", type: "شارژ کیف پول" },
+        { id: 5, date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", trackingId: "۱۲۳۴۵۶۷۸۹۱۲۳۴۵۶", amount: "۱,۲۵۰,۰۰۰", status: "تایید نشده", type: "رزرو" },
     ];
 
     return (
-        <div className="space-y-8">
-            <div className="flex justify-between items-end">
-                <div>
-                    <h1 className="text-3xl font-black text-slate-800 dark:text-white">مدیریت مالی</h1>
-                    <p className="text-slate-500 mt-1">گزارش درآمدها، پرداخت‌ها و تراکنش‌های حساب</p>
+        <div className="p-4 md:p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+
+            {/* بخش هدر و فیلترها (دقیقاً مشابه عکس) */}
+            <div className="bg-white dark:bg-[#1E1E1E]">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex flex-row-reverse items-center gap-4 w-full md:w-auto">
+
+                        {/* فیلتر وضعیت پرداخت */}
+                        <div className="relative flex-grow md:w-48">
+                            <span className="absolute -top-3 right-6 bg-white dark:bg-[#1E1E1E] px-2 text-[10px] text-slate-400 font-bold z-10">وضعیت پرداخت:</span>
+                            <div className="w-full border-2 border-slate-100 dark:border-white/5 rounded-full px-5 py-3 flex justify-between items-center text-xs font-bold text-slate-400 cursor-pointer group hover:border-primary transition-all">
+                                <ChevronDown size={16} />
+                                تایید شده
+                            </div>
+                        </div>
+
+                        {/* فیلتر نوع تراکنش */}
+                        <div className="relative flex-grow md:w-48">
+                            <span className="absolute -top-3 right-6 bg-white dark:bg-[#1E1E1E] px-2 text-[10px] text-slate-400 font-bold z-10">نوع تراکنش:</span>
+                            <div className="w-full border-2 border-slate-100 dark:border-white/5 rounded-full px-5 py-3 flex justify-between items-center text-xs font-bold text-slate-400 cursor-pointer group hover:border-primary transition-all">
+                                <ChevronDown size={16} />
+                                رزرو
+                            </div>
+                        </div>
+
+                        <button className="p-3 bg-slate-50 dark:bg-white/5 text-slate-400 rounded-2xl hover:text-primary transition-colors">
+                            <Download size={20} />
+                        </button>
+                    </div>
+
+                    <h1 className="text-xl font-black text-slate-800 dark:text-white">لیست تراکنش های شما</h1>
                 </div>
-                <button className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 px-4 py-2 rounded-xl text-sm font-bold">
-                    <Download size={18} />
-                    خروجی اکسل
-                </button>
             </div>
 
-            {/* Cards Section */}
-            <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-white dark:bg-[#1E1E1E] p-8 rounded-[32px] border-b-4 border-blue-500 shadow-sm">
-                    <p className="text-slate-500 text-sm font-bold">کل مخارج</p>
-                    <p className="text-2xl font-black mt-2 dark:text-white">۱۲,۴۰۰,۰۰۰ تومان</p>
+            {/* کارت‌های خلاصه وضعیت */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white dark:bg-[#1E1E1E] p-6 rounded-[32px] border-r-8 border-rose-500 shadow-sm group hover:scale-[1.02] transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="p-3 bg-rose-50 dark:bg-rose-500/10 text-rose-500 rounded-2xl"><ArrowDownRight size={24} /></div>
+                        <p className="text-slate-400 text-[10px] font-black uppercase">Expenses</p>
+                    </div>
+                    <p className="text-slate-500 text-xs font-bold">کل مخارج</p>
+                    <p className="text-2xl font-black mt-1 dark:text-white">۱۲,۴۰۰,۰۰۰ <span className="text-xs font-normal opacity-50">تومان</span></p>
                 </div>
-                <div className="bg-white dark:bg-[#1E1E1E] p-8 rounded-[32px] border-b-4 border-emerald-500 shadow-sm">
-                    <p className="text-slate-500 text-sm font-bold">کل واریزی‌ها</p>
-                    <p className="text-2xl font-black mt-2 dark:text-white">۱۶,۹۰۰,۰۰۰ تومان</p>
+
+                <div className="bg-white dark:bg-[#1E1E1E] p-6 rounded-[32px] border-r-8 border-green-500 shadow-sm group hover:scale-[1.02] transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="p-3 bg-[#CCFF00]/10 text-green-500 rounded-2xl"><ArrowUpLeft size={24} /></div>
+                        <p className="text-slate-400 text-[10px] font-black uppercase">Deposits</p>
+                    </div>
+                    <p className="text-slate-500 text-xs font-bold">کل واریزی‌ها</p>
+                    <p className="text-2xl font-black mt-1 dark:text-white">۱۶,۹۰۰,۰۰۰ <span className="text-xs font-normal opacity-50">تومان</span></p>
                 </div>
-                <div className="bg-white dark:bg-[#1E1E1E] p-8 rounded-[32px] border-b-4 border-primary shadow-sm">
-                    <p className="text-slate-500 text-sm font-bold">مانده نهایی</p>
-                    <p className="text-2xl font-black mt-2 dark:text-white">۴,۵۰۰,۰۰۰ تومان</p>
+
+                <div className="bg-primary text-white p-6 rounded-[32px] shadow-xl shadow-primary/20 group hover:scale-[1.02] transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="p-3 bg-white/20 rounded-2xl"><Receipt size={24} /></div>
+                        <p className="text-white/60 text-[10px] font-black uppercase">Balance</p>
+                    </div>
+                    <p className="text-white/80 text-xs font-bold">مانده نهایی</p>
+                    <p className="text-2xl font-black mt-1">۴,۵۰۰,۰۰۰ <span className="text-xs font-normal opacity-70">تومان</span></p>
                 </div>
             </div>
 
-            {/* Transactions Table */}
-            <div className="bg-white dark:bg-[#1E1E1E] rounded-[32px] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm">
-                <div className="p-8 border-b border-gray-50 dark:border-white/5">
-                    <h3 className="font-black text-lg dark:text-white">تاریخچه تراکنش‌ها</h3>
-                </div>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-right">
-                        <thead className="bg-slate-50 dark:bg-white/5 text-slate-400 text-xs font-bold uppercase">
-                            <tr>
-                                <th className="px-8 py-4">نوع</th>
-                                <th className="px-8 py-4">عنوان تراکنش</th>
-                                <th className="px-8 py-4">تاریخ</th>
-                                <th className="px-8 py-4">مبلغ (تومان)</th>
-                                <th className="px-8 py-4 text-center">وضعیت</th>
+            {/* جدول تراکنش‌ها */}
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-[32px] shadow-sm border border-slate-50 dark:border-white/5 overflow-hidden">
+                <div className="overflow-x-auto text-right" dir="rtl">
+                    <table className="w-full border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100/50 dark:bg-white/5 text-slate-800 dark:text-slate-200 text-xs font-black uppercase">
+                                <th className="p-6">تاریخ</th>
+                                <th className="p-6 text-center">شماره پیگیری</th>
+                                <th className="p-6 text-center">مبلغ</th>
+                                <th className="p-6 text-center">وضعیت پرداخت</th>
+                                <th className="p-6 text-center">نوع تراکنش</th>
+                                <th className="p-6 text-left">عملیات</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-50 dark:divide-white/5">
+                        <tbody className="divide-y divide-slate-50 dark:divide-white/5">
                             {transactions.map((t) => (
-                                <tr key={t.id} className="hover:bg-slate-50/50 dark:hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-8 py-6">
-                                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${t.type === 'deposit' ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'
-                                            }`}>
-                                            {t.type === 'deposit' ? <ArrowUpLeft size={20} /> : <ArrowDownRight size={20} />}
+                                <tr key={t.id} className="group hover:bg-slate-50/50 dark:hover:bg-white/[0.02] transition-all">
+                                    <td className="p-6 text-xs font-medium text-slate-500">{t.date}</td>
+                                    <td className="p-6 text-center text-sm font-bold text-slate-400 tabular-nums">{t.trackingId}</td>
+                                    <td className="p-6 text-center text-sm font-black text-slate-800 dark:text-white tracking-tighter">{t.amount}</td>
+                                    <td className="p-6">
+                                        <div className="flex justify-center">
+                                            {t.status === 'تایید شده' ? (
+                                                <span className="flex items-center gap-1.5 px-4 py-1.5 bg-green-500 text-black rounded-full text-[10px] font-black shadow-lg shadow-[#CCFF00]/20 italic">
+                                                    <CheckCircle2 size={12} /> {t.status}
+                                                </span>
+                                            ) : (
+                                                <span className="flex items-center gap-1.5 px-4 py-1.5 bg-rose-400 text-white rounded-full text-[10px] font-black shadow-lg shadow-rose-400/20 italic">
+                                                    <XCircle size={12} /> {t.status}
+                                                </span>
+                                            )}
                                         </div>
                                     </td>
-                                    <td className="px-8 py-6 text-sm font-bold text-slate-700 dark:text-slate-200">{t.title}</td>
-                                    <td className="px-8 py-6 text-sm text-slate-400">{t.date}</td>
-                                    <td className={`px-8 py-6 text-sm font-black ${t.type === 'deposit' ? 'text-emerald-500' : 'text-rose-500'
-                                        }`}>{t.amount}</td>
-                                    <td className="px-8 py-6 text-center">
-                                        <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg text-[10px] font-bold">{t.status}</span>
+                                    <td className="p-6 text-center text-xs font-bold text-slate-600 dark:text-slate-400">{t.type}</td>
+                                    <td className="p-6 text-left">
+                                        <button className="text-[10px] font-black text-slate-400 hover:text-primary transition-colors hover:underline underline-offset-4">مشاهده رسید</button>
                                     </td>
                                 </tr>
                             ))}
@@ -74,6 +119,17 @@ export default function FinancialPage() {
                     </table>
                 </div>
             </div>
+
+            {/* پجینیشن */}
+            <div className="flex justify-center gap-2 py-4">
+                {[1, 2, 3, 4, 5, '...', 9].map((page, i) => (
+                    <button key={i} className={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black transition-all ${page === 1 ? 'bg-black text-white shadow-lg shadow-[#CCFF00]/20' : 'bg-white dark:bg-[#1E1E1E] text-slate-400 hover:bg-slate-50'}`}>
+                        {page}
+                    </button>
+                ))}
+            </div>
         </div>
     );
-}
+};
+
+export default FinancialPage;

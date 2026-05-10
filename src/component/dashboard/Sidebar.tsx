@@ -1,13 +1,14 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, User, CalendarDays, Wallet, Bell, LogOut, PieChart } from 'lucide-react';
+import { LayoutDashboard, User, CalendarDays, Bell, LogOut, PieChart, Heart } from 'lucide-react';
 
 const menuItems = [
     { title: "داشبورد", icon: <LayoutDashboard size={22} />, href: "/panel/dashboard" },
     { title: "اطلاعات کاربری", icon: <User size={22} />, href: "/panel/profile" },
     { title: "مدیریت رزروها", icon: <CalendarDays size={22} />, href: "/panel/booking" },
-    { title: "مدیریت مالی", icon: <PieChart size={22} />, href: "/panel/financial" }, // صفحه جدید
+    { title: "مدیریت مالی", icon: <PieChart size={22} />, href: "/panel/financial" },
+    { title: "علاقه‌مندی‌ها", icon: <Heart size={22} />, href: "/panel/favorites" }, // جدید
     { title: "اعلان‌ها", icon: <Bell size={22} />, href: "/panel/notifications" },
 ];
 
@@ -15,7 +16,7 @@ export default function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <div className="h-full flex flex-col p-6 overflow-y-auto">
+        <div className="flex flex-col p-6 overflow-y-auto">
             <div className="flex items-center gap-3 mb-10 px-2">
                 <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20 font-sans">G</div>
                 <span className="font-black text-xl tracking-tight dark:text-white">پنل مدیریت</span>
