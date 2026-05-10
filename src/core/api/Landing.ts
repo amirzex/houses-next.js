@@ -62,7 +62,6 @@ export const getPropertyById = async (id: string): Promise<Property> => {
 
 export const getSuggestion = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses`);
-  console.log(response)
   return response.data.houses;
 };
 export const getBestChoice = async (): Promise<IData[]> => {

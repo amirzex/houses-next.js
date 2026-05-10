@@ -117,12 +117,11 @@ export const slides = [
 const Suggestion = async () => {
 
   // const response = await getSuggestion()
-  // console.log(response)
   // const slides = Array.isArray(response) ? response.map(item => ({
   //   id: item.id,
   //   content: <Card value={item} />
   // })) : []
-  // console.log(response,"response")
+
 
   return (
     <div className="w-full flex flex-col gap-10 p-20 max-sm:p-5 max-sm:mt-20">
@@ -139,7 +138,7 @@ const Suggestion = async () => {
           </div>
           <p className="text-orange-500"> فرصت رو از دست نده  </p>
         </div>
-        <h2 className='w-full text-center text-5xl'> تخفیفات ویژه  برای شروع تابستان </h2>
+        <h2 className='w-full text-center text-5xl mt-5'> تخفیفات ویژه  برای شروع تابستان </h2>
       </div>
 
       {/* header mobile */}
