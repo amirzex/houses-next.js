@@ -43,7 +43,8 @@ const Register = () => {
                     {/* steps*/}
                     {step === 1 && <Step1Form setTempUserId={setTempUserId} onNext={() => setStep(2)} />}
                     {step === 2 && (<Step2Form tempUserId={tempUserId} onNext={() => setStep(3)} onBack={() => setStep(1)} />)}
-                    {step === 3 && <Step3Form onBack={() => setStep(2)} />}
+                    {step === 3 && (<Step3Form userId={tempUserId} onBack={() => setStep(2)} />)}
+
 
                 </div>
 
