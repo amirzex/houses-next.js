@@ -1,6 +1,7 @@
 "use client"
 
 import { useLogin } from '@/core/api/Login/LoginQuery/LoginQuery'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
@@ -64,7 +65,7 @@ const Form = () => {
                 >
                     {isPending ? "در حال ورود..." : "ورود به حساب کاربری"}
                 </button>
-
+                <Link href='/Forget'> رمز خود را فراموش کرده اید؟ </Link>
             </form>
         </div>
     )
