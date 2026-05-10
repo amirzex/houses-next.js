@@ -3,13 +3,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import apartment from '../../assets/register/modern-tokyo-street-background_23-2149394920.avif';
-import { Step1Form } from './steps/Step1Form';
 import { Step2Form } from './steps/Step2Form';
 import { Step3Form } from './steps/Step3Form';
+import Step1Form from './steps/Step1Form';
 
 const Register = () => {
     const [step, setStep] = useState(1);
-
+    const [tempUserId, setTempUserId] = useState(null);
     return (
         <div className=" flex items-center justify-center p-4 max-sm:p-0 mt-30 max-sm:mt-20 font-sans" dir="rtl">
             <div className=" rounded-[32px] gap-10 p-3 flex flex-col md:flex-row w-[80%] max-sm:w-full ">
@@ -30,7 +30,7 @@ const Register = () => {
 
                     {/* change tab*/}
                     <div className="max-sm:flex-col flex bg-gray-100 dark:bg-[#353535]  p-1.5 rounded-full max-sm:rounded-2xl mb-8">
-                        <Link href="/Login" className="flex-1 text-gray-600 dark:text-white  py-3 rounded-full max-sm:rounded-xl text-sm font-medium flex justify-center items-center gap-2 transition-colors hover:text-gray-900">
+                        <Link href="/login" className="flex-1 text-gray-600 dark:text-white  py-3 rounded-full max-sm:rounded-xl text-sm font-medium flex justify-center items-center gap-2 transition-colors hover:text-gray-900">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             ورود به حساب کاربری
                         </Link>
@@ -41,8 +41,8 @@ const Register = () => {
                     </div>
 
                     {/* steps*/}
-                    {step === 1 && <Step1Form onNext={() => setStep(2)} />}
-                    {step === 2 && <Step2Form onNext={() => setStep(3)} onBack={() => setStep(1)} />}
+                    {step === 1 && <Step1Form setTempUserId={setTempUserId} onNext={() => setStep(2)} />}
+                    {step === 2 && (<Step2Form tempUserId={tempUserId} onNext={() => setStep(3)} onBack={() => setStep(1)} />)}
                     {step === 3 && <Step3Form onBack={() => setStep(2)} />}
 
                 </div>

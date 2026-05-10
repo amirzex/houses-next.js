@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/component/header/page";
 import Footer from "@/component/footer/page";
-import { ReserveProvider } from "@/core/context/ReserveContext";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +13,7 @@ export const metadata: Metadata = {
 export const shabnam = localFont({
   src: [
     {
-      path: "../assets/fonts/shabnam/Farsi-Digits-Without-Latin/Shabnam-Bold-FD-WOL.woff2", // ✅ Use modern format
+      path: "../assets/fonts/shabnam/Farsi-Digits-Without-Latin/Shabnam-Bold-FD-WOL.woff2",
       weight: "700",
       style: "normal",
     },
@@ -34,18 +23,23 @@ export const shabnam = localFont({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={shabnam.className}>
-        <header><Header /></header>
-        {/* <ReserveProvider> */}
-          {children}
-        {/* </ReserveProvider> */}
+        <Providers>
+          <header>
+            <Header />
+          </header>
 
-        <footer><Footer /></footer>
+          {children}
+
+          <footer>
+            <Footer />
+          </footer>
+        </Providers>
       </body>
     </html>
   );
