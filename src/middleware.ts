@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("accessToken");
 
   if (!token && request.nextUrl.pathname.startsWith("/panel")) {
-    return NextResponse.redirect(new URL("/api/auth/login", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   return NextResponse.next();
