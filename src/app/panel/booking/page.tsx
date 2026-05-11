@@ -1,20 +1,33 @@
 "use client";
 import React, { useState } from 'react';
-import { MoreHorizontal, Search, SlidersHorizontal, CheckCircle2, XCircle, Clock, CreditCard, Info, Trash2 } from 'lucide-react';
-import { useBooking } from '@/core/api/dashboard/booking/bookingQuery/BookingQuery';
+import { MoreHorizontal, SlidersHorizontal, CheckCircle2, XCircle, Clock, CreditCard, Info, Trash2, AlertCircle } from 'lucide-react';
+import { useBookings } from '@/core/api/dashboard/booking/bookingQuery/BookingQuery';
 
 const BookingsPage = () => {
     const [openMenu, setOpenMenu] = useState<number | null>(null);
 
-    const bookings = [
-        { id: 1, property: "هتل سراوان رانین رشت", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "لغو شده" },
-        { id: 2, property: "هتل سراوان رانین رشت", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "در انتظار", payment: "تایید شده" },
-        { id: 3, property: "هتل سراوان رانین رشت", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "تایید شده" },
-        { id: 4, property: "هتل سراوان رانین رشت", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "تایید شده" },
-        { id: 5, property: "هتل سراوان رانین رشت", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "تایید شده" },
+    const { data: apiData, isLoading } = useBookings();
+
+    const staticBookings = [
+        { id: 1, property: "هتل سراوان رانین رشت (استاتیک)", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "لغو شده" },
+        { id: 2, property: "هتل سراوان رانین رشت (استاتیک)", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "در انتظار", payment: "تایید شده" },
+        { id: 3, property: "هتل سراوان رانین رشت (استاتیک)", date: "۱۲ مرداد - ۱۴۰۱ / ۱۲:۳۳", amount: "۱,۸۰۰,۰۰۰", passengers: "۲ عدد مسافر", status: "تایید شده", payment: "تایید شده" },
     ];
 
-    
+    const rawData = Array.isArray(apiData) ? apiData : (apiData as any)?.data || [];
+
+    const isDataStatic = !isLoading && rawData.length === 0;
+
+
+    const displayData = isDataStatic ? staticBookings : rawData.map((item: any) => ({
+        id: item.id,
+        property: `اقامتگاه کد ${item.houseId}`,
+        date: new Date(item.created_at).toLocaleDateString('fa-IR'),
+        amount: "نامشخص",
+        passengers: `${item.traveler_details?.length || 0} عدد مسافر`,
+        status: item.status === 'pending' ? 'در انتظار' : item.status === 'confirmed' ? 'تایید شده' : 'لغو شده',
+        payment: item.status === 'pending' ? 'در انتظار' : 'تایید شده',
+    }));
 
     const getStatusBadge = (status: string) => {
         switch (status) {
@@ -28,6 +41,8 @@ const BookingsPage = () => {
                 return null;
         }
     };
+
+    if (isLoading) return <div className="p-10 text-center font-bold">در حال بارگذاری...</div>;
 
     return (
         <div className="p-4 md:p-8 space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -47,7 +62,14 @@ const BookingsPage = () => {
                         />
                     </div>
                 </div>
-                <h1 className="text-xl font-black text-slate-800 dark:text-white">لیست رزرو های شما</h1>
+                <div className="flex flex-col items-end gap-1">
+                    <h1 className="text-xl font-black text-slate-800 dark:text-white">لیست رزرو های شما</h1>
+                    {isDataStatic && (
+                        <span className="flex items-center gap-1 text-[10px] text-amber-500 font-bold">
+                            <AlertCircle size={12} /> در حال نمایش دیتای استاتیک
+                        </span>
+                    )}
+                </div>
             </div>
 
             <div className="bg-white dark:bg-[#1E1E1E] rounded-[32px] shadow-sm border border-slate-50 dark:border-white/5 overflow-hidden">
@@ -65,7 +87,7 @@ const BookingsPage = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-50 dark:divide-white/5">
-                            {bookings.map((item, index) => (
+                            {displayData.map((item: any, index: number) => (
                                 <tr key={index} className="group hover:bg-slate-50/30 dark:hover:bg-white/[0.02] transition-all">
                                     <td className="p-5">
                                         <div className="flex items-center gap-3">
@@ -73,8 +95,8 @@ const BookingsPage = () => {
                                             <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{item.property}</span>
                                         </div>
                                     </td>
-                                    <td className="p-5 text-xs font-medium text-slate-500 leading-relaxed">{item.date}</td>
-                                    <td className="p-5 text-sm font-black text-slate-800 dark:text-white">{item.amount} <span className="text-[10px] font-normal opacity-60">ت</span></td>
+                                    <td className="p-5 text-xs font-medium text-slate-500 leading-relaxed tabular-nums">{item.date}</td>
+                                    <td className="p-5 text-sm font-black text-slate-800 dark:text-white tabular-nums">{item.amount} <span className="text-[10px] font-normal opacity-60">ت</span></td>
                                     <td className="p-5 text-center text-xs font-bold text-slate-600 dark:text-slate-400">{item.passengers}</td>
                                     <td className="p-5"><div className="flex justify-center">{getStatusBadge(item.status)}</div></td>
                                     <td className="p-5"><div className="flex justify-center">{getStatusBadge(item.payment)}</div></td>
@@ -87,7 +109,7 @@ const BookingsPage = () => {
                                         </button>
 
                                         {openMenu === index && (
-                                            <div className="absolute left-full mt-2 w-32 bg-white dark:bg-[#252525] shadow-2xl rounded-2xl border border-slate-100 dark:border-white/10 z-50 overflow-hidden animate-in zoom-in-95">
+                                            <div className="absolute left-full top-0 mt-2 w-32 bg-white dark:bg-[#252525] shadow-2xl rounded-2xl border border-slate-100 dark:border-white/10 z-50 overflow-hidden animate-in zoom-in-95">
                                                 <button className="w-full px-4 py-3 text-[11px] font-black text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 flex items-center justify-between">
                                                     پرداخت <CreditCard size={14} className="text-slate-400" />
                                                 </button>

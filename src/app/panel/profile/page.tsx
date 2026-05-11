@@ -2,24 +2,34 @@
 
 import { useUser } from "@/core/api/dashboard/user/userQuery/UserQuery";
 import { User } from "lucide-react";
+import { useParams } from "next/navigation";
 
 export default function ProfilePage() {
 
-    const id = 179; // فعلاً ثابت برای تست
+    const params = useParams();
+    const id = params.id as string;
+
     const { data, isLoading } = useUser(id);
 
-    if (isLoading) return <p>در حال دریافت اطلاعات...</p>
+    if (isLoading) return <p className="text-center p-10">در حال دریافت اطلاعات...</p>
 
-    const user = data?.data || data;
+
+    const user = data?.user;
 
     return (
         <div className="mx-auto space-y-8" dir="rtl">
-
             <div className="bg-white dark:bg-[#1E1E1E] rounded-[32px] p-8 shadow-sm">
 
                 <div className="flex items-center gap-6 pb-8 border-b dark:border-white/5">
                     <div className="relative">
-                        <div className="w-24 h-24 bg-slate-200 rounded-[28px]" />
+                        <div className="w-24 h-24 bg-slate-200 rounded-[28px] flex items-center justify-center overflow-hidden">
+                            
+                            {user?.profilePicture && user.profilePicture !== "string" ? (
+                                <img src={user.profilePicture} alt="" className="w-full h-full object-cover" />
+                            ) : (
+                                <User size={40} className="text-slate-400" />
+                            )}
+                        </div>
                         <button className="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-xl">
                             <User size={16} />
                         </button>
@@ -27,22 +37,23 @@ export default function ProfilePage() {
 
                     <div>
                         <h3 className="font-black text-lg dark:text-white">
-                            {user?.fullName}
+                            {user?.fullName || "بارگذاری..."}
                         </h3>
                         <p className="text-slate-400 text-sm">
-                            سطح دسترسی: {user?.role}
+                            سطح دسترسی: {user?.role === 'buyer' ? 'خریدار' : user?.role}
                         </p>
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                {/* فرم اطلاعات */}
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
 
                     <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-500">نام و نام خانوادگی</label>
                         <input
                             type="text"
                             defaultValue={user?.fullName}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4"
+                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none"
                         />
                     </div>
 
@@ -50,8 +61,9 @@ export default function ProfilePage() {
                         <label className="text-sm font-bold text-slate-500">شماره تماس</label>
                         <input
                             type="text"
-                            defaultValue={user?.phone}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4"
+                            
+                            defaultValue={user?.phoneNumber}
+                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none text-left"
                         />
                     </div>
 
@@ -60,14 +72,14 @@ export default function ProfilePage() {
                         <input
                             type="email"
                             defaultValue={user?.email}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4"
+                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none text-left"
                         />
                     </div>
 
                 </div>
 
-                <div className="pt-4 flex justify-end">
-                    <button className="bg-primary text-white px-10 py-4 rounded-2xl font-black">
+                <div className="pt-8 flex justify-end">
+                    <button className="bg-primary text-white px-10 py-4 rounded-2xl font-black hover:opacity-90 transition-all">
                         ذخیره تغییرات
                     </button>
                 </div>

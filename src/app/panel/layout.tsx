@@ -8,10 +8,10 @@ import React from 'react';
 
 export default function PanelLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className=" bg-transparent dark:bg-[#121212] flex flex-row " dir="rtl">
+    <div className=" bg-transparent dark:bg-transparent flex flex-row pt-10" dir="rtl">
 
       {/* Sidebar - Desktop */}
-      <aside className=" w-[20%] flex-col bg-white dark:bg-[#1E1E1E] border-l border-gray-100 dark:border-white/5">
+      <aside className=" w-[20%] border-2  rounded-l-2xl flex-col bg-white dark:bg-[#1E1E1E] border-l border-gray-100 dark:border-white/5">
         <Sidebar />
       </aside>
 
@@ -19,7 +19,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
       <div className="w-[80%] ">
         {/* <Header /> */}
 
-        <main className=" p-4 md:p-8 pb-32 lg:pb-8">
+        <main className="p-5 mt-[-40px] h-200">
           <div className="  w-full animate-in fade-in duration-700">
             <div className='w-full flex flex-row jus items-center '>
               <Header />
