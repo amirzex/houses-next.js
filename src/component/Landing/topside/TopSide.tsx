@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import background from '../../../assets/landing/504b1d866abb82631873b29a03394f56ad50f878.jpg'
+import background from '../../../assets/landing/topbg.jpg'
 import FormSearch from '../form/FormSearch';
 import { useState } from 'react';
 import FormSearchMobile from '../form/FormSearchMobile';

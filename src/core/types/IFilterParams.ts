@@ -1,13 +1,16 @@
 export interface IFilterParams {
-  page?: string | number;
-  limit?: string | number;
+  limit?: number;
+  transactionType?: "rental" | "reservation" | "sale" | "mortgage";
   search?: string;
-  sort?: string;
-  minPrice?: number;
-  maxPrice?: number;
+  sort?: "last_updated" | "price" | "area" | "created_at";
+  order?: "ASC" | "DESC";
+  propertyType?: "apartment" | "villa" | "house" | "land" | "commercial";
   location?: string;
-  city?: string;
-  price?: string;
-  id: string;
-  name: string;
+  minRent?: number;
+  maxRent?: number;
+  minArea?: number;
+  maxArea?: number;
+  maxPrice?: number;
+  minMortgage?: number;
+  maxMortgage?: number;
 }

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import home from '../../assets/landing/Vector.svg'
+import home from '../../assets/landing/logo.svg'
 import user from '../../assets/landing/user.svg'
 import HeaderNav from './Headernavbar/HeaderNav'
 import MobileMenuDrawer from './MobileMenuDrawer'

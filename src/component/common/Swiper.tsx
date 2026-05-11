@@ -17,34 +17,33 @@ interface MySwiperProps {
     slides?: SLiderType[];
 }
 
-const MySwiper = ({ slides = [] }: MySwiperProps) => {  
+const MySwiper = ({ slides = [] }: MySwiperProps) => {
     if (!slides || slides.length === 0) {
-        return null;  
+        return null;
     }
-    console.log(slides)
 
     return (
         <div className="w-full ">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={30}
-                slidesPerView={1}  
+                slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
-                // scrollbar={{ draggable: true }}
                 breakpoints={{
                     640: {
-                        slidesPerView: 2,  
+                        slidesPerView: 2,
                     },
                     1024: {
-                        slidesPerView: 3,  
+                        slidesPerView: 3,
                     },
                 }}
-                className="mySwiper"
+                className="modernSwiper"
             >
+
                 {slides.map((slide, index) => (
                     <SwiperSlide key={slide.id || index}>
-                        {slide.content}  
+                        {slide.content}
                     </SwiperSlide>
                 ))}
             </Swiper>

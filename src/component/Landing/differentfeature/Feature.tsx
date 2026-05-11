@@ -1,45 +1,23 @@
+"use client"
 import Image from 'next/image'
 import feature from '../../../assets/landing/commentsbg.svg'
 import CommentCard from '@/component/common/CommentCard';
-import { getAllComment } from '@/core/api/comments/FastComments';
-
-
-const mockComments = [
-    {
-        id: 'امیر محمد',
-        caption: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای',
-        created_at: '1401/05/12',
-        rating: 5
-    },
-    {
-        id: 'علی احمدی',
-        caption: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای',
-        created_at: '1401/05/12',
-        rating: 4
-    },
-    {
-        id: 'سارا حسینی',
-        caption: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای',
-        created_at: '1401/05/12',
-        rating: 5
-    },
-    {
-        id: 'رضا کریمی',
-        caption: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.',
-        created_at: '1401/05/12',
-        rating: 4.5
-    }
-];
+import { useGetAllComments } from '../../../core/api/comments/CommentQuery/CommentQuery';
 
 const Feature = () => {
 
-    // const { data, isLoading } = getAllComment()
+    const { data, isLoading } = useGetAllComments({
+        page: 1,
+        limit: 10,
+        sort: "created_at",
+        order: "DESC"
+    });
 
-    // console.log(data?.data,'data')
+    console.log(data?.comments, 'data');
 
-    // if (isLoading) {
-    //     <div> در حال بارگزاری ... </div>
-    // }
+    if (isLoading) {
+        return <div> در حال بارگزاری ... </div>;
+    }
 
     return (
         <section dir="rtl" className='relative w-full min-h-screen py-20  mt-30  flex items-center overflow-hidden max-sm:hidden md:block' >
@@ -62,7 +40,7 @@ const Feature = () => {
                             رضایت شما اعتبار ماست
                         </h2>
                         <p className='text-sm sm:text-base leading-8 sm:leading-[2.5rem] text-gray-100 font-medium drop-shadow'>
-                            پیدا کردن ویلای مناسب همیشه کار راحتی نیست. ما اینجاییم تا همه چیز رو برای شما ساده کنیم. از بین صدها فایل، فقط بهترین و معتبرترین گزینه‌ها رو گلچین می‌کنیم تا وقت ارزشمندتون صرف جستجوی بی‌پایان نشه. چه به دنبال اجاره کوتاه‌مدت برای تعطیلات باشین و چه به فکر خرید یا اجاره بلندمدت، ما با توجه به بودجه و نیاز شما، بهترین انتخاب‌ها رو معرفی می‌کنیم. پشتیبانی ۲۴ ساعته و همراهی قدم‌به‌قدم ما باعث میشه هیچوقت تنها نباشید و با خیال راحت ویلای رویایی خودتون رو پیدا کنید.
+                            پیدا کردن ویلای مناسب همیشه کار راحتی نیست. ما اینجاییم تا همه چیز رو برای شما ساده کنیم. ...
                         </p>
                     </div>
 
@@ -70,8 +48,8 @@ const Feature = () => {
 
                         <div className='w-full max-w-[420px] h-[700px] overflow-y-auto overflow-x-hidden py-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden'>
                             <div className='flex flex-col gap-8'>
-                                {mockComments?.map((comment, index) => (
-                                    <CommentCard key={index} value={comment as any} />
+                                {data?.comments?.map((comment, index) => (
+                                    <CommentCard key={index} value={comment} />
                                 ))}
                             </div>
                         </div>
@@ -83,4 +61,4 @@ const Feature = () => {
     )
 }
 
-export default Feature
+export default Feature;

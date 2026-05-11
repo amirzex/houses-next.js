@@ -29,14 +29,14 @@ const HeaderNav = () => {
                     {item.label}
                 </Link>
             ))}
-            <div className='border w-[30%] py-3 rounded-full flex flex-row-reverse justify-center items-center gap-3 bg-blue-900'>
+            <Link href="/blog" className='border w-[30%] py-3 rounded-full flex flex-row-reverse justify-center items-center gap-1 bg-blue-900'>
                 <Image
                     src={horn}
                     alt=''
-                    unoptimized 
-                    className='w-[20%]'/>
-                <p className='text-white'>!فروشنده شو</p>
-            </div>
+                    unoptimized
+                    className='w-[20%]' />
+                <p className='text-white'> ! مهم ترین اخبار  </p>
+            </Link>
         </div>
     )
 }

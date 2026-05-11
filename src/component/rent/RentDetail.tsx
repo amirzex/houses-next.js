@@ -1,4 +1,4 @@
-
+"use client"
 import React, { FC } from 'react'
 import Breadcrumb from '../common/Breadcrumb'
 import { slides } from '../Landing/suggestion/Suggestion';
@@ -15,6 +15,7 @@ import Facilities from '../FastReserve/Facilities';
 import RentForm from './RentForm';
 import FacilitiesRent from './FacilitiesRent';
 import Card from '../common/Card';
+import { useHouseById } from '@/core/api/housesDetail/housesQuery/HousesQuery';
 
 interface IProps {
     id: string;
@@ -22,8 +23,9 @@ interface IProps {
 
 const RentDetail: FC<IProps> = ({ id }) => {
 
-    const data = slides.find(slide => slide.id === Number(id))
-
+    // const data = slides.find(slide => slide.id === Number(id))
+    const { data, isLoading, error } = useHouseById(id)
+    
     return (
         <div className='w-full flex flex-col justify-center items-center gap-10 p-10' dir='rtl'>
 
@@ -48,7 +50,7 @@ const RentDetail: FC<IProps> = ({ id }) => {
                 <div className='w-full flex flex-row justify-center items-center px-5'>
                     <h1 className='w-[50%] flex justify-start items-center text-gray-400 text-xl'>
                         <Image src={loca} alt='' unoptimized />
-                        {data?.adress}
+                        {data?.address}
                     </h1>
                     <div className='w-[50%] flex justify-end items-center '>
                         <div className=' w-[15%]  flex flex-row-reverse justify-start items-center gap-1'>
@@ -83,30 +85,36 @@ const RentDetail: FC<IProps> = ({ id }) => {
                             <p className="text-gray-600 leading-relaxed text-xl text-right dark:text-[#D9D9E0]">
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد. تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراح
                             </p>
+                            {/* <p className="text-gray-600 leading-relaxed text-xl text-right dark:text-[#D9D9E0]">{data?.caption}</p> */}
                         </section>
 
                         <div className='w-full flex felx-row justify-center items-center '>
-                            <FacilitiesRent />
+                            <FacilitiesRent
+                                bathrooms={data?.bathrooms}
+                                parking={data?.parking}
+                                rooms={data?.rooms}
+                                capacity={data?.capacity}
+                            />
                         </div>
 
                         {/* comments */}
-                        <ReserveComments />
+                        <ReserveComments id={id}/>
 
                     </div>
 
                     {/* reserve form and houses item */}
 
                     <div className='w-[30%] flex flex-col justify-center gap-5 items-center'>
-                        <RentForm />
+                        <RentForm price={data?.price} discount={data?.discounted_price}/>
                     </div>
                 </div>
 
             </div>
-            
+
             {/* house swiper */}
 
             <div className=' w-full flex flex-row overflow-x-auto' dir='ltr'>
-                  {slides.slice(0,3).map((item, index) => (
+                {slides.slice(0, 3).map((item, index) => (
                     <Card value={item} key={index} />
                 ))}
             </div>

@@ -6,6 +6,7 @@ import bath from '../../assets/landing/bath.svg'
 import bed from '../../assets/landing/bed.svg'
 import count from '../../assets/landing/count.svg'
 import car from '../../assets/landing/car.svg'
+import star from '../../assets/landing/start.svg'
 import { IData } from '@/core/types/IData'
 import { FC } from 'react'
 import Link from 'next/link'
@@ -15,8 +16,16 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ value }) => {
+    const price = Number(value.price)
+    const discounted = Number(value.discounted_price)
+
+    const discountPercent =
+        discounted && price && discounted < price
+            ? Math.round(((price - discounted) / price) * 100)
+            : null
+
     return (
-        <Link href={`rent/${value.id}`} className='flex flex-col mt-15 w-[30%] max-sm:w-full max-sm:h-100 bg-white dark:bg-[#272727] rounded-3xl overflow-hidden border dark:border-none border-gray-200 shadow-sm mx-auto font-sans'>
+        <Link href={`rent/${value.id}`} className='flex flex-col mt-15 w-[31.5%] max-sm:w-full max-sm:h-100 bg-white dark:bg-[#272727] rounded-3xl overflow-hidden border dark:border-none border-gray-200 shadow-sm mx-auto font-sans'>
             {/* image holder */}
             <div className='relative h-80 w-full overflow-hidden'>
                 <Image
@@ -30,14 +39,11 @@ const Card: FC<CardProps> = ({ value }) => {
                 {/* Top Right Badges */}
                 <div className='absolute top-3 right-3 flex gap-2'>
                     <div className='bg-[#FF4D4D] text-white px-4 py-3  rounded-full text-2xl max-sm:px-2 max-sm:py-0 max-sm:h-10 max-sm:text-sm font-bold flex items-center justify-center shadow-md'>
-                        %15
+                        %{discountPercent}
                     </div>
-                    <div className='bg-[#1E3A8A] text-white px-3 py-3 rounded-full text-2xl max-sm:text-sm max-sm:h-10 font-bold flex items-center justify-center gap-1 shadow-md'>
-                        <span>4.5</span>
-                        {/* You can replace this star with an SVG or icon */}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
-                        </svg>
+                    <div className='bg-[#1E3A8A] text-white px-3 py-3 rounded-full text-2xl max-sm:text-sm max-sm:h-10 font-bold flex flex-row-reverse items-center justify-center gap-3 shadow-md'>
+                        <span >{value.rate}</span>
+                        <Image src={star} alt='star' unoptimized />
                     </div>
                 </div>
 
@@ -91,7 +97,7 @@ const Card: FC<CardProps> = ({ value }) => {
                 <div className='bg-[#F3F4F6] dark:bg-[#353535] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
                     {value.price && (
                         <>
-                            <span className='flex flex-row-reverse justify-center items-center text-3xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
+                            <span className='flex flex-row-reverse justify-center items-center text-2xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
                                 {value.discounted_price || "5,500,000"}
                                 <span className='mr-1'>تومان</span>
                             </span>

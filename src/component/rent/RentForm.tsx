@@ -36,7 +36,7 @@ const TimeIcon = () => (
 );
 
 
-const RentForm = () => {
+const RentForm = ({ price, discount }) => {
     return (
         <div dir="rtl" className="w-[90%] max-w-md mx-auto flex flex-col justify-center items-center bg-[#FFFFFA] dark:bg-[#272727] border rounded-3xl p-6 gap-6 shadow-sm font-sans">
 
@@ -87,7 +87,10 @@ const RentForm = () => {
                         <span className="text-gray-800 font-medium text-sm dark:text-[#D9D9E0]">قیمت رهن از</span>
                     </div>
                     <div className="bg-gray-100 w-[70%] rounded-full px-6 py-2.5 flex items-center dark:bg-[#353535] justify-center">
-                        <span className="text-gray-900  dark:text-[#D9D9E0] font-bold text-xl tracking-wide">4,500,000 ت</span>
+                        <span className="text-gray-900 dark:text-[#D9D9E0] font-bold text-xl tracking-wide">
+                            {Number(price).toLocaleString("fa-IR")} ت
+                        </span>
+
                     </div>
                 </div>
 
@@ -98,7 +101,9 @@ const RentForm = () => {
                         <span className="text-gray-800 font-medium text-sm dark:text-[#D9D9E0]">قیمت اجاره از</span>
                     </div>
                     <div className="bg-gray-100 dark:bg-[#353535] dark:text-[#D9D9E0] rounded-full w-[70%] px-6 py-2.5 flex items-center  justify-center">
-                        <span className="text-gray-900 dark:text-[#D9D9E0] font-bold text-xl tracking-wide">4,500,000 ت</span>
+                        <span className="text-gray-900 dark:text-[#D9D9E0] font-bold text-xl tracking-wide">
+                            {Number(discount).toLocaleString("fa-IR")} ت
+                        </span>
                     </div>
                 </div>
             </div>

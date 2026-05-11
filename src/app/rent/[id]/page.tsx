@@ -9,6 +9,7 @@ interface IProps {
 const page: FC<IProps> = ({ params }) => {
 
     const { id } = use(params)
+    
     return (
         <div className='flex flex-col justify-center items-center mt-30'>
             <RentDetail id={id} />

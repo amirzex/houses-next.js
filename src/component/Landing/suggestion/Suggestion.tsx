@@ -116,12 +116,7 @@ export const slides = [
 
 const Suggestion = async () => {
 
-  // const response = await getSuggestion()
-  // const slides = Array.isArray(response) ? response.map(item => ({
-  //   id: item.id,
-  //   content: <Card value={item} />
-  // })) : []
-
+  const response = await getSuggestion()
 
   return (
     <div className="w-full flex flex-col gap-10 p-20 max-sm:p-5 max-sm:mt-20">
@@ -149,14 +144,11 @@ const Suggestion = async () => {
 
       {/* Array map */}
       <div className=" gap-10 flex flex-row w-full max-sm:flex-col ">
-        {/* {slides.length > 0 ? (
-          <MySwiper slides={slides} />
-        ) : (
-          <p className="text-center text-gray-500">هیچ خانه‌ای یافت نشد</p>
-        )} */}
-        {slides.slice(0, 3).map((item, index) => (
-          <Card value={item} key={index} />
-        ))}
+        {Array.isArray(response) &&
+          response.slice(0, 3).map((item, index) => (
+            <Card value={item} key={index} />
+          ))
+        }
       </div>
       <div className='w-full flex justify-center items-center '>
         <Link href="/" className='border border-blue-900 p-5 max-sm:p-3 rounded-full text-blue-900 text-2xl max-sm:text-sm'> مشاهده بیشتر </Link>
