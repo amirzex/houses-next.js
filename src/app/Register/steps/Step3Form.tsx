@@ -1,7 +1,8 @@
 'use client'
 import { useState } from "react";
 import { useRegisterComplete } from "@/core/api/register/RegisterQuery/RegisterQuery";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 export const Step3Form = ({ onBack, userId }) => {
     const router = useRouter()

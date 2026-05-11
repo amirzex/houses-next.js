@@ -27,11 +27,10 @@ export const Step2Form = ({ onNext, onBack, tempUserId }) => {
             tempUserId,
             verificationCode,
         });
-
         mutate(
             {
-                tempUserId,
-                verificationCode,
+                tempUserId: Number(tempUserId),
+                verificationCode: String(verificationCode),
             },
             {
                 onSuccess: () => {
