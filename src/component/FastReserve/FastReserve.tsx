@@ -7,10 +7,44 @@ import FilterForm from "../rent/FilterForm";
 import FastCard from "../common/FastCard";
 import FilterWithMobileMenu from "../rent/FilterWithMobileMenu";
 import Card from "../common/Card";
-import { useReservationQuery } from "@/core/api/landingQuery/LandingQuery";
+import { useRentQuery, useReservationQuery } from "@/core/api/landingQuery/LandingQuery";
+import { useDebounce } from "@/lib/hook/useDebounce";
 
 const FastReserve = () => {
-    const { data, isLoading, error } = useReservationQuery();
+
+    // Rent.tsx
+    const [filters, setFilters] = React.useState({
+        limit: 10,
+        transactionType: "reservation",
+        order: "DESC",
+        sort: "last_updated",
+        search: "",
+        location: "",
+        propertyType: "",
+        minPrice: "",
+        maxPrice: "",
+        minRent: "",
+        maxRent: "",
+        minMortgage: "",
+        maxMortgage: "",
+        minArea: "",
+        maxArea: "",
+    });
+
+
+    const cleanFilters = (obj: any) => {
+        return Object.fromEntries(
+            Object.entries(obj).filter(
+                ([_, v]) => v !== "" && v !== undefined && v !== null
+            )
+        );
+    };
+
+    const debouncedFilters = useDebounce(filters, 700);
+
+    const { data, isLoading, error } = useRentQuery(
+        cleanFilters(debouncedFilters)
+    );
 
     if (isLoading) {
         return <div className="text-center mt-10">در حال بارگذاری...</div>;
@@ -19,6 +53,7 @@ const FastReserve = () => {
     if (error) {
         return <div className="text-center mt-10">خطا در دریافت اطلاعات</div>;
     }
+
 
     return (
         <div
@@ -31,7 +66,7 @@ const FastReserve = () => {
             <div className="w-full p-10 mb-10 max-sm:p-5 max-sm:mb-0">
                 {/* desktop */}
                 <div className="max-sm:hidden md:block">
-                    <FilterForm />
+                    <FilterForm filters={filters} setFilters={setFilters} />
                 </div>
 
                 {/* mobile */}

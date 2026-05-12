@@ -9,18 +9,25 @@ import { useDebounce } from "../../lib/hook/useDebounce";
 
 const Rent = () => {
 
+    // Rent.tsx
     const [filters, setFilters] = React.useState({
         limit: 10,
         transactionType: "rental",
         order: "DESC",
         sort: "last_updated",
+        search: "",
+        location: "",
+        propertyType: "",
+        minPrice: "",
         maxPrice: "",
         minRent: "",
         maxRent: "",
         minMortgage: "",
         maxMortgage: "",
-        search: ""
+        minArea: "",
+        maxArea: "",
     });
+
 
     const cleanFilters = (obj: any) => {
         return Object.fromEntries(
