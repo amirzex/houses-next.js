@@ -23,7 +23,9 @@ const BlogPage = () => {
             {/* cards */}
             <div className='w-full flex-wrap flex flex-row justify-center items-center gap-5 '>
                 {data?.data?.map((item) => (
-                    <BlogCard item={item} key={item.id} />
+                    <div className='w-[31.5%]' key={item.id}>
+                        <BlogCard item={item} />
+                    </div>
                 ))}
             </div>
         </div>

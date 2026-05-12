@@ -132,3 +132,29 @@ body {
   }
 }
 
+/* Custom Swiper Pagination Styles */
+
+/* This is the container for the dots */
+.swiper-pagination-custom {
+  position: relative;
+  text-align: center;
+  padding-top: 2rem; /* Equals to pt-8 in Tailwind */
+}
+
+/* This is the style for INACTIVE dots */
+.swiper-pagination-custom .swiper-pagination-bullet {
+  width: 40px;
+  height: 20px;
+  background-color: #d1d5db; /* A light gray color, like Tailwind's gray-300 */
+  opacity: 1;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  margin: 0 4px !important; /* Spacing between dots */
+}
+
+/* This is the style for the ACTIVE dot */
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  width: 80px; /* Make it wider */
+  border-radius: 15px; /* Make it a pill shape */
+  background-color: #2563eb; /* A nice blue color, like Tailwind's blue-600 */
+}

@@ -9,7 +9,6 @@ export async function GET(request: Request) {
   const sort = searchParams.get("sort") ?? "last_updated";
   const order = searchParams.get("order") ?? "DESC";
 
-  // پارامترهای فیلتر کامل
   const maxPrice = searchParams.get("maxPrice");
   const minRent = searchParams.get("minRent");
   const maxRent = searchParams.get("maxRent");
@@ -17,7 +16,6 @@ export async function GET(request: Request) {
   const maxMortgage = searchParams.get("maxMortgage");
   const search = searchParams.get("search");
 
-  // موارد اضافه:
   const location = searchParams.get("location");
   const propertyType = searchParams.get("propertyType");
   const minArea = searchParams.get("minArea");
