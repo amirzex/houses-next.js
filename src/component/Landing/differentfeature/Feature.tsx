@@ -13,8 +13,6 @@ const Feature = () => {
         order: "DESC"
     });
 
-    console.log(data?.comments, 'data');
-
     if (isLoading) {
         return <div> در حال بارگزاری ... </div>;
     }
