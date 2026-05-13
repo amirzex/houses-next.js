@@ -61,7 +61,7 @@ const Rent = () => {
                 </div>
 
                 <div className="max-sm:block md:hidden">
-                    <FilterWithMobileMenu />
+                    <FilterWithMobileMenu filters={filters} setFilters={setFilters}/>
                 </div>
             </div>
 

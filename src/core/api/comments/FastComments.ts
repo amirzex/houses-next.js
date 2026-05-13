@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IData } from "../../types/IData";
 import { BaseUrl } from "../BaseUrl";
-
+import Cookies from "js-cookie";
 export const getCommentById = async (house_id: number): Promise<IData[]> => {
   const response = await axios.get(
     `${BaseUrl}/api/houses/${house_id}/comments`,
@@ -9,6 +9,22 @@ export const getCommentById = async (house_id: number): Promise<IData[]> => {
   return response.data;
 };
 
+export const createComment = async (params) => {
+  const token = Cookies.get("accessToken");
+
+  const response = await axios.post(`${BaseUrl}/api/comments`, params, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: false,
+  });
+
+  return response.data;
+};
+
+//for landing
 export const getAllComment = async ({ queryKey }) => {
   const [_key, params] = queryKey;
 

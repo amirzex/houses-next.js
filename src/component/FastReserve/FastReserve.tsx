@@ -71,7 +71,7 @@ const FastReserve = () => {
 
                 {/* mobile */}
                 <div className="max-sm:block md:hidden">
-                    <FilterWithMobileMenu />
+                    <FilterWithMobileMenu filters={filters} setFilters={setFilters}/>
                 </div>
             </div>
 
@@ -85,14 +85,14 @@ const FastReserve = () => {
                 </div>
 
                 {/* mobile cards */}
-                <div className="w-full max-sm:flex md:hidden flex-col justify-start items-center gap-5 p-5" dir="">
+                <div className="w-full max-sm:flex md:hidden flex-col justify-start items-center gap-5 pr-5 pl-5" dir="ltr">
                     {data?.map((item, index) => (
                         <Card value={item} key={index} />
                     ))}
                 </div>
 
                 {/* map */}
-                <div className="w-[40%] max-sm:pl-0 max-sm:w-full pl-10">
+                <div className="w-[40%] max-sm:mt-5  max-sm:pl-5 max-sm:pr-5 max-sm:h-auto  max-sm:w-full pl-10">
                     <LocationMap />
                 </div>
             </div>

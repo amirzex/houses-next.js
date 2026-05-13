@@ -4,6 +4,7 @@ import Breadcrumb from '@/component/common/Breadcrumb'
 import React from 'react'
 import BlogFilter from './BlogFilter'
 import { useGetBlog } from '@/core/api/blog/blogQuery/BlogQuery'
+import FilterBlogMobile from './FilterBlogMobile'
 
 const BlogPage = () => {
     const { data, isLoading, error } = useGetBlog();
@@ -16,14 +17,18 @@ const BlogPage = () => {
             <Breadcrumb />
 
             {/* filter sectionF */}
-            <div className='w-full pr-5 pb-5'>
+            <div className='w-full pr-5 pb-5 max-sm:hidden md:block'>
                 <BlogFilter />
             </div>
 
+            <div className='max-sm:block md:hidden'>
+                <FilterBlogMobile />
+            </div>
+
             {/* cards */}
-            <div className='w-full flex-wrap flex flex-row justify-center items-center gap-5 '>
+            <div className='w-full flex-wrap flex flex-row max-sm:flex-col justify-center items-center gap-5 '>
                 {data?.data?.map((item) => (
-                    <div className='w-[31.5%]' key={item.id}>
+                    <div className='w-[31.5%] max-sm:w-full max-sm:p-5' key={item.id}>
                         <BlogCard item={item} />
                     </div>
                 ))}

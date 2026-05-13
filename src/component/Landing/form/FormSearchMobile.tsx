@@ -1,12 +1,50 @@
-import React from 'react'
+"use client"
 
-const FormSearchMobile = () => {
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'
+
+const FormSearchMobile = ({ selectedTab }: { selectedTab: string }) => {
+    const router = useRouter();
+
+    const [location, setLocation] = useState("");
+    const [guests, setGuests] = useState("");
+    const [checkIn, setCheckIn] = useState("");
+    const [checkOut, setCheckOut] = useState("");
+
+    const handleSearch = (e: React.FormEvent) => {
+
+        // e.preventDefault();
+
+        const queryParams = new URLSearchParams();
+
+        if (location) queryParams.append("location", location);
+        if (guests) queryParams.append("guests", guests);
+        if (checkIn) queryParams.append("checkIn", checkIn);
+        if (checkOut) queryParams.append("checkOut", checkOut);
+
+        let path = "/houses";
+
+        switch (selectedTab) {
+            case "رزرو ملک":
+                path = "/FastReserve";
+                break;
+
+            case "رهن و اجاره":
+                path = "/rent";
+                break;
+            default:
+                path = "/";
+        }
+
+        router.push(`${path}?${queryParams.toString()}`);
+    };
+
     return (
-        <div className='bg-white w-full rounded-[2rem] p-5'>
+        <div className='bg-white dark:bg-[#272727] w-full rounded-2xl p-5'>
 
             {/* دکمه جستجو در بالا سمت چپ */}
             <div className="w-full flex justify-start mb-6">
-                <button className='flex items-center gap-2 text-sm bg-[#2a45a6] text-white font-medium rounded-full px-5 py-2.5'>
+                <button type='submit' className='flex items-center gap-2 text-sm bg-[#2a45a6] text-white font-medium rounded-full px-5 py-2.5'>
                     <span>جستجو کن</span>
                     {/* آیکون ذره‌بین */}
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,15 +54,16 @@ const FormSearchMobile = () => {
                 </button>
             </div>
 
-            <form className='w-full flex flex-col gap-5' action="">
+            <form onSubmit={handleSearch} className='w-full flex flex-col gap-5' action="">
 
                 {/* ۱. انتخاب مقصد */}
                 <div className="w-full text-black flex flex-col gap-2 items-end">
-                    <p className="text-[15px] font-bold pr-3">انتخاب مقصد</p>
+                    <p className="text-[15px] font-bold pr-3 dark:text-white">انتخاب مقصد</p>
                     <div className="relative w-full">
                         <select
-                            className="appearance-none bg-[#f4f5f8] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer text-[13px] text-gray-400 focus:outline-none"
-                            defaultValue=""
+                            className="appearance-none bg-[#f4f5f8] dark:bg-[#353535] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer text-[13px] text-gray-400 focus:outline-none"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
                         >
                             <option value="" disabled>استان ، شهر ، اقامتگاه ....</option>
                             <option value="tehran">تهران</option>
@@ -40,12 +79,14 @@ const FormSearchMobile = () => {
 
                 {/* ۲. تاریخ ورود */}
                 <div className="w-full text-black flex flex-col gap-2 items-end">
-                    <p className="text-[15px] font-bold pr-3">تاریخ ورود</p>
+                    <p className="text-[15px] font-bold pr-3 dark:text-white">تاریخ ورود</p>
                     <div className="relative w-full">
                         {/* در تصویر از input متنی شبیه‌سازی شده استفاده شده است */}
                         <input
-                            type="text"
-                            className="bg-[#f4f5f8] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer appearance-none text-[13px] placeholder-gray-400 focus:outline-none"
+                            value={checkIn}
+                            onChange={(e) => setCheckIn(e.target.value)}
+                            type="date"
+                            className="bg-[#f4f5f8] dark:bg-[#353535] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer appearance-none text-[13px] placeholder-gray-400 focus:outline-none"
                             placeholder="وارد کنید ...."
                         />
                         <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-800 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -54,11 +95,13 @@ const FormSearchMobile = () => {
 
                 {/* ۳. تاریخ خروج */}
                 <div className="w-full text-black flex flex-col gap-2 items-end">
-                    <p className="text-[15px] font-bold pr-3">تاریخ خروج</p>
+                    <p className="text-[15px] font-bold pr-3 dark:text-white">تاریخ خروج</p>
                     <div className="relative w-full">
                         <input
-                            type="text"
-                            className="bg-[#f4f5f8] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer appearance-none text-[13px] placeholder-gray-400 focus:outline-none"
+                            value={checkOut}
+                            onChange={(e) => setCheckOut(e.target.value)}
+                            type="date"
+                            className="bg-[#f4f5f8] dark:bg-[#353535] w-full text-right py-3.5 pr-5 pl-10 rounded-full cursor-pointer appearance-none text-[13px] placeholder-gray-400 focus:outline-none"
                             placeholder="وارد کنید ...."
                         />
                         <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-800 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -67,10 +110,12 @@ const FormSearchMobile = () => {
 
                 {/* ۴. تعداد نفرات */}
                 <div className='w-full text-black flex flex-col gap-2 items-end'>
-                    <p className='text-[15px] font-bold pr-3'>تعداد نفرات</p>
+                    <p className='text-[15px] font-bold pr-3 dark:text-white'>تعداد نفرات</p>
                     <div className="relative w-full">
                         <input
-                            className='bg-[#f4f5f8] w-full text-right py-3.5 pr-5 pl-10 rounded-full text-[13px] placeholder-gray-400 focus:outline-none'
+                            value={guests}
+                            onChange={(e) => setGuests(e.target.value)}
+                            className='bg-[#f4f5f8] dark:bg-[#353535] w-full text-right py-3.5 pr-5 pl-10 rounded-full text-[13px] placeholder-gray-400 focus:outline-none'
                             type="text"
                             placeholder='وارد کنید ....'
                         />

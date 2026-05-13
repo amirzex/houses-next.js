@@ -97,16 +97,16 @@ const Card: FC<CardProps> = ({ value }) => {
                 <div className='bg-[#F3F4F6] dark:bg-[#353535] rounded-2xl flex flex-row-reverse justify-center items-center py-5 px-4 mt-2'>
                     {value.price && (
                         <>
-                            <span className='flex flex-row-reverse justify-center items-center text-2xl max-sm:text-sm text-[#EF4444] line-through ml-2 font-medium'>
+                            <span className='flex flex-row-reverse justify-center items-center text-2xl max-sm:text-xs text-[#EF4444] line-through ml-2 font-medium'>
                                 {value.discounted_price || "5,500,000"}
                                 <span className='mr-1'>تومان</span>
                             </span>
                             <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
                         </>
                     )}
-                    <span className='flex flex-row-reverse justify-center  dark:text-white items-center text-3xl max-sm:text-sm font-bold text-black gap-1'>
+                    <span className='flex flex-row-reverse justify-center  dark:text-white items-center text-3xl max-sm:text-xs font-bold text-black gap-1'>
                         {value.price || "4,500,000"}
-                        <span className='text-3xl font-normal ml-1 max-sm:text-sm'>ت</span> /
+                        <span className='text-3xl font-normal ml-1 max-sm:text-xs'>ت</span> /
                         <span className='text-xl max-sm:text-xs text-gray-500 font-normal dark:text-gray-200'> هر شب</span>
                     </span>
                 </div>

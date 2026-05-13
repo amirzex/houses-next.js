@@ -1,10 +1,10 @@
 // src/components/FilterWithMobileMenu.jsx
 
 import React, { useState } from 'react';
-import FilterForm from './FilterForm';
 import fillter from '../../assets/payment/Vector.svg'
 import removefillter from '../../assets/payment/filter-remove.svg'
 import Image from 'next/image';
+import BlogFilter from './BlogFilter';
 
 
 const CloseIcon = () => (
@@ -14,35 +14,23 @@ const CloseIcon = () => (
 );
 
 
-const FilterWithMobileMenu = ({ filters, setFilters }) => {
-
+const FilterBlogMobile = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [tempFilters, setTempFilters] = useState(filters);
-
     const closeMenu = () => setIsMenuOpen(false);
 
-    const openMenu = () => {
-        setTempFilters(filters);
-        setIsMenuOpen(true);
-    };
-
-    const applyFilters = () => {
-        setFilters(tempFilters);
-        closeMenu();
-    };
-
     return (
-        <div className="w-full ">
+        <div className="  w-full ">
+
 
             <div className="hidden lg:block bg-white  p-6 rounded-xl shadow-lg border border-gray-200/80">
                 <h3 className="text-xl font-bold mb-6 text-gray-800">فیلترها</h3>
 
-                <FilterForm filters={filters} setFilters={setFilters} />
+                <BlogFilter />
             </div>
 
             <div className="lg:hidden">
                 <button
-                    onClick={openMenu}
+                    onClick={() => setIsMenuOpen(true)}
                     className="flex items-center justify-start gap-x-2 w-full px-4 py-3 bg-gray-300 dark:bg-[#272727] dark:text-blue-600/90 dark:border-blue-600/90 text-blue-900 rounded-full shadow-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
                 >
                     <div className='flex flex-row gap-1 border p-3 border-blue-900 rounded-full'>
@@ -86,17 +74,12 @@ const FilterWithMobileMenu = ({ filters, setFilters }) => {
 
                         <div className="flex-1 p-6 overflow-y-auto">
 
-                            <FilterForm
-                                filters={tempFilters}
-                                setFilters={setTempFilters}
-                                isMobile={true}
-                            />
-
+                            <BlogFilter isMobile={true} />
                         </div>
 
-                        <div className="p-4 border-t border-gray-200 dark:bg-[#272727] bg-gray-50">
+                        <div className="p-4 border-t border-gray-200 bg-gray-50">
                             <button
-                                onClick={applyFilters}
+                                onClick={closeMenu}
                                 className="w-full px-4 py-3 bg-blue-900 text-white rounded-full font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
                             >
                                 اعمال فیلترها
@@ -109,4 +92,4 @@ const FilterWithMobileMenu = ({ filters, setFilters }) => {
     );
 };
 
-export default FilterWithMobileMenu;
+export default FilterBlogMobile;

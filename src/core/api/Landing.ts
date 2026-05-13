@@ -1,30 +1,34 @@
 import { IData } from "../types/IData";
 import { BaseUrl } from "./BaseUrl";
 import axios from "axios";
-import { IFilterParams } from "../types/IFilterParams";
-import { Property } from "../types/IReserveContext";
 
-export const getData = async (params: IFilterParams): Promise<IData[]> => {
+//landing filter data
+export interface ISearchParams {
+  location?: string;
+  guests?: number;
+  checkIn?: string;
+  checkOut?: string;
+}
+
+export const searchProperties = async (params: ISearchParams) => {
   const response = await axios.get(`${BaseUrl}/api/houses`, {
     params: {
-      page: params.page ? Number(params.page) : 1,
-      limit: params.limit ? Number(params.limit) : 9,
-      search: params.search || "",
-      sort: params.sort || "last_updated",
       location: params.location || "",
-      minPrice:
-        params.minPrice !== undefined ? Number(params.minPrice) : undefined,
-      maxPrice:
-        params.maxPrice !== undefined ? Number(params.maxPrice) : undefined,
+      guests: params.guests || undefined,
+      checkIn: params.checkIn || "",
+      checkOut: params.checkOut || "",
     },
+
     paramsSerializer: {
       serialize: (params) => {
         const searchParams = new URLSearchParams();
+
         Object.entries(params).forEach(([key, value]) => {
           if (value !== undefined && value !== "") {
             searchParams.append(key, String(value));
           }
         });
+
         return searchParams.toString();
       },
     },
@@ -33,32 +37,7 @@ export const getData = async (params: IFilterParams): Promise<IData[]> => {
   return response.data.houses;
 };
 
-export const getPropertyById = async (id: string): Promise<Property> => {
-  try {
-    const response = await axios.get(`${BaseUrl}/api/houses/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
-    return response.data;
-  } catch (error: any) {
-    if (error.response) {
-      console.error("Server error:", {
-        status: error.response.status,
-        data: error.response.data,
-        headers: error.response.headers,
-      });
-    } else if (error.request) {
-      console.error("No response received:", error.request);
-    } else {
-      console.error("Request error:", error.message);
-    }
-
-    console.error(`Error in getPropertyById for id ${id}:`, error);
-    throw error;
-  }
-};
 
 export const getSuggestion = async (): Promise<IData[]> => {
   const response = await axios.get(`${BaseUrl}/api/houses`);

@@ -1,9 +1,5 @@
 import React from "react";
 import { SelectInput } from "./SelectInput";
-
-// 1. کامپوننت NumberInput را به بیرون از FilterForm منتقل کنید
-// این کامپوننت دیگر به متغیرهای داخلی FilterForm دسترسی مستقیم ندارد
-// و همه چیز را از طریق props دریافت می‌کند.
 interface NumberInputProps {
     label: string;
     name: string;
@@ -19,8 +15,8 @@ const NumberInput: React.FC<NumberInputProps> = ({ label, name, value, onChange 
             </label>
             <input
                 type="number"
-                value={value || ""} // استفاده از value که از props آمده
-                onChange={(e) => onChange(name, e.target.value)} // فراخوانی تابع onChange از props
+                value={value || ""} 
+                onChange={(e) => onChange(name, e.target.value)} 
                 placeholder="مقدار"
                 className="w-full bg-gray-100/80 text-gray-500 dark:text-[#D9D9E0] dark:bg-[#353535] text-sm rounded-full px-4 py-3 outline-none focus:ring-2 focus:ring-[#1a3b99]/20"
             />
@@ -29,7 +25,6 @@ const NumberInput: React.FC<NumberInputProps> = ({ label, name, value, onChange 
 };
 
 
-// 2. کامپوننت FilterForm بدون تغییر در منطق اصلی
 const FilterForm = ({ filters, setFilters }: any) => {
     const handleChange = (name: string, value: any) => {
         setFilters((prev: any) => ({

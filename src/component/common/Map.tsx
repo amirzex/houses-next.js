@@ -106,7 +106,7 @@ import map from '../../assets/landing/Rectangle 6634.svg'
 
 const LocationMap = () => {
     return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center max-sm:overflow-hidden rounded-4xl max-sm:h-70'>
             <Image src={map} alt='map' unoptimized className='w-full' />
         </div>
     )

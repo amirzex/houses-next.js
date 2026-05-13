@@ -10,6 +10,7 @@ const TopSide = () => {
     const [selected, setSelected] = useState<number | null>(null);
 
     const options = ["رزرو ملک", "رهن و اجاره", "خرید و فروش"];
+
     return (
         <div className=" w-full flex flex-row justify-center">
             <div className="relative w-full h-250 flex justify-center">
@@ -57,10 +58,10 @@ const TopSide = () => {
                             </div>
                             {/* form */}
                             <div className='w-[80%] max-sm:hidden flex flex-row-reverse justify-center items-center bg-white dark:bg-[#272727] h-auto rounded-4xl p-5'>
-                                <FormSearch />
+                                <FormSearch selectedTab={options[selected]} />
                             </div>
                             <div className='max-sm:flex md:hidden w-full rounded-4xl bg-white '>
-                                <FormSearchMobile />
+                                <FormSearchMobile selectedTab={options[selected]}/>
                             </div>
 
                         </div>

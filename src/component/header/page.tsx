@@ -42,7 +42,7 @@ const Header = () => {
 
           {/* dark mode  */}
 
-          <div onClick={handleDarkMode} className='p-3 ml-[-40px] bg-blue-900 rounded-full'>
+          <div onClick={handleDarkMode} className='p-3 ml-[-40px] bg-blue-900 rounded-full max-sm:hidden'>
             <Image src={moon} alt='moon' unoptimized />
           </div>
 
@@ -71,6 +71,7 @@ const Header = () => {
       <MobileMenuDrawer
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
+        handleDarkMode={handleDarkMode}
       />
 
     </>

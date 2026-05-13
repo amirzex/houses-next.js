@@ -33,7 +33,7 @@ const BlogFilter = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center gap-3 overflow-x-auto pb-1 md:pb-0">
+                <div className="flex max-sm:hidden flex-row items-center gap-3 overflow-x-auto pb-1 md:pb-0">
 
                     {filters.map((filter) => (
                         <button
