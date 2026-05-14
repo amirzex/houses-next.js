@@ -16,6 +16,7 @@ import RentForm from './RentForm';
 import FacilitiesRent from './FacilitiesRent';
 import Card from '../common/Card';
 import { useHouseById } from '@/core/api/housesDetail/housesQuery/HousesQuery';
+import Appointments from '../common/Appointments';
 
 interface IProps {
     id: string;
@@ -25,7 +26,7 @@ const RentDetail: FC<IProps> = ({ id }) => {
 
     // const data = slides.find(slide => slide.id === Number(id))
     const { data, isLoading, error } = useHouseById(id)
-    
+
     return (
         <div className='w-full flex flex-col justify-center items-center gap-10 p-10' dir='rtl'>
 
@@ -98,14 +99,17 @@ const RentDetail: FC<IProps> = ({ id }) => {
                         </div>
 
                         {/* comments */}
-                        <ReserveComments id={id}/>
+                        <ReserveComments id={id} />
 
                     </div>
 
                     {/* reserve form and houses item */}
 
                     <div className='w-[30%] flex flex-col justify-center gap-5 items-center'>
-                        <RentForm price={data?.price} discount={data?.discounted_price}/>
+                        <RentForm id={id} price={data?.price} discount={data?.discounted_price} />
+
+                        <Appointments id={id}/>
+
                     </div>
                 </div>
 

@@ -1,13 +1,17 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Bell, Moon, Sun, ChevronDown } from "lucide-react";
+import { Bell, Moon, Sun, ChevronDown, UserIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/core/api/dashboard/user/userQuery/UserQuery";
 
 const Header = () => {
     const pathname = usePathname();
     const [isDark, setIsDark] = useState(false);
     const [mounted, setMounted] = useState(false);
+
+    const { data, isLoading, isError } = useUser();
+    const user = data?.user?.user;
 
     useEffect(() => {
         setMounted(true);
@@ -71,7 +75,7 @@ const Header = () => {
 
                         <div className="text-left hidden sm:block">
                             <p className="text-sm font-black text-slate-800 dark:text-white leading-tight">
-                                امیر محمد ملایی
+                                {user?.fullName}
                             </p>
                             <p className="text-[10px] font-bold text-slate-400 mt-0.5">
                                 خریدار
@@ -80,7 +84,15 @@ const Header = () => {
 
                         <div className="w-11 h-11 bg-slate-100 dark:bg-white/10 rounded-2xl border-2 border-white dark:border-slate-800 overflow-hidden shadow-sm">
                             <div className="w-full h-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold">
-                                ام
+                                {user?.profilePicture && user.profilePicture !== "string" ? (
+                                    <img
+                                        src={user.profilePicture}
+                                        alt="profile"
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <UserIcon size={40} className="text-slate-400" />
+                                )}
                             </div>
                         </div>
                     </div>

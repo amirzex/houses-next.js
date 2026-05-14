@@ -16,6 +16,7 @@ import Facilities from './Facilities';
 import Card from '../common/Card';
 import { useReservationQuery } from '@/core/api/landingQuery/LandingQuery';
 import { useHouseById } from '@/core/api/housesDetail/housesQuery/HousesQuery';
+import Appointments from '../common/Appointments';
 interface IProps {
   id: string;
 }
@@ -103,6 +104,8 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
               parking={data?.parking}
               rooms={data?.rooms}
               capacity={data?.capacity} />
+
+            <Appointments id={id} />
           </div>
         </div>
 

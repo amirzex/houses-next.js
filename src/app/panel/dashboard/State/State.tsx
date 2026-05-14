@@ -1,15 +1,19 @@
 
 import React from 'react'
-import { Users, Calendar, Wallet, Star, BookHeart } from 'lucide-react';
+import { Users, Calendar, Wallet, Star, BookHeart, CirclePercent } from 'lucide-react';
+import { useUserActivity } from '@/core/api/dashboard/user/userQuery/UserQuery';
 
-const State = ({data}) => {
+const State = () => {
+
+    const { data } = useUserActivity()
 
     const stats = [
-        { title: "کل رزروها", value: data?.bookings?.bookingCount, icon: <Calendar className="text-blue-500" />, trend: "+۱۲٪" },
+        { title: "کل رزروها", value: data?.activity?.bookingCount, icon: <Calendar className="text-blue-500" />, trend: "+۱۲٪" },
         { title: "موجودی کیف پول", value: "۴,۵۰۰,۰۰۰ تومان", icon: <Wallet className="text-emerald-500" />, trend: "+۵٪" },
-        { title: " رزرو های پرداخت نشده", value: data?.bookings?.canceledBookings, icon: <Star className="text-amber-500" />, trend: "جدید" },
-        { title: "  علاقه مندی ها", value: "۹", icon: <BookHeart className="text-purple-500" />, trend: "+۲" },
+        { title: " رزرو های پرداخت شده", value: data?.activity?.housesCreated, icon: <Star className="text-amber-500" />, trend: "جدید" },
+        { title: "  مشخصات تکمیلی  ", value: data?.user?.additionalPercentage, icon: <CirclePercent className="text-purple-500" />, trend: "%" },
     ];
+
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

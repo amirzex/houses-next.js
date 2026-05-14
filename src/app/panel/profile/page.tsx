@@ -1,38 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useUser } from "@/core/api/dashboard/user/userQuery/UserQuery";
-import { User } from "lucide-react";
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
-
-interface TokenPayload {
-    id: string;
-}
+import { useUpdateUser } from "../../../core/api/dashboard/user/userQuery/UserQuery";
+import { User as UserIcon } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function ProfilePage() {
-    const [id, setId] = useState<string | null>(null);
+    const { data, isLoading, isError } = useUser();
+    const user = data?.user?.user;
+
+    const updateUserMutation = useUpdateUser();
+
+    const [fullName, setFullName] = useState<string>("");
+    const [phoneNumber, setPhoneNumber] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
 
     useEffect(() => {
-        const token = Cookies.get("token");
-
-        if (token) {
-            const decoded: TokenPayload = jwtDecode(token);
-            setId(decoded.id);
-            console.log(decoded)
+        if (user) {
+            setFullName(user.fullName ?? "");
+            setPhoneNumber(user.phoneNumber ?? "");
+            setEmail(user.email ?? "");
         }
-    }, []);
-
-    const { data, isLoading } = useUser(id ?? "");
-
-    // if (!id) return null;
+    }, [user]);
 
     if (isLoading)
         return <p className="text-center p-10">در حال دریافت اطلاعات...</p>;
 
-    const user = data?.user;
-    console.log(Cookies.get("token"))
+    if (isError)
+        return (
+            <p className="text-center p-10 text-red-500">خطا در دریافت اطلاعات کاربر</p>
+        );
 
+    const handleSave = () => {
+        updateUserMutation.mutate({
+            fullName,
+            phoneNumber,
+            email,
+        });
+    };
 
     return (
         <div className="mx-auto space-y-8" dir="rtl">
@@ -43,18 +48,18 @@ export default function ProfilePage() {
                             {user?.profilePicture && user.profilePicture !== "string" ? (
                                 <img
                                     src={user.profilePicture}
-                                    alt=""
+                                    alt="profile"
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
-                                <User size={40} className="text-slate-400" />
+                                <UserIcon size={40} className="text-slate-400" />
                             )}
                         </div>
                     </div>
 
                     <div>
                         <h3 className="font-black text-lg dark:text-white">
-                            {user?.fullName || "بارگذاری..."}
+                            {user?.fullName || "نامشخص"}
                         </h3>
                         <p className="text-slate-400 text-sm">
                             سطح دسترسی: {user?.role === "buyer" ? "خریدار" : user?.role}
@@ -62,42 +67,47 @@ export default function ProfilePage() {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 mt-8">
-                    <div className="space-y-2">
+                <div className="flex flex-row gap-6 mt-8 ">
+                    <div className="space-y-2 flex flex-col w-[33%]">
                         <label className="text-sm font-bold text-slate-500">
                             نام و نام خانوادگی
                         </label>
                         <input
                             type="text"
-                            defaultValue={user?.fullName}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            className="w/full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none"
                         />
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-500">
-                            شماره تماس
-                        </label>
+                    <div className="space-y-2 flex flex-col w-[33%]">
+                        <label className="text-sm font-bold text-slate-500">شماره تماس</label>
                         <input
                             type="text"
-                            defaultValue={user?.phoneNumber}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none text-left"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            className="w/full bg-slate-50 text-right dark:bg-white/5 rounded-2xl p-4 outline-none"
                         />
                     </div>
 
-                    <div className="space-y-2 md:col-span-2">
+                    <div className="space-y-2 flex flex-col w-[33%]">
                         <label className="text-sm font-bold text-slate-500">ایمیل</label>
                         <input
                             type="email"
-                            defaultValue={user?.email}
-                            className="w-full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none text-left"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w/full bg-slate-50 dark:bg-white/5 rounded-2xl p-4 outline-none text-right"
                         />
                     </div>
                 </div>
 
                 <div className="pt-8 flex justify-end">
-                    <button className="bg-primary text-white px-10 py-4 rounded-2xl font-black hover:opacity-90 transition-all">
-                        ذخیره تغییرات
+                    <button
+                        onClick={handleSave}
+                        disabled={updateUserMutation.isLoading}
+                        className="bg-primary text-white px-10 py-4 rounded-2xl font-black hover:opacity-90 transition-all disabled:opacity-50"
+                    >
+                        {updateUserMutation.isLoading ? "در حال ذخیره..." : "ذخیره تغییرات"}
                     </button>
                 </div>
             </div>

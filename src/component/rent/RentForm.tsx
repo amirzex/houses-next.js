@@ -4,6 +4,8 @@ import Link from 'next/link';
 import home from '../../assets/reserve/home.svg';
 import money from '../../assets/details/money-01.svg'
 import money2 from '../../assets/details/MoneyExchange01Icon.svg'
+import { useState } from 'react';
+import ChatModal from './modal/ChatModal';
 
 const MoneyIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -36,7 +38,10 @@ const TimeIcon = () => (
 );
 
 
-const RentForm = ({ price, discount }) => {
+const RentForm = ({ price, discount , id }) => {
+
+    const [isChatOpen, setIsChatOpen] = useState(false);
+
     return (
         <div dir="rtl" className="w-[90%] max-w-md mx-auto flex flex-col justify-center items-center bg-[#FFFFFA] dark:bg-[#272727] border rounded-3xl p-6 gap-6 shadow-sm font-sans">
 
@@ -125,12 +130,21 @@ const RentForm = ({ price, discount }) => {
                     <ArrowLeftIcon />
                 </Link>
 
-                <Link href="#" className="w-full bg-white dark:bg-transparent text-[#1e3a8a] border border-[#1e3a8a] dark:border-blue-600/90 font-medium py-3.5 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors duration-300">
+                <button
+                    onClick={() => setIsChatOpen(true)}
+                    className="w-full bg-white dark:bg-transparent text-[#1e3a8a] border border-[#1e3a8a] dark:border-blue-600/90 font-medium py-3.5 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors duration-300"
+                >
                     <span className="pt-0.5 text-[15px] dark:text-blue-600/90">گفت و گو با فروشنده</span>
-                    <ArrowLeftIcon />
-                </Link>
-            </div>
+                </button>
 
+            </div>
+            {/* فراخوانی مودال */}
+            <ChatModal
+                isOpen={isChatOpen}
+                onClose={() => setIsChatOpen(false)}
+                sellerName="امیر محمد خیرآبادی"
+                houseId={id}
+            />
         </div>
     );
 };

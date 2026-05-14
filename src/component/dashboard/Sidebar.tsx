@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, User, CalendarDays, Bell, LogOut, PieChart, Heart } from 'lucide-react';
+import { LayoutDashboard, User, CalendarDays, Bell, LogOut, PieChart, Heart, UserRound, UserRoundSearch } from 'lucide-react';
 
 const menuItems = [
     { title: "داشبورد", icon: <LayoutDashboard size={22} />, href: "/panel/dashboard" },
@@ -10,6 +10,7 @@ const menuItems = [
     { title: "مدیریت مالی", icon: <PieChart size={22} />, href: "/panel/financial" },
     { title: "علاقه‌مندی‌ها", icon: <Heart size={22} />, href: "/panel/favorites" },
     { title: "اعلان‌ها", icon: <Bell size={22} />, href: "/panel/notifications" },
+    { title: "ملاقات ها", icon: <UserRoundSearch size={22} />, href: "/panel/appointments" },
 ];
 
 export default function Sidebar() {

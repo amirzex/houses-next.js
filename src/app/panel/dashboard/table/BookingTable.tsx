@@ -23,7 +23,7 @@ const staticBookings = [
 ]
 
 const BookingTable = () => {
-    const { booking } = useBookings()
+    const { data: booking } = useBookings()
 
     const bookingsData =
         booking && booking.length > 0 ? booking : staticBookings
