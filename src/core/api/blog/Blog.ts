@@ -1,8 +1,13 @@
 import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
 
-export const GetBlog = async () => {
-  const Response = await axios.get(`${BaseUrl}/api/blogs`);
+export const GetBlog = async (category_id, title) => {
+  const Response = await axios.get(`${BaseUrl}/api/blogs`, {
+    params: {
+      category_id: category_id || undefined,
+      title: title || undefined,
+    },
+  });
   return Response.data;
 };
 

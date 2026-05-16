@@ -5,10 +5,23 @@ import React from 'react'
 import BlogFilter from './BlogFilter'
 import { useGetBlog } from '@/core/api/blog/blogQuery/BlogQuery'
 import FilterBlogMobile from './FilterBlogMobile'
+import { useCategories } from '@/core/api/categories/categoriesQuery/CategoriesQuery'
+import useDebounce from './useDebounce'
 
 const BlogPage = () => {
-    const { data, isLoading, error } = useGetBlog();
 
+    const [selectedCategory, setSelectedCategory] = React.useState(null);
+    const [searchTerm, setSearchTerm] = React.useState("");
+
+
+    const { data, isLoading, error } = useGetBlog(selectedCategory, searchTerm);
+
+    const { data: Category, isError } = useCategories({
+        page: 1,
+        limit: 10,
+        sort: "name",
+        order: "DESC",
+    });
     if (isLoading) return <p>در حال دریافت بلاگ‌ها...</p>;
     if (error) return <p>خطا در دریافت اطلاعات</p>;
     return (
@@ -18,7 +31,14 @@ const BlogPage = () => {
 
             {/* filter sectionF */}
             <div className='w-full pr-5 pb-5 max-sm:hidden md:block'>
-                <BlogFilter />
+                <BlogFilter
+                    data={Category}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
+
             </div>
 
             <div className='max-sm:block md:hidden'>

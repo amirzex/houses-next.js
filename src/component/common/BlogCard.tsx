@@ -3,7 +3,17 @@ import blog from '../../assets/details/blog.jpg';
 import Link from 'next/link';
 
 const BlogCard = ({ item }) => {
-    
+
+    const categoryNames = {
+        1: "ویلایی",
+        5: "مغازه",
+        6: "زمین",
+        4: "دفتر اداری",
+        3: "پنت هاوس",
+        7: "باغ",
+        2: "آپارتمان"
+    };
+
 
     const formatDate = (date) => {
         const d = new Date(date);
@@ -29,7 +39,7 @@ const BlogCard = ({ item }) => {
                 <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent"></div>
 
                 <div className="absolute top-3 right-3 flex items-center gap-2">
-                   
+
                     <div className="bg-[#1e3b99] text-white text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -37,7 +47,7 @@ const BlogCard = ({ item }) => {
                         <span className="pt-0.5 text-xl max-sm:text-sm">{item?.estimated_reading_time} </span>
                     </div>
                     <div className="bg-[#1e3b99] text-white text-xs font-medium px-4 py-1.5 rounded-full shadow-md">
-                        <span className="pt-0.5 text-2xl max-sm:text-sm">ویلای</span>
+                        <span className="pt-0.5 text-2xl max-sm:text-sm">{categoryNames[item?.category_id] || "بدون دسته"}</span>
                     </div>
                 </div>
 
@@ -53,7 +63,7 @@ const BlogCard = ({ item }) => {
             </div>
 
             <div className="p-5  flex flex-col gap-4">
-                
+
                 <h2 className="text-3xl max-sm:text-xl font-bold dark:text-white text-black leading-tight truncate">
                     {item?.title}
                 </h2>

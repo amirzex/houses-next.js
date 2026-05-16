@@ -33,6 +33,7 @@ const AppointmentsFullCalendar = () => {
     const { data, isLoading } = useGetAppointUser() as { data: Appointment[], isLoading: boolean };
 
     const [currentDateTitle, setCurrentDateTitle] = useState("");
+    const [todayJalaliDay, setTodayJalaliDay] = useState<number | null>(null);
 
     useEffect(() => {
         const today = new Date();
@@ -41,6 +42,10 @@ const AppointmentsFullCalendar = () => {
             year: "numeric"
         });
         setCurrentDateTitle(formattedDate);
+
+        // استخراج روز جاری شمسی به صورت عدد
+        const jalaliDayStr = today.toLocaleDateString("fa-IR-u-nu-latn", { day: "numeric" });
+        setTodayJalaliDay(parseInt(jalaliDayStr, 10));
     }, []);
 
     // استخراج شماره روز از تاریخ برای قرار دادن در خانه مناسب تقویم
@@ -105,6 +110,7 @@ const AppointmentsFullCalendar = () => {
                 <div className="grid grid-cols-7 dark:bg-black auto-rows-[minmax(90px,auto)]">
                     {calendarCells.map((cell) => {
                         const dayAppointments = cell.isCurrentMonth ? (appointmentsByDay[cell.dayNumber] || []) : [];
+                        const isToday = cell.dayNumber === todayJalaliDay; // بررسی روز جاری
 
                         return (
                             <div
@@ -112,14 +118,14 @@ const AppointmentsFullCalendar = () => {
                                 className={`
                                      p-2 border-b border-l last:border-l-0 border-gray-100 relative transition-colors
                                     ${!cell.isCurrentMonth ? 'bg-gray-50/50 text-gray-400' : 'bg-white dark:bg-[#272727] hover:bg-gray-50/30'}
-                                    ${cell.dayNumber === 24 ? 'bg-blue-50/30' : ''} /* هایلایت روز جاری (تستی) */
+                                    ${isToday ? 'bg-blue-50/30' : ''} /* هایلایت روز جاری */
                                 `}
                             >
                                 {/* شماره روز */}
                                 {cell.isCurrentMonth && (
                                     <span className={`
                                         inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold mb-2
-                                        ${cell.dayNumber === 24 ? 'bg-blue-600 text-white shadow-md' : 'text-gray-700 dark:text-white'}
+                                        ${isToday ? 'bg-blue-600 text-white shadow-md' : 'text-gray-700 dark:text-white'}
                                     `}>
                                         {cell.dayNumber}
                                     </span>

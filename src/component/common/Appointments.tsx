@@ -5,7 +5,7 @@ const Appointments = ({ id }) => {
     const { data } = useGetAppointments(id)
 
     if (!data || data.length === 0) {
-        return <div className='w-[90%] p-5 border rounded-2xl bg-[#FFFFFA] flex flex-col justify-center items-center gap-8'>ملاقاتی یافت نشد.</div>
+        return <div className='w-[90%] p-5 border rounded-2xl bg-[#FFFFFA] dark:bg-[#272727] flex flex-col justify-center items-center gap-8'>ملاقاتی یافت نشد.</div>
     }
 
     const formatDate = (date) => {
@@ -20,7 +20,7 @@ const Appointments = ({ id }) => {
     };
 
     return (
-        <div className='w-[90%] p-5 border rounded-2xl bg-[#FFFFFA] flex flex-col justify-center items-center gap-8'>
+        <div className='w-[90%] dark:bg-[#272727] p-5 border rounded-2xl bg-[#FFFFFA] flex flex-col justify-center items-center gap-8'>
             <h2 className='text-xl mb-4'> تاریخ ملاقات های شما  </h2>
 
             {data.map((appointment) => (

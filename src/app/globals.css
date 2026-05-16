@@ -158,3 +158,21 @@ body {
   border-radius: 15px; /* Make it a pill shape */
   background-color: #2563eb; /* A nice blue color, like Tailwind's blue-600 */
 }
+
+/* loading */
+
+.glass-loader {
+  animation: pulse-glass 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glass {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
