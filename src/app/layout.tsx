@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "./providers";
 import LayoutWrapper from "@/component/LayoutWrapper";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -21,17 +22,21 @@ export const shabnam = localFont({
     variable: "--font-shabnam",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const cookieStore = await cookies()
 
+    const token = cookieStore.get('accessToken')
+
+    const isLoggedIn = !!token?.value
     return (
         <html lang="en">
             <body className={shabnam.className}>
                 <Providers>
-                    <LayoutWrapper>
+                    <LayoutWrapper isLoggedIn={isLoggedIn}>
                         {children}
                     </LayoutWrapper>
                 </Providers>

@@ -1,18 +1,30 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Header from "@/component/header/page";
-import Footer from "@/component/footer/page";
+import { ReactNode } from "react";
+import Header from "./header/page";
+import Footer from "./footer/page";
 
-export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
+interface LayoutWrapperProps {
+    children: ReactNode;
+    isLoggedIn: boolean;
+}
+
+const LayoutWrapper = (props: LayoutWrapperProps) => {
+
+    const { children, isLoggedIn } = props;
+
     const pathname = usePathname();
     const isPanel = pathname.startsWith("/panel");
 
     return (
         <>
-            {!isPanel && <Header />}
+            {!isPanel && <Header isLoggedIn={isLoggedIn} />}
             {children}
             {!isPanel && <Footer />}
         </>
     );
 }
+
+
+export default LayoutWrapper;

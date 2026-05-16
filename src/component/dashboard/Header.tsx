@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
-import { Bell, Moon, Sun, ChevronDown, UserIcon } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Bell, Moon, Sun, ChevronDown, UserIcon, Home } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/core/api/dashboard/user/userQuery/UserQuery";
+import Link from "next/link";
 
 const Header = () => {
     const pathname = usePathname();
@@ -103,6 +104,10 @@ const Header = () => {
                         <Bell size={20} className="group-hover:animate-swing" />
                         <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 border-2 border-white dark:border-[#1E1E1E] rounded-full"></span>
                     </button>
+
+                    <Link href='/' className="p-2.5 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-slate-400 rounded-2xl hover:bg-primary/10 hover:text-primary transition-all group">
+                        <Home size={20} className="group-hover:animate-swing" />
+                    </Link>
 
                     <button
                         onClick={toggleDarkMode}

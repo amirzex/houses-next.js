@@ -48,7 +48,7 @@ const FormSearch = ({ selectedTab }: { selectedTab: string }) => {
                 className='w-full flex flex-row-reverse justify-center items-center'
             >
 
-                <div className="w-full text-black flex flex-col gap-1 items-end p-5">
+                <div className="w-[20%] text-black flex flex-col gap-1 items-end p-5">
 
                     <p className="text-xl font-bold dark:text-white">
                         انتخاب مقصد
@@ -74,7 +74,7 @@ const FormSearch = ({ selectedTab }: { selectedTab: string }) => {
                     </div>
                 </div>
 
-                <div className='w-full text-black flex flex-col gap-1 items-end p-5'>
+                <div className='w-[20%] text-black flex flex-col gap-1 items-end p-5'>
 
                     <p className='text-xl font-bold dark:text-white'>
                         تعداد نفرات
@@ -90,7 +90,7 @@ const FormSearch = ({ selectedTab }: { selectedTab: string }) => {
 
                 </div>
 
-                <div className="w-full text-black flex flex-col gap-1 items-end p-5">
+                <div className="w-[20%] text-black flex flex-col gap-1 items-end p-5">
 
                     <p className="text-xl font-bold dark:text-white">
                         تاریخ ورود
@@ -105,7 +105,7 @@ const FormSearch = ({ selectedTab }: { selectedTab: string }) => {
 
                 </div>
 
-                <div className="w-full text-black flex flex-col gap-1 items-end p-5">
+                <div className="w-[20%] text-black flex flex-col gap-1 items-end p-5">
 
                     <p className="text-xl font-bold dark:text-white">
                         تاریخ خروج

@@ -8,7 +8,8 @@ import HeaderNav from './Headernavbar/HeaderNav'
 import MobileMenuDrawer from './MobileMenuDrawer'
 import moon from '../../assets/dark/moon.svg'
 
-const Header = () => {
+// اضافه کردن prop برای وضعیت لاگین
+const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 
   const handleDarkMode = () => {
     document.documentElement.classList.toggle("dark")
@@ -37,20 +38,18 @@ const Header = () => {
           <HeaderNav />
         </div>
 
-        {/* Hamburger Menu  */}
         <div className='flex flex-row-reverse items-center gap-13 md:w-[25%]  md:justify-end md:pl-10'>
 
-          {/* dark mode  */}
-
-          <div onClick={handleDarkMode} className='p-3 ml-[-40px] bg-blue-900 rounded-full max-sm:hidden'>
+          {/* dark mode */}
+          <div onClick={handleDarkMode} className='p-3 ml-[-40px] bg-blue-900 rounded-full max-sm:hidden cursor-pointer'>
             <Image src={moon} alt='moon' unoptimized />
           </div>
 
-          {/* Signin Button */}
-          <Link href={'/Register'}>
+          {/* Conditional Button: Login or Dashboard */}
+          <Link href={isLoggedIn ? 'panel/dashboard' : '/Register'}>
             <button className='text-white bg-blue-900 flex flex-row-reverse items-center gap-2 px-4 py-2 md:px-5 md:py-3 rounded-full text-sm md:text-xl'>
               <Image src={user} width={20} height={20} alt='user' className='w-5 h-5 md:w-6 md:h-6' unoptimized />
-              <span>ورود / ثبت نام</span>
+              <span>{isLoggedIn ? 'پنل کاربری' : 'ورود / ثبت نام'}</span>
             </button>
           </Link>
 
@@ -67,13 +66,12 @@ const Header = () => {
         </div>
       </div>
 
-      {/* mobile header*/}
       <MobileMenuDrawer
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         handleDarkMode={handleDarkMode}
+        isLoggedIn={isLoggedIn} // ارسال وضعیت به دراور موبایل در صورت نیاز
       />
-
     </>
   )
 }
