@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Breadcrumb from './Breadcrumb'
 import Link from 'next/link'
@@ -5,10 +6,12 @@ import { slides } from '../Landing/suggestion/Suggestion'
 
 import PayMentCard from '@/app/FastReserve/[id]/Payment/PayMentCard'
 import PaymentWizard from '@/app/FastReserve/[id]/Payment/formwizard/PaymentWizard'
+import { useHouseById } from '@/core/api/housesDetail/housesQuery/HousesQuery'
 
 const PayMentsForm = ({ id }) => {
-    const value = slides.find(slide => slide.id === Number(id))
-    console.log(value)
+
+    const { data, isLoading, error } = useHouseById(id)
+
     return (
         <div className='w-full flex flex-col justify-center items-center ' dir='rtl'>
 
@@ -24,7 +27,7 @@ const PayMentsForm = ({ id }) => {
 
                 {/* card */}
                 <div className='w-[30%] max-sm:w-full p-10 max-sm:p-5'>
-                    <PayMentCard value={value} />
+                    <PayMentCard value={data} />
                 </div>
 
             </div>

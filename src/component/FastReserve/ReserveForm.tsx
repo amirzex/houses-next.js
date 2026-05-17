@@ -1,65 +1,3 @@
-// import React from 'react'
-
-// const ReserveForm = ({ property }) => {
-//     return (
-//         <div className='w-full flex flex-col gap-5'>
-//             <form className=' w-full flex flex-col gap-5 justify-center items-center ' action="">
-//                 <div className='w-full flex flex-col gap-3 text-right'>
-//                     <h3 className='text-2xl'> تاریخ ورود </h3>
-//                     <input
-//                         type="text"
-//                         placeholder='1404/06/10'
-//                         className='text-right bg-gray-100 pr-2 rounded-4xl p-3 w-full'
-//                     />
-//                 </div>
-
-//                 <div className='w-full flex flex-col gap-3 text-right'>
-//                     <h3 className='text-2xl'> تاریخ خروج </h3>
-//                     <input
-//                         type="text"
-//                         placeholder='1404/06/10'
-//                         className='text-right bg-gray-100 pr-2 rounded-4xl p-3 w-full'
-//                     />
-//                 </div>
-//                 <div className='w-full flex flex-col gap-3 text-right'>
-//                     <h3 className='text-2xl'> تعداد نفرات  </h3>
-//                     <input
-//                         type="text"
-//                         placeholder='0'
-//                         className='text-right bg-gray-100 pr-2 rounded-4xl p-3 w-full'
-//                     />
-//                 </div>
-//             </form>
-
-//             <div className='border-t-2 w-full border-gray-300 flex flex-col gap-5 pt-5'>
-//                 <div className='flex flex-row gap-40 items-center'>
-//                     <span className='flex flex-row-reverse justify-end gap-1 text-gray-400 text-3xl line-through'>
-//                         {property?.discounted_price || 0}
-//                         <p>تومان</p>
-//                     </span>
-
-//                     {/* calculate the discount */}
-//                     {property?.price && property?.discounted_price && (
-//                         <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-//                             {Math.round(((property.price - property.discounted_price) / property.price) * 100)}% تخفیف
-//                         </div>
-//                     )}
-//                 </div>
-
-//                 <span className='flex flex-row-reverse justify-end gap-1 text-3xl'>
-//                     {property?.price}
-//                     <p>تومان</p>
-//                 </span>
-//             </div>
-
-//             <button className='bg-blue-900 p-3 w-full rounded-4xl text-white hover:scale-95 transition-all duration-300'> ثبت درخواست رزرو </button></div>
-//     )
-// }
-
-// export default ReserveForm
-// components/ReservationForm.jsx
-
-
 
 import Image from 'next/image';
 import home from '../../assets/reserve/home.svg';
@@ -95,7 +33,16 @@ const ArrowLeftIcon = () => (
     </svg>
 );
 
-const ReservationForm = () => {
+const ReservationForm = ({ data }) => {
+
+    const price = Number(data?.price)
+    const discounted = Number(data?.discounted_price)
+
+    const discountPercent =
+        discounted && price && discounted < price
+            ? Math.round(((price - discounted) / price) * 100)
+            : null
+
     return (
         <div dir="rtl" className="w-[90%] flex flex-col justify-center items-center bg-[#FFFFFA] dark:bg-[#272727] border rounded-3xl p-6 gap-5">
 
@@ -129,8 +76,8 @@ const ReservationForm = () => {
                 <div className='w-full flex flex-col gap-3'>
                     <p className="text-xl"> تعداد مسافران</p>
                     <div className="w-full flex items-center justify-between dark:bg-[#353535] bg-gray-100 rounded-full px-4 py-3">
-                        <div className="flex items-center gap-3">
-                            <input type='text' className="font-semibold text-sm" placeholder='5 نفر' />
+                        <div className="flex items-center gap-3 w-full">
+                            <input type='text' className="w-full font-semibold text-sm outline-0" placeholder='5 نفر' />
                         </div>
                     </div>
                 </div>
@@ -180,18 +127,18 @@ const ReservationForm = () => {
                     <div className="flex justify-center  items-center w-full">
                         <div className="w-[90%] flex items-center gap-4 ">
                             <div className="bg-orange-500 text-white text-sm font-bold w-14 h-12 flex items-center justify-center rounded-full">
-                                %15
+                                %{discountPercent}
                             </div>
                             <div className='w-[90%] bg-gray-200 rounded-full flex flex-row-reverse gap-3 justify-center items-center p-3'>
-                                <p className="text-xl font-extrabold text-gray-900">4.500.000 <span className="text-sm font-normal">تومان</span></p>
-                                <p className="text-orange-500 line-through">5.500.000 تومان</p>
+                                <p className="text-sm font-extrabold text-gray-900">{Number(data?.discounted_price).toLocaleString("fa-IR")} <span className="text-sm font-normal">تومان</span></p>
+                                <p className="text-orange-500 line-through">{Number(data?.price).toLocaleString("fa-IR")} تومان</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* دکمه رزرو */}
-                <Link href="2/Payment" className="w-full bg-blue-900 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300">
+                <Link href={`${data?.id}/Payment`} className="w-full bg-blue-900 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300">
                     <span>همین الان رزرو کن</span>
                     <ArrowLeftIcon />
                 </Link>

@@ -27,7 +27,7 @@ const CategoryMobile = () => {
                         className=" object-cover overflow-hidden brightness-75 hover:scale-110 transition-all duration-300 hover:brightness-100"
                         unoptimized
                     />
-                    <Link href={"/"} className=' absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[35%] rounded-4xl'>بوم گردی </Link>
+                    <Link href={"/"} className=' absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[35%] rounded-4xl'>بوم گردی </Link>
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
                             src={arrow}
@@ -47,7 +47,7 @@ const CategoryMobile = () => {
                         className="h-full object-cover overflow-hidden brightness-75 rounded-4xl hover:scale-110 transition-all duration-300 hover:brightness-100"
                         unoptimized
                     />
-                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[35%] rounded-4xl'>ملک کلبه</Link>
+                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[35%] rounded-4xl'>ملک کلبه</Link>
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
                             src={arrow}
@@ -68,7 +68,7 @@ const CategoryMobile = () => {
                         className="h-full object-cover overflow-hidden brightness-75 rounded-4xl hover:scale-110 transition-all duration-300 hover:brightness-100"
                         unoptimized
                     />
-                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[40%] rounded-4xl'>ملک ساحلی </Link>
+                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[40%] rounded-4xl'>ملک ساحلی </Link>
 
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
@@ -89,7 +89,7 @@ const CategoryMobile = () => {
                         className="h-full object-cover overflow-hidden brightness-75 rounded-4xl hover:scale-110 transition-all duration-300 hover:brightness-100"
                         unoptimized
                     />
-                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[40%] rounded-4xl'>ملک ویلایی </Link>
+                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[40%] rounded-4xl'>ملک ویلایی </Link>
 
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
@@ -111,7 +111,7 @@ const CategoryMobile = () => {
                         unoptimized
                     />
 
-                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[40%] rounded-4xl'> استخر دار </Link>
+                    <Link href={"/"} className='absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[40%] rounded-4xl'> استخر دار </Link>
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
                             src={arrow}
@@ -132,7 +132,7 @@ const CategoryMobile = () => {
                         className=" object-cover overflow-hidden brightness-75 hover:scale-110 transition-all duration-300 hover:brightness-100"
                         unoptimized
                     />
-                    <Link href={"/"} className=' absolute bottom-5 right-5 bg-white text-black text-center text-2xl p-2 w-[35%] rounded-4xl'>آپارتمان  </Link>
+                    <Link href={"/"} className=' absolute bottom-5 right-5 bg-white text-black text-center text-2xl max-sm:text-xl p-2 w-[35%] rounded-4xl'>آپارتمان  </Link>
                     <button className='absolute bottom-5 left-5 bg-white w-[10%] max-sm:w-12 max-sm:h-12 flex justify-center items-center rounded-full overflow-hidden'>
                         <Image
                             src={arrow}

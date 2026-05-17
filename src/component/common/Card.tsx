@@ -98,14 +98,14 @@ const Card: FC<CardProps> = ({ value }) => {
                     {value.price && (
                         <>
                             <span className='flex flex-row-reverse justify-center items-center text-2xl max-sm:text-xs text-[#EF4444] line-through ml-2 font-medium'>
-                                {value.discounted_price || "5,500,000"}
+                                {Number(value.price ).toLocaleString("fa-IR") }
                                 <span className='mr-1'>تومان</span>
                             </span>
                             <div className='w-[1px] h-4 bg-gray-300 mx-2'></div>
                         </>
                     )}
-                    <span className='flex flex-row-reverse justify-center  dark:text-white items-center text-3xl max-sm:text-xs font-bold text-black gap-1'>
-                        {value.price || "4,500,000"}
+                    <span className='flex flex-row-reverse justify-center  dark:text-white items-center text-2xl max-sm:text-xs font-bold text-black gap-1'>
+                        {Number(value.discounted_price ? value.discounted_price : "2500000000").toLocaleString("fa-IR")}
                         <span className='text-3xl font-normal ml-1 max-sm:text-xs'>ت</span> /
                         <span className='text-xl max-sm:text-xs text-gray-500 font-normal dark:text-gray-200'> هر شب</span>
                     </span>

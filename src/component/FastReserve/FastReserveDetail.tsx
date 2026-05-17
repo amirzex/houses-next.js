@@ -6,7 +6,7 @@ import Image from 'next/image';
 import start from '../../assets/landing/start.svg'
 import loca from '../../assets/landing/location.svg'
 import shair from '../../assets/reserve/Only-IconButton.svg'
-import copy from '../../assets/reserve/Copy01Icon.svg'
+import copy from '../../assets/details/Only-IconButton.svg'
 import houses from '../../assets/reserve/Frame 14333.png'
 import house1 from '../../assets/reserve/image 2.svg'
 import house2 from '../../assets/reserve/image 3.svg'
@@ -26,6 +26,7 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
   // const data = slides.find(slide => slide.id === Number(id))
 
   const { data, isLoading, error } = useHouseById(id)
+
 
   return (
     <div className='w-full flex flex-col justify-center items-center gap-10 p-10' dir='rtl'>
@@ -56,7 +57,7 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
           <div className='w-[50%] flex justify-end items-center '>
             <div className=' w-[15%]  flex flex-row-reverse justify-start items-center gap-1'>
               <Image src={shair} alt='' unoptimized />
-              <Image src={copy} alt='' unoptimized className='text-blue-900 border border-blue-900 p-5 rounded-full' />
+              <Image src={copy} alt='' unoptimized className='' />
             </div>
           </div>
         </div>
@@ -97,7 +98,7 @@ const FastReserveDetail: FC<IProps> = ({ id }) => {
           {/* reserve form and houses item */}
 
           <div className='w-[30%] flex flex-col justify-center gap-5 items-center'>
-            <ReservationForm />
+            <ReservationForm data={data}/>
 
             <Facilities
               bathrooms={data?.bathrooms}

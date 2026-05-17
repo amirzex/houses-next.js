@@ -50,7 +50,7 @@ const FilterForm = ({ filters, setFilters }: any) => {
 
                 <div className='w-[75%] flex flex-row max-sm:flex-col max-sm:w-full justify-center gap-5 items-center'>
                     <SelectInput label="مرتب سازی" value={filters?.sort} onChange={(v: any) => handleChange("sort", v)} options={[{ label: "جدیدترین", value: "last_updated" }, { label: "قدیمی ترین", value: "created_at" }]} />
-                    <SelectInput label="محل" value={filters?.location} onChange={(v: any) => handleChange("location", v)} options={[{ label: "تهران", value: "tehran" }, { label: "مشهد", value: "mashhad" }]} />
+                    <SelectInput label="محل" value={filters?.location} onChange={(v: any) => handleChange("location", v)} options={[{ label: "بابل", value: "بابل" }, { label: "ساری", value: "ساری" },{ label: "بابلسر", value: "بابلسر" },{ label: "رامسر", value: "رامسر" },{ label: "نور", value: "نور" }]} />
                     <SelectInput label="نوع ملک" value={filters?.propertyType} onChange={(v: any) => handleChange("propertyType", v)} options={[{ label: "آپارتمان", value: "apartment" }, { label: "ویلا", value: "villa" }]} />
                     <SelectInput label="نوع معامله" value={filters?.transactionType} onChange={(v: any) => handleChange("transactionType", v)} options={[{ label: "اجاره", value: "rental" }, { label: "رزرو", value: "reservation" }]} />
                 </div>
