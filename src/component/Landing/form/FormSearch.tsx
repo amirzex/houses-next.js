@@ -60,14 +60,15 @@ const FormSearch = ({ selectedTab }: { selectedTab: string }) => {
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             className="appearance-none bg-gray-100 dark:bg-[#353535] dark:text-white w-full text-right p-5 rounded-4xl cursor-pointer pr-4"
+                            dir="rtl"
                         >
 
                             <option value="">مقصد را انتخاب کنید</option>
 
-                            <option value="tehran">تهران</option>
-                            <option value="mashhad">مشهد</option>
-                            <option value="isfahan">اصفهان</option>
-                            <option value="shiraz">شیراز</option>
+                            <option value="ساری">ساری</option>
+                            <option value="بابل">بابل</option>
+                            <option value="بابلسر">بابلسر</option>
+                            <option value="رامسر">رامسر</option>
 
                         </select>
 
